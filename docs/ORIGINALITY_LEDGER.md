@@ -17,6 +17,11 @@ Reusing good upstream code is deliberate. Where a row says "paths only", SumitCr
 | rough-cut | Edit-the-words method, edge snapping, render and verify loop. | Cross-platform setup with sizes stated before download; creator taste turned into recorded preferences; workspace location asked, not ~/Movies; mixed Hindi/English guidance. | A model-free synthetic workspace that exercises cut finding and rendering. | smoke tested: evidence/rough-cut/ | All cut rules and thresholds; upstream's real-footage numbers are quoted as upstream's. |
 | clean-audio | Measure-first chain and the clarity guard. | Portable venv path; no OS-specific `open`; honest limits on overlapping sources; disclosure before any hosted isolator. | None run yet (model download not approved). | blocked: docs/VALIDATION_MATRIX.md | Filter chain and thresholds. |
 | vox-explainer | Word-timed engine, devices, motion check. | 'Style C' is now the credited editorial-collage preset; presets expose palette, typography, spacing, composition, texture and motion; two provisional alternatives; cross-platform font fallbacks; creator pronouns removed. | Three-preset comparison stills from one scene. | smoke tested: evidence/vox-explainer/ | Engine and device designs. |
+| vlog-auto-edit (vendor) | Upstream's inventory, plan, render, and music-mix method, including its scripts and examples. | Folder name and description, so it is not chosen for a single talking-head take. | None run here. | not run: docs/VALIDATION_MATRIX.md | The whole method. |
+| burned-in-captions (vendor) | Upstream make_subs.py and the ASS/SRT burn-in steps. | Folder name and description, so it is chosen for captions rather than for an edit. | None run here. | not run: docs/VALIDATION_MATRIX.md | The script and the style rules. |
+| thumbnail-ab (vendor) | Upstream cover_ab.py and the one-variable test record. | Folder name and description. | None run here. | not run: docs/VALIDATION_MATRIX.md | The script and the title formulas. |
+| platform-video-export (vendor) | Upstream export_platform.py and the preset table. | Folder name and description. | None run here. | not run: docs/VALIDATION_MATRIX.md | The script and the presets. |
+| long-form-storyboard (vendor) | Upstream's storyboard schema, checker, and the script/shot-list/caption export. | Folder name and description, so a short script still goes to video-script. | None run here. | not run: docs/VALIDATION_MATRIX.md | The TypeScript checker and the templates. |
 
 ## Engineering
 
@@ -29,6 +34,13 @@ Reusing good upstream code is deliberate. Where a row says "paths only", SumitCr
 | api-design-review | All of it. | Paths only. | Diff re-run; exit code checked both ways. | functionally verified: evidence/api-design-review/ | Rubric and scripts. |
 | security-threat-model | All of it. | Paths only; scope rule restated in the contract. | Tests re-run against both versions. | functionally verified: evidence/security-threat-model/ | Example app and tests. |
 | dx-audit | Friction log, grading and render. | Paths; third-party docs screenshots excluded. | Offline fixture journey. | smoke tested: evidence/dx-audit/ | Scripts. |
+| git-authoring (vendor) | Upstream's commit, pull-request, release-note, and git-operation method. | Description narrowed so a spec review still goes to code-review and a regression search to bisect-anything. | None run here. | not run: docs/VALIDATION_MATRIX.md | The whole method. |
+| systematic-debugging (vendor) | Upstream's four-phase root-cause method and its example notes. | Description points regression search at bisect-anything and intermittent failures at flaky-test-killer. | None run here. | not run: docs/VALIDATION_MATRIX.md | The method. |
+| test-driven-development (vendor) | Upstream's red-green-refactor method. | Description only. | None run here. | not run: docs/VALIDATION_MATRIX.md | The method. |
+| verification-before-completion (vendor) | Upstream's evidence-before-assertion rule. | Description only. | None run here. | not run: docs/VALIDATION_MATRIX.md | The method. |
+| code-review (vendor) | Upstream's two-axis review (standards and spec). | Description, so API review and PR writing stay with the skills that own them. | None run here. | not run: docs/VALIDATION_MATRIX.md | The method. |
+| docker-compose-patterns (vendor) | Upstream's Compose patterns, references, and verify script. | Description only. | None run here. | not run: docs/VALIDATION_MATRIX.md | The method and the examples. |
+| react-best-practices (vendor) | Upstream's rule catalogue. | Description, so visual design and guidelines audits stay with glyph and web-design-guidelines. The MIT permission text was added because upstream states MIT in the repo README and does not ship the full notice in the skill. | None run here. | not run: docs/VALIDATION_MATRIX.md | The rules. |
 
 ## Learning
 
@@ -39,6 +51,7 @@ Reusing good upstream code is deliberate. Where a row says "paths only", SumitCr
 | from-scratch | The method. | Added a runnable worked example with a real-tool comparison. | content-hash-store. | functionally verified: evidence/from-scratch/ | Steps and rules. |
 | teach-back | All of it. | Contract and scenarios added. | Scenario set. | static checks passed: tests/scenarios/ | Method. |
 | learn-a-domain (new) | n/a (new). | New skill. | Rhythm-reading plan. | static checks passed: tests/scenarios/ | Nothing. |
+| primary-source-research (vendor) | Upstream's primary-source research note. | Folder name and description, so learning plans and paper implementations stay with the skills that own them. | None run here. | not run: docs/VALIDATION_MATRIX.md | The method. |
 
 ## Design
 
@@ -53,6 +66,7 @@ Reusing good upstream code is deliberate. Where a row says "paths only", SumitCr
 | visual-reference-analysis (new) | n/a (new). | New skill. | poster-study. | functionally verified: evidence/visual-reference-analysis/ | Nothing. |
 | design-hub (new) | n/a (new). | New skill. | Fixture skills folder with known answers. | functionally verified: evidence/design-hub/ | Nothing; other skills are referenced by name only. |
 | glyph (Glyph) | The whole bundle (SKILL.md, 19 references, starter.css, LICENSE, notices, migration map), byte for byte, from the owner's Glyph-Skill repo. | One line appended to SKILL.md linking SumitCraft's contract; registered in design-hub as a direction/build/motion/critique skill. | Browser contrast audit of every starter-kit preset. | smoke tested: evidence/glyph/ | Everything else is Glyph's own work. |
+| web-design-guidelines (vendor) | Upstream's fetch-and-apply review method. | Description, so a pixel critique still goes to design-critique. MIT permission text added next to upstream's pointer. | None run here. | not run: docs/VALIDATION_MATRIX.md | The method. The rules are fetched, not copied. |
 
 ## Planning
 
@@ -62,3 +76,15 @@ Reusing good upstream code is deliberate. Where a row says "paths only", SumitCr
 | next-step | All of it. | Contract and scenarios. | Scenarios. | static checks passed: tests/scenarios/ | Method. |
 | video-script | All of it. | Contract and scenarios. | Scenarios. | static checks passed: tests/scenarios/ | Method. |
 | work-to-explanation (new) | n/a (new). | New skill. | A write-up of a real SumitCraft change. | functionally verified: evidence/work-to-explanation/ | Nothing. |
+| writing-plans (vendor) | Upstream's bite-sized implementation-plan method. | Description, so a personal next action still goes to next-step. | None run here. | not run: docs/VALIDATION_MATRIX.md | The method. |
+| handoff (vendor) | Upstream's session-handoff method. | Description, so it is not treated as a design handoff. | None run here. | not run: docs/VALIDATION_MATRIX.md | The method. |
+| meeting-notes-to-tasks (vendor) | Upstream's decision and action-item method. | Description, so a personal next step still goes to next-step. | None run here. | not run: docs/VALIDATION_MATRIX.md | The method. |
+
+## Docs
+
+| Skill | Kept (why) | Changed in the method | New example | Evidence | Still inherited |
+|---|---|---|---|---|---|
+| pdf (vendor) | Upstream's PDF skill, scripts, and Apache-2.0 licence, unmodified except the folder name, the description, and a contract link. | Those three, so the skill is discoverable under a short name. | None run here. | not run: docs/VALIDATION_MATRIX.md | The method and the scripts. |
+| docx (vendor) | Upstream's docx skill, scripts, and Apache-2.0 licence. | Folder name, description, and a contract link. | None run here. | not run: docs/VALIDATION_MATRIX.md | The method and the scripts. |
+| pptx (vendor) | Upstream's pptx skill, scripts, schemas, and Apache-2.0 licence. | Folder name, description, and a contract link. | None run here. | not run: docs/VALIDATION_MATRIX.md | The method, scripts, and schemas. |
+| xlsx (vendor) | Upstream's xlsx skill, scripts, schemas, and Apache-2.0 licence. | Folder name, description, and a contract link. | None run here. | not run: docs/VALIDATION_MATRIX.md | The method, scripts, and schemas. |

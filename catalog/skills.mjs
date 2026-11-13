@@ -1,3 +1,4 @@
+import { dailySkills } from "./daily.mjs";
 // The SumitCraft skill catalog: one entry per skill. tools/gen-docs.mjs turns this into each skill's contract.md,
 // docs/CATALOG.md and docs/ORIGINALITY_LEDGER.md; tools/doctor.mjs uses `needs` to say which skills are ready.
 //
@@ -421,4 +422,6 @@ export const skills = [
     failures: ["Copying a reference design", "Treating a successful build as a successful interface"], limits: ["Guidance, not enforcement; 'commands' are prompt conventions, not CLI commands", "Taste hypotheses are labelled as such, not research findings"],
     example: "assets/starter.css rendered with each of its 12 direction presets plus the default, contrast measured (evidence/glyph).",
     ledger: { kept: "The whole bundle (SKILL.md, 19 references, starter.css, LICENSE, notices, migration map), byte for byte, from the owner's Glyph-Skill repo.", changed: "One line appended to SKILL.md linking SumitCraft's contract; registered in design-hub as a direction/build/motion/critique skill.", newExample: "Browser contrast audit of every starter-kit preset.", evidence: "evidence/glyph/", inherited: "Everything else is Glyph's own work." } },
+
+  ...dailySkills,
 ];
