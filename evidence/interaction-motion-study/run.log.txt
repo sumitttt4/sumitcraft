@@ -1,0 +1,21 @@
+$ /opt/node22/bin/node <repo>/skills/interaction-motion-study/scripts/check_study.mjs <repo>/skills/interaction-motion-study/examples/disclosure-menu/index.html --out <runs>/interaction-motion-study/good
+[exit 0, 3.9 s]
+ok   semantics: <button> role=null aria-expanded=false
+ok   focus-visible: outline 3px solid, shadow none
+ok   keyboard-open: Tab reached trigger; after Enter visible=true, aria-expanded=true
+ok   escape: after Escape visible=false, focus on trigger=true
+ok   outside-close: opened by click=true, after outside press visible=false
+ok   interruption: after open then close 40 ms apart: visible=false, aria-expanded=false
+ok   timing: panel transition-duration: 0.18s, 0.18s, 0s
+ok   reduced-motion: 30 ms after opening: running animations=0, visible=true
+
+$ /opt/node22/bin/node <repo>/skills/interaction-motion-study/scripts/check_study.mjs <repo>/skills/interaction-motion-study/examples/disclosure-menu/hover-only.html --out <runs>/interaction-motion-study/bad
+[exit 1, 2.7 s]
+FAIL semantics: <div> role=null aria-expanded=null
+FAIL focus-visible: trigger never received keyboard focus
+FAIL keyboard-open: Tab never reached the trigger in 10 presses
+FAIL escape: not testable without keyboard access
+ok   outside-close: opened by click=true, after outside press visible=false
+FAIL interruption: after open then close 40 ms apart: visible=true, aria-expanded=null
+ok   timing: panel transition-duration: 0.45s, 0.45s
+FAIL reduced-motion: 30 ms after opening: running animations=2, visible=false

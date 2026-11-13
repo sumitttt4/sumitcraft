@@ -43,16 +43,16 @@ A new developer on a clean Mac gets from the uv docs home page to a working proj
 | 10 | 14.7 | [projects](https://docs.astral.sh/uv/guides/projects/) | Save the docs script as example.py (copied with the copy button) | ok | naming-confusion (sev 1) |
 | 11 | 15.1 | [projects](https://docs.astral.sh/uv/guides/projects/) | Run the script in the project: `uv run example.py` | success |  |
 
-**Install (steps 1 to 5).** The docs home puts the install command first, with a copy button that copies the command without the `$` prompt ([screenshot](screenshots/01-docs-home.png)). The installer took 3.4 seconds and needed no account. It ended with:
+**Install (steps 1 to 5).** The docs home puts the install command first, with a copy button that copies the command without the `$` prompt ([screenshot](https://github.com/dotslashsimran/simcraft/blob/58224d131814572224537fb516b8c5d33dd5fa67/skills/coding/dx-audit/examples/uv-first-project/screenshots/01-docs-home.png)). The installer took 3.4 seconds and needed no account. It ended with:
 
 ```
 To add $HOME/.local/bin to your PATH, either restart your shell or run:
     source $HOME/.local/bin/env (sh, bash, zsh)
 ```
 
-The docs then send the reader to [First steps](screenshots/02-first-steps.png), which says to run `uv` to check the install. In the same terminal that gives `zsh:1: command not found: uv`. The fix is in the installer output a few lines up, so most people recover quickly, but the docs page never mentions it, and people who skim install output (most of us) hit it.
+The docs then send the reader to [First steps](https://github.com/dotslashsimran/simcraft/blob/58224d131814572224537fb516b8c5d33dd5fa67/skills/coding/dx-audit/examples/uv-first-project/screenshots/02-first-steps.png), which says to run `uv` to check the install. In the same terminal that gives `zsh:1: command not found: uv`. The fix is in the installer output a few lines up, so most people recover quickly, but the docs page never mentions it, and people who skim install output (most of us) hit it.
 
-**Project (steps 6 to 8).** The [Working on projects](screenshots/03-guide-projects.png) guide is clear. `uv init hello-world` made exactly the files the guide lists, and `uv run hello-world` printed `Hello from hello-world!` with no virtual environment to create or activate by hand. One thing was quietly different: uv chose the macOS system Python 3.9.6 (`Using CPython 3.9.6 interpreter at: /Library/Developer/CommandLineTools/usr/bin/python3`) and wrote `requires-python = ">=3.9"`, where the guide shows `>=3.14`. Python 3.9 reached end of life in October 2025, and nothing said so. This matters later: it is the root cause of the version error in the error checks below.
+**Project (steps 6 to 8).** The [Working on projects](https://github.com/dotslashsimran/simcraft/blob/58224d131814572224537fb516b8c5d33dd5fa67/skills/coding/dx-audit/examples/uv-first-project/screenshots/03-guide-projects.png) guide is clear. `uv init hello-world` made exactly the files the guide lists, and `uv run hello-world` printed `Hello from hello-world!` with no virtual environment to create or activate by hand. One thing was quietly different: uv chose the macOS system Python 3.9.6 (`Using CPython 3.9.6 interpreter at: /Library/Developer/CommandLineTools/usr/bin/python3`) and wrote `requires-python = ">=3.9"`, where the guide shows `>=3.14`. Python 3.9 reached end of life in October 2025, and nothing said so. This matters later: it is the root cause of the version error in the error checks below.
 
 **Dependency and script (steps 9 to 11).** `uv add flask` resolved and installed 10 packages in 16 seconds on a cold cache. The guide's script example has no file name, so the reader has to guess `example.py` from the command under it. With that, `uv run example.py` printed `hello world` and exited 0.
 

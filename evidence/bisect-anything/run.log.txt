@@ -1,0 +1,23 @@
+$ /usr/local/bin/python3 <repo>/skills/bisect-anything/examples/selftest.py
+[exit 0, 14.8 s]
+demo repo: /tmp/bisect-selftest-z47793kq/demo (40 commits)
+PASS  failing test finds the bug commit  Tidy stats helpers
+PASS  installs only when the lockfile changes  3 installs over 7 steps
+PASS  --first-parent finds the merge  Merge branch 'stats-cleanup'
+PASS  golden diff finds the bug commit  Tidy stats helpers
+PASS  (control) golden diff without --ignore blames the wrong commit  Add notes on usage
+PASS  benchmark finds the slowdown  Speed up dedupe bookkeeping (good 0.013s, bad 0.167s)
+PASS  screenshot diff finds the visual change  Refresh badge colours
+PASS  server probe finds the bug commit  Tidy stats helpers
+PASS  no server processes left running  
+PASS  flaky oracle + majority of 7 finds the bug commit  Tidy stats helpers
+PASS  hunk_minimise isolates the one median hunk  1 of 4 hunks
+PASS  bisect_list with skipped items reports an honest range  NOT CONCLUSIVE: last good is '329'; the first bad is one of ['330', '331', '332', '333', '334', '335', '336', '337', '338', '339', '340', '341', '342', '343', '344', '345', '346'] (these could not be tested).
+PASS  bisect_list finds the first bad item  FIRST BAD: 337
+PASS  bisect_list --minimise finds the two flags that clash  ['FLAG_C', 'FLAG_Q']
+PASS  skipped commit next to the answer gives an honest 'one of these'  NOT CONCLUSIVE: the first bad commit is one of these (the others in between were skipped):
+PASS  only unbuildable commits were ever skipped  ['Prototype export', 'Start extra module']
+PASS  checkout untouched  
+PASS  no worktrees left behind  1
+
+18/18 passed

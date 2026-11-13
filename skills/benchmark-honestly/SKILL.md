@@ -66,3 +66,5 @@ Every report has: the question, a chart showing every run (not just a bar), the 
 ## Examples
 
 `examples/` has four real cases run on a busy laptop, each with the naive result next to the honest one: a lazy `map()` that looks 100,000x faster, two identical sorts where single runs give a different "winner" each time, a file read where whichever variant runs first loses, and a server with GC-like pauses whose p99 looks fine in a closed loop. See `examples/README.md`.
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

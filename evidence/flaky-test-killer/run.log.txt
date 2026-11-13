@@ -1,0 +1,43 @@
+$ /usr/local/bin/python3 <repo>/skills/flaky-test-killer/examples/make_examples.py --out <runs>/flaky-test-killer/flaky
+[exit 0, 0.0 s]
+wrote flaky examples to <runs>/flaky-test-killer/flaky/py-shop and <runs>/flaky-test-killer/flaky/node-shop
+
+$ /usr/local/bin/python3 <repo>/skills/flaky-test-killer/examples/make_examples.py --out <runs>/flaky-test-killer/fixed --variant fixed
+[exit 0, 0.0 s]
+wrote fixed examples to <runs>/flaky-test-killer/fixed/py-shop and <runs>/flaky-test-killer/fixed/node-shop
+
+$ /usr/local/bin/python3 <repo>/skills/flaky-test-killer/scripts/flake_rate.py -n 30 --json <runs>/flaky-test-killer/before.json -- /usr/local/bin/python3 run_tests.py --seed {seed}
+[exit 1, 1.6 s]
+== result: 30 runs, 22 failed, rate 73.3% (95% CI 55.6% to 85.8%)
+   median duration: pass 0.05s, fail 0.05s
+
+   distinct failures (2):
+   [15x] runs 1,6,7,8,9,10,11,13 ...
+        FAIL: test_export_finishes (tests.test_export.ExportTests.test_export_finishes) | Traceback (most recent call last): | self.assertTrue(result.get("done"), "export not done") | AssertionError: None is not true : export not done
+        replay seeds: 1004993033, 1925797026, 1642823798
+   [7x] runs 5,12,16,18,26,28,29
+        FAIL: test_price_label (tests.test_billing.BillingTests.test_price_label) | Traceback (most recent call last): | self.assertEqual(price_label(N), "$N.N") | AssertionError: '€N.N' != '$N.N'
+        replay seeds: 502229714, 1535058713, 1090525894
+
+   failing tests (failures out of 30 runs):
+     17  tests.test_export.ExportTests.test_export_finishes.test_export_finishes
+     12  tests.test_billing.BillingTests.test_price_label.test_price_label
+
+   seeds of failing runs (replay with {seed}): 1004993033, 502229714, 1925797026, 1642823798, 1150975829
+
+   evidence written to <runs>/flaky-test-killer/before.json
+F...FFFFFFFFFFFFFF...FFFFF.FF.
+
+$ /usr/local/bin/python3 <repo>/skills/flaky-test-killer/scripts/flake_rate.py -n 30 --json <runs>/flaky-test-killer/after.json --compare <runs>/flaky-test-killer/before.json -- /usr/local/bin/python3 run_tests.py --seed {seed}
+[exit 0, 2.4 s]
+== result: 30 runs, 0 failed, rate 0.0% (95% CI 0.0% to 11.4%)
+   no failures: rate is below 9.5% with 95% confidence (exact bound)
+
+   evidence written to <runs>/flaky-test-killer/after.json
+
+== before vs after
+   before: 22/30 failed (73.3%)  after: 0/30 failed (0.0%)
+   one-sided Fisher exact p = 4.135e-10
+   the drop is real at 95% confidence
+   (with the old rate 73.3%, 3 clean runs alone would rule it out at 95%)
+..............................

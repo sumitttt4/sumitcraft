@@ -1,0 +1,13 @@
+{
+  "name": "sumitcraft",
+  "owner": { "name": "sumitttt4", "url": "https://github.com/sumitttt4" },
+  "metadata": { "description": "SumitCraft skills for Claude Code." },
+  "plugins": [
+    {
+      "name": "sumitcraft",
+      "source": "./",
+      "description": "31 skills: video, engineering, learning, design and planning. Local-first; paid provider calls only after explicit approval.",
+      "version": "0.1.0"
+    }
+  ]
+}

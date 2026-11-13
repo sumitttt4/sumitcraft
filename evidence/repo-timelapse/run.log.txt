@@ -1,0 +1,28 @@
+$ /usr/local/bin/python3 <repo>/skills/repo-timelapse/scripts/extract.py <repo> -o <runs>/repo-timelapse/history.json --anonymize --redact-messages upstream --name SumitCraft
+[exit 0, 0.1 s]
+messages to review before export: <runs>/repo-timelapse/history.messages.txt
+
+SumitCraft: 3 commits (3 with changes kept), 2026-11-13 to 2026-11-13, 1 days
+Now: 35,545 lines in 258 files. Replay check: exact
+
+Activity by month (lines added + removed):
+  2026-11 ############################## 35,905
+
+Biggest top-level folders now:
+  skills                       35,406 lines
+  (root files)                 187 lines
+
+Bulk commits (often vendored, generated or imported code; consider --exclude):
+  ba831ad 2026-11-13 +32,945  "(message withheld)"
+      in: skills/coding (95 files), skills/video (66 files), skills/learning (25 files)
+
+Languages now: Python 53%, Markdown 18%, HTML 13%, Config 10%, JavaScript 5%, Asset 1%
+
+Suggested --duration: 15s  (history.json: 3 events, 455 files)
+Wrote <runs>/repo-timelapse/history.json
+
+$ /opt/node22/bin/node <repo>/skills/repo-timelapse/scripts/render.mjs <runs>/repo-timelapse/history.json <runs>/repo-timelapse/timelapse.mp4 --stills 2,6 --duration 8
+[exit 0, 1.0 s]
+3 events, 3 captions, 1920x1080 @ 60fps, 8s
+<runs>/repo-timelapse/timelapse.mp4/still_2s.png
+<runs>/repo-timelapse/timelapse.mp4/still_6s.png

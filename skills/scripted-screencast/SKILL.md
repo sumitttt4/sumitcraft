@@ -68,3 +68,5 @@ Run the same command again. The script finds elements by role and text, so most 
 - Fictional brands and data only. Never record real customer data, real credentials or someone else's product presented as yours.
 - Always preview before the final render and look at the stills yourself.
 - Don't fake speed with `pace`: if the app is slow, stage the result or `wait` for it on camera.
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

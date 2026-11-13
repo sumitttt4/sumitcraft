@@ -1,0 +1,42 @@
+$ /usr/local/bin/python3 <repo>/skills/dx-audit/scripts/friction.py init <runs>/dx-audit/audit --tool Tally (fixture) --goal print tally ok --success prints 'tally ok' --docs file://<runs>/dx-audit/docs%20site/index.html --env Linux fixture --redact <runs>/dx-audit=~
+[exit 0, 0.0 s]
+started audit of Tally (fixture) at 2026-11-13T10:12:36+00:00
+  goal:    print tally ok
+  success: prints 'tally ok'
+
+$ /opt/node22/bin/node <repo>/skills/dx-audit/scripts/snapshot.mjs file://<runs>/dx-audit/docs%20site/index.html <runs>/dx-audit/audit --links --name 01-quickstart
+[exit 0, 1.9 s]
+01-quickstart: HTTP 200, 516 ms, 11 words (~0 min read)
+  1 headings, 1 code blocks (0 with copy button)
+  0 links, 0 dead
+  -> snapshots/01-quickstart.json, snapshots/01-quickstart.md, screenshots/01-quickstart.png
+
+$ /usr/local/bin/python3 <repo>/skills/dx-audit/scripts/friction.py step <runs>/dx-audit/audit --url index.html --action Open the quickstart --shot screenshots/01-quickstart.png
+[exit 0, 0.0 s]
+#1 +2s OK: Open the quickstart
+
+$ /usr/local/bin/python3 <repo>/skills/dx-audit/scripts/friction.py run <runs>/dx-audit/audit --url index.html --action Run the snippet --cwd <runs>/dx-audit --show python -c ... --success-if-ok -- "/usr/local/bin/python3" -c "print('tally ok')"
+[exit 0, 0.1 s]
+tally ok
+[exit 0, 0.01s]
+#2 +2s SUCCESS: Run the snippet
+
+$ /usr/local/bin/python3 <repo>/skills/dx-audit/scripts/friction.py amend <runs>/dx-audit/audit 2 --tag dead-link --sev 1 --note Next link is a 404 in the fixture --fix Link to configuration.html
+[exit 0, 0.0 s]
+#2 +2s SUCCESS: Run the snippet  [dead-link sev 1]
+
+$ /usr/local/bin/python3 <repo>/skills/dx-audit/scripts/friction.py metrics <runs>/dx-audit/audit
+[exit 0, 0.0 s]
+Tally (fixture): print tally ok
+  reached success:     yes
+  time to success:     3.2 min modelled for a person, 0.0 min agent wall clock
+  steps / commands:    2 / 1 (to success)
+  pages / switches:    1 pages, 0 context switches
+  errors:              0 before success, 0 total, 0 walls
+  lines of code:       0
+  friction:            1 points, score 1 (sev1 1, sev2 0, sev3 0)
+     dead-link          x1  weight 1
+
+$ /usr/local/bin/python3 <repo>/skills/dx-audit/scripts/friction.py render <runs>/dx-audit/audit
+[exit 0, 0.6 s]
+wrote <runs>/dx-audit/audit/audit.md, <runs>/dx-audit/audit/timeline.svg, <runs>/dx-audit/audit/timeline.png

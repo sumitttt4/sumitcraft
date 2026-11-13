@@ -37,3 +37,5 @@ Kits live in a per-user data folder outside the repo (`%LOCALAPPDATA%\SumitCraft
 `colors` (surface, paper, ink, muted, accent, on_accent, extras), `fonts` (display, body, mono, and serif if any, each with its family, weight, case, tracking and local files), `shape` (button and card radius, texture), `logo`, `icon`, `vox` (the explainer theme), `image_style` and `notes`.
 
 How each choice is made, and what testing on Devin and ChatGPT showed: [reference.md](reference.md).
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

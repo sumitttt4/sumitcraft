@@ -61,3 +61,5 @@ Extract options: `--anonymize` (Contributor 1, 2, ...), `--rev main`, `--name`, 
 - Lines of code and commit counts show activity, not product success. Don't caption them as if they were.
 
 How it works, the data format and the known limits: [reference.md](reference.md).
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

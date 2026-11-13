@@ -1,125 +1,129 @@
-<div align="center">
+# SumitCraft
 
-# simcraft
+A local-first workshop of Claude Code skills for making, investigating, learning and explaining things: video,
+engineering, learning, design and planning.
 
-**Skills that teach Claude how to do hard things well.**
+SumitCraft is built on **[simcraft](https://github.com/dotslashsimran/simcraft) by Simran Sachdeva** (MIT). All 24 of
+simcraft's skills are kept under their original names as the foundation; SumitCraft adds portability (Windows as a
+first-class target), a contract and validation record for every skill, configurable presets in place of one creator's
+personal taste, and seven new skills. What came from upstream and what changed is listed skill by skill in
+[docs/ORIGINALITY_LEDGER.md](docs/ORIGINALITY_LEDGER.md). Most of the foundation's methods and scripts are upstream's
+work, and this README does not claim otherwise.
 
-24 skills for Claude Code, built from real projects, with the parts tutorials skip.
+> **Status: a working local toolkit, not a finished or launch-ready product.** Every recorded run is on Linux in a
+> cloud container with software WebGL. Native Windows and macOS have not been run yet. Two video skills that need a
+> speech model are blocked until that download is approved. The honest per-skill picture is in
+> [docs/VALIDATION_MATRIX.md](docs/VALIDATION_MATRIX.md).
 
-[![MIT License](https://img.shields.io/badge/license-MIT-black?style=flat-square)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-24-black?style=flat-square)](#skills)
-[![Claude Code](https://img.shields.io/badge/for-Claude%20Code-d97757?style=flat-square)](https://claude.com/claude-code)
-[![Stars](https://img.shields.io/github/stars/dotslashsimran/simcraft?style=flat-square&color=black)](https://github.com/dotslashsimran/simcraft/stargazers)
+## What is in it
 
-[Install](#install) · [Video](#-video) · [Engineering](#-engineering) · [Learning](#-learning) · [Design](#-design) · [Planning](#-planning)
+| Area | Foundation skills (from simcraft) | SumitCraft additions |
+|---|---|---|
+| Video | perspective-illusion, code-loop, reverse-engineer-video, scripted-screencast, repo-timelapse, rough-cut, clean-audio, vox-explainer | |
+| Engineering | codebase-map, bisect-anything, flaky-test-killer, benchmark-honestly, api-design-review, security-threat-model, dx-audit | |
+| Learning | paper-to-runnable, system-design-from-scratch, from-scratch, teach-back | learn-a-domain |
+| Design | image-gen, brand-kit | design-critique, design-to-code-inspection, design-system-build, interaction-motion-study, visual-reference-analysis |
+| Planning | skill-router, next-step, video-script | work-to-explanation |
 
-</div>
-
-<br>
-
-Each skill is a folder with a `SKILL.md`: the method, the judgement calls, and real, tested scripts for one kind of work. Claude Code loads the right one when your request matches. You don't call them by name, you just ask.
-
-What makes them different: every skill covers **what breaks, how to check the result, and how to tell good from good enough.**
-
-<br>
+One line per skill, with prerequisites and status: [docs/CATALOG.md](docs/CATALOG.md). Each skill folder has a
+`SKILL.md` (the method) and a `contract.md` (inputs, deliverables, prerequisites, network and cost behaviour, human
+decisions, checks, failure cases, limits, example, validation status).
 
 ## Install
 
-```bash
-git clone https://github.com/dotslashsimran/simcraft ~/simcraft
-mkdir -p ~/.claude/skills
-for s in ~/simcraft/skills/*/*/; do ln -s "${s%/}" ~/.claude/skills/; done
-cd ~/simcraft && npm i
+You need Node.js 18.19+ for the tools. Most skills also need Python 3.9+; video skills need ffmpeg. Check everything
+with the doctor first. It is read-only, prints no secrets, and ends with the exact next step.
+
+```powershell
+# Windows (PowerShell)
+git clone https://github.com/sumitttt4/sumitcraft
+cd sumitcraft
+npm install                                                    # the Playwright package only
+powershell -ExecutionPolicy Bypass -File tools\doctor.ps1      # what is missing, and what to run next
 ```
 
-Then open Claude Code and ask for something, like *"make a perspective-illusion loop of a rainy night street"*.
+```bash
+# macOS / Linux
+git clone https://github.com/sumitttt4/sumitcraft && cd sumitcraft
+npm install
+node tools/doctor.mjs
+```
 
-<details>
-<summary>More setup details</summary>
+Then choose **one** way to give Claude Code the skills:
 
-<br>
+1. **As a plugin (recommended).** In Claude Code: `/plugin marketplace add sumitttt4/sumitcraft`, then
+   `/plugin install sumitcraft@sumitcraft`. Skills load as `sumitcraft:<name>`, so they cannot collide with skills you
+   already have. Remove them with `/plugin uninstall sumitcraft@sumitcraft`.
+2. **Copy selected skills into one project** (no global changes):
+   ```
+   node tools/install.mjs list
+   node tools/install.mjs install code-loop design-critique --scope project --dry-run
+   node tools/install.mjs install code-loop design-critique --scope project
+   ```
+3. **Copy into your global skills folder** (`~/.claude/skills`, every project): the installer refuses until you add
+   `--yes`. It copies (no symlinks, so it works on Windows), never overwrites a skill it did not install, and
+   `uninstall` removes only folders carrying its own marker.
 
-- Claude Code finds skills one folder deep, so the loop links each one into `~/.claude/skills`. The categories are only for browsing. To install a single skill, link just that folder.
-- A few skills have a one-time setup script in their folder (for example `setup.sh` for Whisper in rough-cut). Each SKILL.md says so at the top.
-- **Needs:** Python 3.9+, Node 18+ (for skills that drive a browser or render video), and ffmpeg on your PATH or set as `FFMPEG=/path/to/ffmpeg`.
-- **API keys** (only image-gen uses them) are read from your environment or `~/.config/simcraft/keys.env`. They never go in the repo.
+Heavier extras are opt-in, per skill, and always show a plan before doing anything:
+`python skills/rough-cut/setup.py` (speech model, 0.5-1.5 GB on first use), `python skills/reverse-engineer-video/setup.py`
+(OpenCV), `python skills/paper-to-runnable/setup.py` (matplotlib, pypdf, optional PyTorch). Add `--yes` to install.
+Browser binaries are separate from the npm package: `npx playwright install chromium` (about 150-200 MB).
+Full guide, including supported Windows versions: [docs/SETUP.md](docs/SETUP.md).
 
-</details>
+## Using it
 
-<br>
+You do not call skills by name; describe the task and Claude Code picks the skill whose description fits. Some things to try:
 
-## Skills
+- "Render this shader as a seamless 8-second loop and check the seam."
+- "Does my pricing page match this spec at phone and desktop widths?"
+- "Critique this sign-up form against the brief and make the smallest fix."
+- "Find which commit made the export test fail."
+- "I want to learn to read rhythm notation in a month."
+- "Write up the bug we just fixed as a case study, with the evidence."
 
-### 🎬 Video
+Skills that work well together, and which chains have actually been run: [docs/CHAINS.md](docs/CHAINS.md).
 
-| Skill | What it does |
-|:--|:--|
-| [**perspective-illusion**](skills/video/perspective-illusion/SKILL.md) | Illustrated 3D loops in the Japanese perspective-illusion style: flat scenes that open into depth. |
-| [**code-loop**](skills/video/code-loop/SKILL.md) | Any three.js scene or shader rendered as a seamless loop, checked for seams, freezes and blinks. |
-| [**reverse-engineer-video**](skills/video/reverse-engineer-video/SKILL.md) | Hand it a viral clip, get a remake plan: every cut, camera move and beat. |
-| [**scripted-screencast**](skills/video/scripted-screencast/SKILL.md) | Product demos written as a script and rendered frame-perfect. No retakes. |
-| [**repo-timelapse**](skills/video/repo-timelapse/SKILL.md) | Your git history as a video of the project growing. |
-| [**rough-cut**](skills/video/rough-cut/SKILL.md) | Raw talking footage to a tight first cut: pauses, ums and retakes removed. |
-| [**clean-audio**](skills/video/clean-audio/SKILL.md) | Voice cleanup that measures first, then keeps every word clear. |
-| [**vox-explainer**](skills/video/vox-explainer/SKILL.md) | Vox-style explainer graphics timed word by word to a voiceover. |
+## Costs, data and permissions
 
-### 🧑‍💻 Engineering
+- Almost everything runs locally and needs no API key.
+- **image-gen** is the only skill that calls a paid provider. It prints a plan (provider, model, number of paid calls,
+  what data is sent) and refuses to send anything without `--approve-spend`. Prices are not known to the script.
+- Keys live in environment variables or a per-user `keys.env` outside the repo (`%APPDATA%\SumitCraft` on Windows,
+  `~/.config/sumitcraft` elsewhere). They are never asked for in chat, logged or written to sidecars.
+- Speech models download once, locally, and only after you approve the size.
+- Fixtures are synthetic and use made-up brands. Brand kits of real companies stay in your private data folder; extracting
+  a brand is not permission to redistribute its fonts or logos.
+- No skill posts, publishes, emails, signs in or deploys. Security skills run only against code you own, locally.
 
-| Skill | What it does |
-|:--|:--|
-| [**codebase-map**](skills/coding/codebase-map/SKILL.md) | Learn an unfamiliar repo fast by tracing one real request end to end. |
-| [**bisect-anything**](skills/coding/bisect-anything/SKILL.md) | Find the exact commit behind any regression, then the exact lines. |
-| [**flaky-test-killer**](skills/coding/flaky-test-killer/SKILL.md) | Fix why a test is flaky, never with retries, and prove the fix. |
-| [**benchmark-honestly**](skills/coding/benchmark-honestly/SKILL.md) | Benchmarks that survive scrutiny, with confidence intervals. |
-| [**api-design-review**](skills/coding/api-design-review/SKILL.md) | Review an API, SDK or CLI, and catch breaking changes. |
-| [**security-threat-model**](skills/coding/security-threat-model/SKILL.md) | Threat-model your own app from its real code, LLM apps included. |
-| [**dx-audit**](skills/coding/dx-audit/SKILL.md) | Try a developer tool like a brand-new user and time it to first success. |
+## Checking the collection
 
-### 🧠 Learning
+```
+node tools/validate.mjs          # static: discovery, metadata, contracts, links, parsing, licence, secrets, platform lint
+node tests/unit_paths.mjs        # file-URL handling for spaces, Unicode and Windows drive letters
+python tests/run_checks.py       # functional checks per skill, writes evidence/
+node tools/gen-docs.mjs          # regenerate contracts, catalog, ledger and matrix from catalog/ and evidence/
+```
 
-| Skill | What it does |
-|:--|:--|
-| [**paper-to-runnable**](skills/learning/paper-to-runnable/SKILL.md) | A research paper turned into the smallest honest implementation of its idea. |
-| [**system-design-from-scratch**](skills/learning/system-design-from-scratch/SKILL.md) | Build a tiny real system, load-test it, break it, write up the trade-offs. |
-| [**from-scratch**](skills/learning/from-scratch/SKILL.md) | Learn anything by building the smallest version of it, one step at a time. |
-| [**teach-back**](skills/learning/teach-back/SKILL.md) | You explain it, Claude finds the gaps, you get a one-page cheat sheet. |
+CI definitions for offline checks on Linux and Windows are in [ci/](ci/README.md). They are stored outside
+`.github/workflows` on purpose, so nothing runs remotely until you choose to enable them.
 
-### 🎨 Design
+## Layout
 
-| Skill | What it does |
-|:--|:--|
-| [**image-gen**](skills/design/image-gen/SKILL.md) | Images with your own Gemini or OpenAI key, consistent across a set. |
-| [**brand-kit**](skills/design/brand-kit/SKILL.md) | Learn a brand from its live site into a kit the other skills apply. |
+```
+skills/<name>/          SKILL.md, contract.md, scripts/, examples/, reference.md (one folder per skill)
+catalog/skills.mjs      the single source for contracts, catalog, ledger and doctor readiness
+tools/                  doctor, install, validate, gen-docs (+ PowerShell wrappers)
+tests/                  run_checks.py, unit_paths.mjs, scenarios for guidance-only skills
+evidence/               small committed outputs of recorded runs (heavy outputs go to evidence/runs/, ignored)
+docs/                   UPSTREAM_AUDIT, CATALOG, ORIGINALITY_LEDGER, VALIDATION_MATRIX, SETUP, CHAINS
+.claude-plugin/         plugin and marketplace manifests
+```
 
-### 🧭 Planning
+## Credits and licence
 
-| Skill | What it does |
-|:--|:--|
-| [**skill-router**](skills/planning/skill-router/SKILL.md) | Picks the right skill for a task, or a chain of two or three. |
-| [**next-step**](skills/planning/next-step/SKILL.md) | A big messy goal turned into one clear next action at a time. |
-| [**video-script**](skills/planning/video-script/SKILL.md) | Short video scripts that sound like you, built from your own ramble. |
-
-<br>
-
-## Chains that work well
-
-`skill-router` builds these on its own when a task has stages.
-
-| Start with | Then |
-|:--|:--|
-| A viral clip | reverse-engineer-video → code-loop or perspective-illusion |
-| A research paper | paper-to-runnable → vox-explainer |
-| A new SDK | dx-audit → scripted-screencast |
-| "It got slower" | benchmark-honestly → bisect-anything |
-| A new job | codebase-map → flaky-test-killer |
-| Raw footage | rough-cut → clean-audio |
-
-<br>
-
-## Credits
-
-image-gen was inspired by [adamd9/skill-image-gen](https://github.com/adamd9/skill-image-gen), and vox-explainer by Charlie Hills' vox-animation skill (both MIT). Everything here is written from scratch.
-
-## License
-
-[MIT](LICENSE) © Simran Sachdeva
+- Foundation: simcraft by Simran Sachdeva, MIT, imported at commit `58224d1` (see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)).
+  simcraft itself credits adamd9/skill-image-gen and Charlie Hills' vox-animation skill as inspirations.
+- Fonts: Geist and Geist Mono, SIL Open Font License 1.1.
+- Some upstream assets of unclear provenance (template cut-out images, third-party documentation screenshots) are not
+  included; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+- Licence: [MIT](LICENSE), keeping the upstream copyright notice alongside SumitCraft's. Changes: [CHANGELOG.md](CHANGELOG.md).

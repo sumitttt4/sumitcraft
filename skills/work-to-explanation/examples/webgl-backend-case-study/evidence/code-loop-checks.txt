@@ -1,0 +1,13 @@
+3:[gl] requested default, launched default; renderer: ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver) (software rendering, no GPU acceleration)
+19:seam (exact): frame at LOOP vs frame 0: mean 0.001, max 1 (0-255), 0 pixels differ by more than 2
+25:RESULT: FAIL: seam pop: part of the picture jumps by 2.8 levels at the wrap; 1 pops inside the loop
+29:[gl] requested default, launched default; renderer: ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver) (software rendering, no GPU acceleration)
+45:seam (exact): frame at LOOP vs frame 0: mean 18.252, max 219 (0-255), 31105 pixels differ by more than 2
+49:RESULT: FAIL: exact seam: the frame after the last does not match the first, so something is not periodic; seam pop: part of the picture jumps by 101.9 levels at the wrap
+58:seam (exact): no .seam-first.png / .seam-next.png beside the video, skipped
+67:RESULT: FAIL: seam pop: part of the picture jumps by 62.4 levels at the wrap; 4 pops inside the loop; frozen spans; 2748 blinking pixels
+72:seam (exact): no .seam-first.png / .seam-next.png beside the video, skipped
+82:RESULT: FAIL: seam pop: part of the picture jumps by 62.4 levels at the wrap; 4 pops inside the loop; 2748 blinking pixels
+86:[gl] requested default, launched default; renderer: ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver) (software rendering, no GPU acceleration)
+102:seam (exact): frame at LOOP vs frame 0: mean 0.000, max 1 (0-255), 0 pixels differ by more than 2
+107:RESULT: PASS

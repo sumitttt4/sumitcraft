@@ -1,0 +1,199 @@
+$ /usr/local/bin/python3 <repo>/skills/api-design-review/scripts/breaking_diff.py <repo>/skills/api-design-review/examples/bookshop-v1.json <repo>/skills/api-design-review/examples/bookshop-v2.yaml
+[exit 1, 0.1 s]
+eger
+      Clients serialize or parse this field with the old type.
+  POST /orders/{order_id}/refund body.reason: enum restriction added
+  POST /payments: success status 200 no longer returned (now 201)
+      Clients that check the exact status code will treat success as failure.
+  POST /payments -> 402.error: response field removed
+      Clients that read it get nothing or crash.
+  GET /health: authentication now required
+      Anonymous callers will get 401.
+  webhook order.shipped.event: response field removed
+      Clients that read it get nothing or crash.
+
+RISKY (2)
+  GET /orders query param 'customerId': parameter removed
+      Clients still send it and it will be ignored or rejected. If it changed behaviour (a filter, a flag), ignoring it silently is worse than an error.
+  schema OrderStatus (response): enum values added to a response: ['refunded']
+      Additive by most policies (Stripe, Google AIP-180), but clients with exhaustive switches or strict enum types will fail. Say so in the changelog and make sure SDKs have an 'unknown' fallback.
+
+SAFE (34)
+  schema Error (response).type: new response field
+  schema Error (response).title: new response field
+  schema Error (response).status: new response field
+  schema Error (response).detail: new response field
+  schema Error (response).code: new response field
+  schema Error (response).request_id: new response field
+  schema OrderStatus (request): enum values added: ['refunded']
+  GET /orders query param 'limit': new optional parameter
+  GET /orders query param 'starting_after': new optional parameter
+  POST /orders header param 'Idempotency-Key': new optional parameter
+  POST /orders -> 400.type: new response field
+  POST /orders -> 400.title: new response field
+  POST /orders -> 400.status: new response field
+  POST /orders -> 400.detail: new response field
+  POST /orders -> 400.code: new response field
+  POST /orders -> 400.request_id: new response field
+  POST /orders -> 429: response header 'retry-after' added
+  GET /orders/{order_id}: path parameter renamed: /orders/{order_id} -> /orders/{id}
+      Wire format unchanged; generated SDK argument names may change.
+  schema Order (response).total_amount: new response field
+  DELETE /orders/{order_id}: path parameter renamed: /orders/{order_id} -> /orders/{id}
+      Wire format unchanged; generated SDK argument names may change.
+  DELETE /orders/{order_id}: operation deprecated
+      Good: also send Deprecation and Sunset headers (RFC 9745, RFC 8594).
+  PATCH /orders/{order_id}: path parameter renamed: /orders/{order_id} -> /orders/{id}
+      Wire format unchanged; generated SDK argument names may change.
+  PATCH /orders/{order_id} body.shippingAddress: request field became optional
+  PATCH /orders/{order_id} body.notes: request field became optional
+  POST /payments -> 402.type: new response field
+  POST /payments -> 402.title: new response field
+  POST /payments -> 402.status: new response field
+  POST /payments -> 402.detail: new response field
+  POST /payments -> 402.code: new response field
+  POST /payments -> 402.request_id: new response field
+  GET /customers: operation added
+  webhook order.shipped.id: new response field
+  webhook order.shipped.type: new response field
+  webhook order.shipped.created_at: new response field
+
+Where changed shared schemas are used
+  schema Customer (response): GET /customer/{customerId} -> 200; PUT /customer/{customerId} -> 200
+  schema Error (response): GET /customer/{customerId} -> 404; GET /orders -> 401; POST /orders -> 429; GET /orders/{order_id} -> 404; GET /orders/{order_id}/items -> 404
+  schema Customer (request): PUT /customer/{customerId} body
+  schema OrderStatus (request): GET /orders query param 'status'
+  schema NewOrder (request): POST /orders body
+  schema Order (response): GET /orders/{order_id} -> 200; PATCH /orders/{order_id} -> 200; POST /orders/{order_id}/refund -> 200; webhook order.shipped.order
+  schema OrderStatus (response): schema Order (response).status
+
+$ /usr/local/bin/python3 <repo>/skills/api-design-review/scripts/breaking_diff.py <repo>/skills/api-design-review/examples/bookshop-v1.json <repo>/skills/api-design-review/examples/bookshop-v1.json
+[exit 0, 0.0 s]
+API diff: <repo>/skills/api-design-review/examples/bookshop-v1.json -> <repo>/skills/api-design-review/examples/bookshop-v1.json
+0 breaking, 0 risky, 0 safe. Changes need a patch version bump.
+
+$ /usr/local/bin/python3 <repo>/skills/api-design-review/scripts/lint_openapi.py <repo>/skills/api-design-review/examples/bookshop-v1.json
+[exit 0, 0.0 s]
+ers
+    Path segment 'getCustomers' is a verb. HTTP methods already carry the verb, so this makes the API harder to guess.
+    fix: Model it as a resource: 'GET /orders' not '/getOrders', 'POST /orders' not '/orders/create'. Keep verbs only for real actions that are not CRUD, like 'POST /orders/{id}/cancel' (Google AIP-136 custom methods).
+
+[MEDIUM] webhooks  @ webhook order.shipped
+    Webhook payload is missing id, type, created_at.
+    fix: Every event needs a unique 'id' (receivers dedupe on it, because delivery is at least once), a 'type', and a creation time (receivers order on it, because delivery order is not guaranteed).
+
+[LOW] enum-case  @ Order.status
+    Enum values mix cases: pending, Shipped, CANCELLED.
+    fix: Use one case for all enum values (lower snake_case like Stripe, or UPPER_SNAKE_CASE like Google and Zalando).
+
+[LOW] error-schema  @ schema Error
+    Error schema 'Error' has no request id.
+    fix: Include the request id in the body (and a Request-Id header) so a user can quote it to support.
+
+[LOW] error-schema  @ schema ErrorResponse
+    Error schema 'ErrorResponse' has no request id.
+    fix: Include the request id in the body (and a Request-Id header) so a user can quote it to support.
+
+[LOW] money-format  @ OrderItem.unitPrice
+    Money field 'unitPrice' has no currency next to it.
+    fix: Add an ISO 4217 'currency' field to the same object.
+
+[LOW] money-format  @ POST /orders/{order_id}/refund request.amount; Payment.amount
+    Money field 'amount' has no currency next to it.
+    fix: Add an ISO 4217 'currency' field to the same object.
+
+[LOW] pagination  @ GET /orders/{order_id}/items
+    Offset or page-number pagination (page). It skips or repeats items when rows are added or deleted between pages and gets slow on deep pages.
+    fix: Prefer an opaque cursor for data that changes. Keep offset only for small, stable collections or UIs that need page numbers.
+
+[LOW] partial-update  @ PUT /customer/{customerId}
+    Only PUT is offered for updates. Clients must send the whole resource, and any field they do not know about gets wiped.
+    fix: Offer PATCH with merge-patch semantics for partial updates.
+
+[LOW] path-case  @ paths
+    Path segments use camelCase (getCustomers, shippingLabels). URLs are often treated as case-insensitive by people and tools.
+    fix: Prefer lowercase kebab-case path segments.
+
+[LOW] rate-limit  @ POST /orders -> 429
+    429 is documented without a Retry-After header.
+    fix: Send Retry-After (RFC 9110) on 429 and 503, and consider the IETF RateLimit and RateLimit-Policy headers.
+
+[LOW] status-codes  @ POST /orders; POST /payments
+    POST to a collection returns 200, not 201 Created.
+    fix: Return 201 with a Location header for the new resource (RFC 9110), or 202 with an operation to poll if the work is asynchronous.
+
+[LOW] time-naming  @ timestamps
+    Time fields use different name suffixes: at (Customer.created_at), date (Order.updatedDate).
+    fix: Pick one suffix for instants, for example '_at' ('created_at') or '_time' (Google 'create_time'), and use it everywhere.
+
+[LOW] undocumented-errors  @ DELETE /orders/{order_id}; GET /customer/{customerId}; GET /getCustomers; GET /orders/{order_id}; GET /orders/{order_id}/items; GET /shippingLabels/{label_id}; PATCH /orders/{order_id}; POST /orders; POST /orders/{order_id}/refund; POST /payments; PUT /customer/{customerId}
+    Operation needs auth but does not document 401.
+    fix: Document 401 (missing or bad credentials) and 403 (not allowed).
+
+[LOW] undocumented-errors  @ DELETE /orders/{order_id}; GET /shippingLabels/{label_id}; PATCH /orders/{order_id}; PUT /customer/{customerId}
+    Operation addresses one resource but does not document 404.
+    fix: Document 404 with the shared error schema.
+
+[INFO] error-schema  @ errors
+    No error response uses 'application/problem+json'.
+    fix: Consider RFC 9457 problem details: type, title, status, detail, instance, plus your own 'code' and 'request_id' extension members.
+
+$ /usr/local/bin/python3 <repo>/skills/api-design-review/scripts/sdk_surface.py <repo>/skills/api-design-review/examples/sample-sdk.d.ts
+[exit 0, 0.0 s]
+module sample-sdk.d.ts
+  interface ClientOptions
+    prop apiKey: string
+    prop baseUrl?: string
+    prop timeout?: number
+    prop maxRetries?: number
+  class BookshopClient
+    fn   constructor(apiKey: string, baseUrl?: string, timeout?: number, retries?: number, debug?: boolean)
+    prop readonly orders: OrdersResource
+    prop customers: any
+    fn   request<T = unknown>(method: string, path: string, body?: unknown): Promise<T>
+  class OrdersResource
+    fn   list(status?: string, expand: boolean): Promise<Order[]>
+    fn   get(id: string): Promise<Order>
+    fn   create(customerId: number, items: OrderItem[], notes?: string, sendEmail?: boolean, coupon?: string): Promise<Order>
+    fn   cancel(id: string, callback: (err: Error | null, order?: Order) => void): void
+    fn   updateOrder(id: string, data: any): Promise<any>
+  interface Order
+    prop id: string
+    prop customer_id: number
+    prop status: "pending" | "Shipped" | "CANCELLED"
+    prop total: number
+    prop createdAt: string
+  interface OrderItem
+    prop isbn: string
+    prop quantity: number
+  type WebhookHandler = (event: any) => void
+  enum OrderStatus { Pending, Shipped, Cancelled }
+  class ApiError extends Error
+    prop status: number
+    prop message: string
+  class RateLimitError
+    prop retryAfter: number
+  function verifyWebhook (payload: string, header: string, secret: string, tolerance?: number): boolean
+  export * from "./pagination"
+
+Summary
+  10 exported declarations (1 functions, 4 classes, 3 interfaces), 23 members (7 methods, 16 properties).
+  JSDoc on 30% of exported declarations.
+
+Hints (12 no-docs, 3 bool-positional, 3 any, 2 long-positional, 1 optional-before-required, 1 callback, 1 exception-roots)
+  [long-positional] BookshopClient.constructor: 5 positional parameters. Group the optional ones into an options object.
+  [bool-positional] BookshopClient.constructor: 'debug: boolean' is a positional flag, so call sites read as f(x, true). Use an options object.
+  [any] BookshopClient.customers: Property typed 'any'.
+  [optional-before-required] OrdersResource.list: Required parameter 'expand' comes after an optional one.
+  [bool-positional] OrdersResource.list: 'expand: boolean' is a positional flag, so call sites read as f(x, true). Use an options object.
+  [long-positional] OrdersResource.create: 5 positional parameters. Group the optional ones into an options object.
+  [bool-positional] OrdersResource.create: 'sendEmail: boolean' is a positional flag, so call sites read as f(x, true). Use an options object.
+  [callback] OrdersResource.cancel: Callback parameter 'callback'. Modern TS SDKs return Promises.
+  [any] OrdersResource.updateOrder: Parameter 'data' is typed 'any'.
+  [any] WebhookHandler: Type uses 'any', which turns off checking for users.
+  [exception-roots] sample-sdk.d.ts: Error classes have 2 separate roots (ApiError, RateLimitError). Users cannot catch every SDK error with one instanceof check. Give them one base class.
+  [docs] 12 public names have no doc comment, for example: BookshopClient.constructor, OrdersResource, OrdersResource.get, OrdersResource.create, OrdersResource.cancel, OrdersResource.updateOrder, Order, OrderItem (use --format json for the full list)
+<repo>/skills/api-design-review/scripts/sdk_surface.py:419: DeprecationWarning: 'maxsplit' is passed as positional argument
+  mwhere = "%s.%s" % (where, re.split(r"[(:<?\s]", rest, 1)[0])
+<repo>/skills/api-design-review/scripts/sdk_surface.py:453: DeprecationWarning: 'maxsplit' is passed as positional argument
+  name = re.split(r"[?:=]", p, 1)[0].strip()

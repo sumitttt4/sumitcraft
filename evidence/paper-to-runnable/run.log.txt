@@ -1,0 +1,11 @@
+$ /usr/local/bin/python3 <repo>/skills/paper-to-runnable/examples/grokking/grok.py --check
+[exit 0, 0.9 s]
+1. shapes
+   logits (3, 97), train 3763 + val 5646 = 9409 pairs: ok
+2. gradient check (analytic vs finite difference, float64)
+   worst relative error 9.8e-08: ok
+3. overfit one batch of 64 (no weight decay)
+   after 300 steps: loss 0.0010, batch accuracy 1.00: ok
+4. chance level at init
+   val accuracy 0.009 vs chance 0.010: ok
+all checks passed

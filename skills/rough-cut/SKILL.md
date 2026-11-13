@@ -117,3 +117,5 @@ The automatic cuts are proposals in an editable `cuts/edl.json`; nothing is fina
 - No sound effects or colour grade at this stage.
 - "Only the good bits, X minutes tops" means cutting whole moments, not just pauses.
 - Never delete or overwrite `raw/`; every render is a new version.
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

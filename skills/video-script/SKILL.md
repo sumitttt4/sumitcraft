@@ -63,3 +63,5 @@ Next video: ...
 ```
 
 Give one strong version, not five options. If the user wants alternatives, offer two hooks, not two scripts.
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

@@ -1,0 +1,5 @@
+# Every commit message the video can show. Read it before exporting or posting.
+# Withheld by --redact-messages: 1. Authors anonymized: yes.
+2026-11-13  (message withheld)
+2026-11-13  Flatten skills, fix Windows and portability problems, generalize personal assumptions
+2026-11-13  Add seven expansion skills and a from-scratch example

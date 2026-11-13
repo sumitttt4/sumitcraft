@@ -1,0 +1,14 @@
+$ /usr/local/bin/python3 <repo>/skills/from-scratch/examples/content-hash-store/hashstore.py --step 4
+[exit 0, 0.0 s]
+put hello -> ce013625030ba8dba906f756967f9e9ca394464a stored at objects/ce/013625030ba8dba906f756967f9e9ca394464a
+put hello again -> ce013625030ba8dba906f756967f9e9ca394464a | objects on disk: 1
+get -> b'hello\n'
+after tampering, get -> error: content does not match its name
+
+$ /usr/local/bin/python3 <repo>/skills/from-scratch/examples/content-hash-store/hashstore.py --compare-git
+[exit 0, 0.0 s]
+match  e69de29bb2d1d6434b8b29ae775ad8c2e48c5391  b''
+match  ce013625030ba8dba906f756967f9e9ca394464a  b'hello\n'
+match  2053a8c9ffff37180b377a97e9c18af8cab6abdc  b'na\xc3\xafve caf\xc3\xa9 \xe2\x98\x95\n'
+match  366fd408dbff9779f4122ed55d2d5962304b8b9f  b'\x00\x01binary'
+all match

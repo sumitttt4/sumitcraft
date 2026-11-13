@@ -100,3 +100,5 @@ Write for the company's DevRel team, so it can be published or sent as is. Be fa
 - Every friction point has a URL, quoted output and a fix. Every error grade had its fix tested.
 - No real keys, personal paths, or user names anywhere (`grep -r "$HOME" <dir>` finds nothing).
 - Show the user `audit.md` and the timeline. Sending it to the company is the user's call.
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

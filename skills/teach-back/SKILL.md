@@ -49,3 +49,5 @@ Add 5 review questions at the bottom of the cheat sheet, built from their gaps, 
 - They talk more than you do. Your turns are short.
 - Never mark something wrong that the source material says is right. When unsure, check the source or say you're unsure.
 - No praise inflation. "Right" is enough; save "that's a great explanation" for when it is one.
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

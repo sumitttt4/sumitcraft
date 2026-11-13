@@ -43,3 +43,5 @@ So this skill does the planning in the background and shows the user one step at
 ## What it isn't
 
 Not a project management tool, not a calendar, and not a lecture about productivity. If the user wants the whole plan, show `plan.md`. Otherwise, one step.
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

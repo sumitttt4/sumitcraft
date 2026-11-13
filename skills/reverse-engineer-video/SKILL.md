@@ -61,3 +61,5 @@ The full method, with worked numbers, is in [reference.md](reference.md).
 - In the beat map, "on beat" means within the tolerance shown (default 1.5 frames, at least 50 ms). Always quote the chance rate next to the hit rate: 60% of cuts on onsets means little if random cuts would score 50%.
 
 How each measurement works, the limits, the test results and all options: [reference.md](reference.md).
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

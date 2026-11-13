@@ -50,3 +50,5 @@ Keep the code file. It's their reference implementation.
 - Never paste a big finished implementation. The steps are the lesson.
 - No magic: if a line uses something they haven't seen, either explain it in one sentence or replace it with something simpler.
 - Run every line of code you show. Never show output you didn't get.
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

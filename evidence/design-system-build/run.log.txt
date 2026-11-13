@@ -1,0 +1,37 @@
+$ /usr/local/bin/python3 <repo>/skills/design-system-build/scripts/tokens.py <repo>/skills/design-system-build/examples/garden-ui/tokens.json --css <runs>/design-system-build/tokens.css --report <runs>/design-system-build/good.md
+[exit 0, 0.0 s]
+32 checks, 0 failed
+
+$ /usr/local/bin/python3 <repo>/skills/design-system-build/scripts/tokens.py <repo>/skills/design-system-build/examples/garden-ui/tokens-broken.json --report <runs>/design-system-build/broken.md
+[exit 1, 0.0 s]
+36 checks, 11 failed
+  FAIL refs: control.padding-x (reference to missing token 'space.xxl', needs a defined token)
+  FAIL contrast: color.ink-muted on color.surface (text: help text) (2.43:1, needs 4.5:1)
+  FAIL contrast: color.on-accent on color.accent (text: primary button) (2.07:1, needs 4.5:1)
+  FAIL contrast: color.border on color.surface (ui: input border) (1.33:1, needs 3.0:1)
+  FAIL contrast: color.disabled-ink on color.disabled-bg (text: disabled label (not required by WCAG, kept readable on purpose)) (4.33:1, needs 4.5:1)
+  FAIL scale: space (xs=4, sm=8, md=16, lg=16, xl=40, needs strictly increasing in written order)
+  FAIL duplicates: color (color.ink, color.focus = #1d1d1b, needs one name per decision, or an alias {...})
+  FAIL duplicates: color (color.surface, color.on-accent = #ffffff, needs one name per decision, or an alias {...})
+  FAIL duplicates: space (space.md, space.lg = 16px, needs one name per decision, or an alias {...})
+  FAIL states: card (has default, hover, needs also focus-visible, disabled)
+  FAIL motion: motion.duration.settle (0.22s, needs a value in ms)
+
+$ /usr/local/bin/python3 <repo>/skills/design-system-build/scripts/tokens.py --audit-css <repo>/skills/design-system-build/examples/garden-ui/components.html
+[exit 0, 0.0 s]
+0 lines with hard-coded values (everything goes through tokens)
+
+$ /usr/local/bin/python3 <repo>/skills/design-system-build/scripts/tokens.py --audit-css <repo>/skills/design-critique/examples/signup-form/before.html
+[exit 1, 0.0 s]
+<repo>/skills/design-critique/examples/signup-form/before.html: style line 2: #fafafa, 15px, #222  ->  body { margin: 0; background: #fafafa; font: 15px/1.4 system-ui, "Segoe UI", Roboto, sans-
+<repo>/skills/design-critique/examples/signup-form/before.html: style line 3: 380px, 40px, 24px, #fff, 6px  ->  form { max-width: 380px; margin: 40px auto; padding: 24px; background: #fff; border-radius
+<repo>/skills/design-critique/examples/signup-form/before.html: style line 4: 22px, 20px  ->  h1 { font-size: 22px; margin: 0 0 20px; }
+<repo>/skills/design-critique/examples/signup-form/before.html: style line 5: 9px, 10px, 9px, 1px, #e3e3e3, 4px  ->  input { display: block; width: 100%; box-sizing: border-box; padding: 9px 10px; margin-bot
+<repo>/skills/design-critique/examples/signup-form/before.html: style line 6: #c4c4c4  ->  input::placeholder { color: #c4c4c4; }
+<repo>/skills/design-critique/examples/signup-form/before.html: style line 7: #e53935, 11px, 4px, 14px  ->  .err { color: #e53935; font-size: 11px; margin: -4px 0 14px; }
+<repo>/skills/design-critique/examples/signup-form/before.html: style line 8: #e53935  ->  .bad { border-color: #e53935; }
+<repo>/skills/design-critique/examples/signup-form/before.html: style line 9: 11px, #b0b0b0, 22px  ->  .help { font-size: 11px; color: #b0b0b0; margin: 0 0 22px; }
+<repo>/skills/design-critique/examples/signup-form/before.html: style line 10: 6px, 18px  ->  .row { display: flex; gap: 6px; margin-top: 18px; }
+<repo>/skills/design-critique/examples/signup-form/before.html: style line 11: 8px, 14px, 4px, 1px, #9bd3a3, #b9e4bf, #ffffff  ->  button { padding: 8px 14px; border-radius: 4px; border: 1px solid #9bd3a3; background: #b9
+<repo>/skills/design-critique/examples/signup-form/before.html: style line 12: #fff, #555, #ddd  ->  button.secondary { background: #fff; color: #555; border-color: #ddd; }
+11 lines with hard-coded values

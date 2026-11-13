@@ -53,3 +53,5 @@ If a real secret turns up, tell the user to revoke and rotate it at the provider
 Sections: scope, data flow diagram, assets, trust boundaries, threats table (ID, element, STRIDE, threat, L, I, score, status), proofs and fixes (proof, before output, fix), residual risks with the next fix for each, and what to recheck when the system changes. Use the template in `reference.md`.
 
 A complete worked example (an invoice API with an IDOR, SQL injection, path traversal, forged webhook, hardcoded fake key and error leak, plus the fixed copy and 18 tests) is in `examples/invoice-api/`.
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

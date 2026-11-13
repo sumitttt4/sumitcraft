@@ -1,0 +1,3 @@
+$ /usr/local/bin/python3 <repo>/skills/visual-reference-analysis/scripts/analyze_image.py <repo>/skills/visual-reference-analysis/examples/poster-study/reference.png --out <runs>/visual-reference-analysis/ref
+[exit 0, 0.4 s]
+palette #efe8da, #d9522b, #1d1d1c, #8c8881, #c8b9ac, #57534f; quiet 77%; centroid 0.41,0.69 -> <runs>/visual-reference-analysis/ref/analysis.md
