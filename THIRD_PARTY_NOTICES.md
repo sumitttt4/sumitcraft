@@ -13,6 +13,15 @@ SumitCraft is built on **simcraft** by Simran Sachdeva.
 - Upstream itself credits: image-gen inspired by adamd9/skill-image-gen (MIT), vox-explainer inspired by Charlie Hills'
   vox-animation skill (MIT). Upstream states its code was written from scratch.
 
+## Glyph (bundled design skill)
+
+- Source: https://github.com/sumitttt4/Glyph-Skill, installable bundle `skills/glyph/` at commit
+  `00d2bad340dd8ca7f20cbbf389513f2705fdec9f` (default branch, 2026-10-30).
+- License: MIT, Copyright (c) 2026 Glyph Contributors; its own `LICENSE`, `THIRD_PARTY_NOTICES.md` (including the MIT
+  notice for Emil Kowalski's design-engineering guidance it adapts) and `MIGRATION.md` travel with it in `skills/glyph/`.
+- Imported byte for byte, except one appended line in its SKILL.md linking SumitCraft's `contract.md`. The Glyph
+  website (Next.js app, images, website fonts) is not included.
+
 ## Bundled assets audited separately
 
 The top-level MIT license covers code and text. It does not grant rights to third-party fonts, brands, art or model

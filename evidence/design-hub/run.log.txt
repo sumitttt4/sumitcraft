@@ -12,9 +12,7 @@ ok   critique step pairs a judge with SumitCraft evidence
 
 $ /usr/local/bin/python3 <repo>/skills/design-hub/scripts/find_design_skills.py --task polish my pricing page, make it accessible, and add a smooth menu animation --json <repo>/evidence/design-hub/this-machine.json
 [exit 0, 0.1 s]
-                     make     adds and composes shadcn/ui components
-  impeccable                                 make     design, critique, polish and harden frontend interfaces
-  web-artifacts-builder                      make     multi-component React/Tailwind artifacts
+ld and verificati
 Motion and interaction:
   emil-design-eng                            guide    UI polish and animation judgement
   gsap-plugins                               guide    GSAP plugins (Flip, Draggable, SplitText...)
@@ -26,6 +24,7 @@ Motion and interaction:
   gsap-timeline                              guide    sequenced animation
   gsap-react                                 guide    GSAP in React
   sumitcraft:interaction-motion-study        measure  motion spec plus keyboard, focus and reduced-motion checks
+  sumitcraft:glyph                           make     product-specific frontend direction, composition, build and verificati
 UX copy:
   design:ux-copy                             make     microcopy, errors, empty states, CTAs
 Accessibility:
@@ -41,6 +40,7 @@ Critique and polish:
   impeccable                                 make     design, critique, polish and harden frontend interfaces
   web-design-guidelines                      judge    reviews UI code against web interface guidelines
   design:design-critique                     judge    structured feedback on mockups, screenshots or Figma links
+  sumitcraft:glyph                           make     product-specific frontend direction, composition, build and verificati
   sumitcraft:design-critique                 measure  critique of a rendered page with before/after pixel evidence
 Spec and pixel inspection:
   figma-design-to-code                       make     required before implementing a Figma design
@@ -52,9 +52,9 @@ Images, art and visual assets:
   canvas-design                              make     posters and static art as PNG/PDF
   sumitcraft:image-gen                       make     provider images behind a spend gate
 
-Overlaps (same stage, several skills): Research and synthesis x2; Direction, taste and reference x4; Brand and theme x3; Design system and tokens x3; Build the UI x6; Motion and interaction x10; Accessibility x5; Critique and polish x7; Spec and pixel inspection x2; Images, art and visual assets x3
+Overlaps (same stage, several skills): Research and synthesis x2; Direction, taste and reference x5; Brand and theme x3; Design system and tokens x3; Build the UI x7; Motion and interaction x11; Accessibility x5; Critique and polish x8; Spec and pixel inspection x2; Images, art and visual assets x3
 
 Merged plan for: polish my pricing page, make it accessible, and add a smooth menu animation
-  1. Motion and interaction: emil-design-eng  + evidence: sumitcraft:interaction-motion-study  (alternatives: gsap-core, gsap-frameworks, gsap-performance)
+  1. Motion and interaction: sumitcraft:glyph  + evidence: sumitcraft:interaction-motion-study  (alternatives: emil-design-eng, gsap-core, gsap-frameworks)
   2. Accessibility: design:accessibility-review  + evidence: sumitcraft:interaction-motion-study  (alternatives: accessibility, web-design-guidelines)
-  3. Critique and polish: design:design-critique  + evidence: sumitcraft:design-critique  (alternatives: web-design-guidelines, emil-design-eng, impeccable)
+  3. Critique and polish: design:design-critique  + evidence: sumitcraft:design-critique  (alternatives: web-design-guidelines, sumitcraft:glyph, emil-design-eng)

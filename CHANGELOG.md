@@ -49,6 +49,10 @@ SumitCraft's changes on top of simcraft. Upstream work is not listed here as our
   by name only (most installed design skills ship no licence file, so none are copied). Known-answer fixture test.
 - Test logs and inventories now redact account and organisation IDs found in folder names.
 
+- glyph: bundled from Glyph-Skill (MIT, Glyph Contributors) at `00d2bad`, unchanged apart from a contract link;
+  registered in design-hub. SumitCraft measured its 13 starter-kit presets in Chromium: 11 pass, and the `bold` (3.28:1)
+  and `retro` (4.30:1) button colours fall below 4.5:1 (fixes suggested in evidence/glyph, not applied).
+
 ### Known gaps
 - No native Windows or macOS run yet. clean-audio and the transcription parts of rough-cut and vox-explainer are blocked
   until the speech-model download is approved. No live image-gen provider call has been made. See the validation matrix.

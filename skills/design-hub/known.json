@@ -299,6 +299,17 @@
       "role": "measure",
       "from": "SumitCraft",
       "summary": "measured mismatches against a spec at several widths"
+    },
+    "glyph": {
+      "stages": [
+        "direction",
+        "build",
+        "motion",
+        "critique"
+      ],
+      "role": "make",
+      "from": "Glyph-Skill (repo owner's own skill, bundled in SumitCraft)",
+      "summary": "product-specific frontend direction, composition, build and verification; /glyph design, audit, vibe, prompt"
     }
   },
   "not_design": [

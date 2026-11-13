@@ -52,6 +52,7 @@ Reusing good upstream code is deliberate. Where a row says "paths only", SumitCr
 | interaction-motion-study (new) | n/a (new). | New skill. | disclosure-menu. | functionally verified: evidence/interaction-motion-study/ | Nothing. |
 | visual-reference-analysis (new) | n/a (new). | New skill. | poster-study. | functionally verified: evidence/visual-reference-analysis/ | Nothing. |
 | design-hub (new) | n/a (new). | New skill. | Fixture skills folder with known answers. | functionally verified: evidence/design-hub/ | Nothing; other skills are referenced by name only. |
+| glyph (Glyph) | The whole bundle (SKILL.md, 19 references, starter.css, LICENSE, notices, migration map), byte for byte, from the owner's Glyph-Skill repo. | One line appended to SKILL.md linking SumitCraft's contract; registered in design-hub as a direction/build/motion/critique skill. | Browser contrast audit of every starter-kit preset. | smoke tested: evidence/glyph/ | Everything else is Glyph's own work. |
 
 ## Planning
 

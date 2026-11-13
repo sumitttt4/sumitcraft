@@ -59,6 +59,6 @@ Full steps: [SKILL.md](SKILL.md).
 examples/fixture-home + tests/test_design_hub.py; also run against this machine's 106 installed skills.
 
 ## Validation status
-**functionally verified** (2026-11-13, Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18). fixture known answers: exit 0 (9 of 9 checks); this machine: 36 design skills found among 107 installed skills (~/.claude/skills, ~/.claude/plugins, /mnt/skills, <repo>/skills)
+**functionally verified** (2026-11-13, Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18). fixture known answers: exit 0 (9 of 9 checks); this machine: 37 design skills found among 108 installed skills (~/.claude/skills, ~/.claude/plugins, /mnt/skills, <repo>/skills)
 
 Visual or audible review: none recorded. Native Windows: not run. Details and gaps: [docs/VALIDATION_MATRIX.md](../../docs/VALIDATION_MATRIX.md).

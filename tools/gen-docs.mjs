@@ -6,7 +6,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { skills, UPSTREAM } from "../catalog/skills.mjs";
+import { skills, UPSTREAM, GLYPH } from "../catalog/skills.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (p, d) => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, p), "utf8")); } catch { return d; } };
@@ -35,7 +35,7 @@ for (const s of skills) {
   const md = `${GEN}
 # Contract: ${s.name}
 
-${s.origin === "upstream" ? `Foundation skill from [simcraft](${UPSTREAM.url}) at \`${UPSTREAM.commit.slice(0, 7)}\` (MIT, ${UPSTREAM.author}), modified by SumitCraft.` : "SumitCraft addition."} Category: ${s.category}. Kind: ${s.kind === "guidance" ? "guidance-only (no scripts by design)" : "scripted"}.
+${s.origin === "upstream" ? `Foundation skill from [simcraft](${UPSTREAM.url}) at \`${UPSTREAM.commit.slice(0, 7)}\` (MIT, ${UPSTREAM.author}), modified by SumitCraft.` : s.origin === "glyph" ? `Imported from [Glyph-Skill](${GLYPH.url}) at \`${GLYPH.commit.slice(0, 7)}\` (MIT, ${GLYPH.author}); the bundle is kept as published.` : "SumitCraft addition."} Category: ${s.category}. Kind: ${s.kind === "guidance" ? "guidance-only (no scripts by design)" : "scripted"}.
 
 ## Purpose
 ${s.purpose}
@@ -97,10 +97,10 @@ Visual or audible review: ${review(s.name)}. Native Windows: not run. Details an
 
 // ---------- catalog ----------
 const cats = ["video", "engineering", "learning", "design", "planning"];
-let cat = `${GEN}\n# Capability catalog\n\n${skills.length} skills: ${skills.filter((s) => s.origin === "upstream").length} foundation skills from simcraft (all kept under their upstream names) and ${skills.filter((s) => s.origin === "sumitcraft").length} SumitCraft additions. Status is the strongest label a recorded run supports; see [VALIDATION_MATRIX.md](VALIDATION_MATRIX.md).\n`;
+let cat = `${GEN}\n# Capability catalog\n\n${skills.length} skills: ${skills.filter((s) => s.origin === "upstream").length} foundation skills from simcraft (all kept under their upstream names) and ${skills.filter((s) => s.origin === "sumitcraft").length} SumitCraft additions, and Glyph (imported from the owner's Glyph-Skill repository). Status is the strongest label a recorded run supports; see [VALIDATION_MATRIX.md](VALIDATION_MATRIX.md).\n`;
 for (const c of cats) {
   cat += `\n## ${c[0].toUpperCase() + c.slice(1)}\n\n| Skill | Origin | What it does | Needs | Status |\n|---|---|---|---|---|\n`;
-  for (const s of skills.filter((x) => x.category === c)) cat += `| [${s.name}](../skills/${s.name}/SKILL.md) | ${s.origin === "upstream" ? "foundation" : "**addition**"} | ${s.purpose} | ${s.needs.required.join(", ") || "nothing"} | ${statusOf(s.name)} |\n`;
+  for (const s of skills.filter((x) => x.category === c)) cat += `| [${s.name}](../skills/${s.name}/SKILL.md) | ${s.origin === "upstream" ? "foundation" : s.origin === "glyph" ? "**Glyph**" : "**addition**"} | ${s.purpose} | ${s.needs.required.join(", ") || "nothing"} | ${statusOf(s.name)} |\n`;
 }
 fs.writeFileSync(path.join(ROOT, "docs/CATALOG.md"), cat);
 
@@ -108,7 +108,7 @@ fs.writeFileSync(path.join(ROOT, "docs/CATALOG.md"), cat);
 let led = `${GEN}\n# Originality ledger\n\nFor each capability: what is kept from upstream and why, what changed in the method, which new example shows the change, what evidence says it is better, and what remains inherited. Upstream: [simcraft](${UPSTREAM.url}) at \`${UPSTREAM.commit}\`. Every change is also visible as a diff from commit \`ba831ad\` (the unmodified import).\n\nReusing good upstream code is deliberate. Where a row says "paths only", SumitCraft's contribution to that skill is packaging, portability, a contract and a re-run, not a new method; it is not presented as original work.\n`;
 for (const c of cats) {
   led += `\n## ${c[0].toUpperCase() + c.slice(1)}\n\n| Skill | Kept (why) | Changed in the method | New example | Evidence | Still inherited |\n|---|---|---|---|---|---|\n`;
-  for (const s of skills.filter((x) => x.category === c)) led += `| ${s.name}${s.origin === "sumitcraft" ? " (new)" : ""} | ${s.ledger.kept} | ${s.ledger.changed} | ${s.ledger.newExample} | ${statusOf(s.name)}: ${s.ledger.evidence} | ${s.ledger.inherited} |\n`;
+  for (const s of skills.filter((x) => x.category === c)) led += `| ${s.name}${s.origin === "sumitcraft" ? " (new)" : s.origin === "glyph" ? " (Glyph)" : ""} | ${s.ledger.kept} | ${s.ledger.changed} | ${s.ledger.newExample} | ${statusOf(s.name)}: ${s.ledger.evidence} | ${s.ledger.inherited} |\n`;
 }
 fs.writeFileSync(path.join(ROOT, "docs/ORIGINALITY_LEDGER.md"), led);
 
@@ -130,7 +130,7 @@ ${statics ? `\nStatic layer (\`node tools/validate.mjs\`, ${statics.when.slice(0
 for (const s of skills) {
   const r = results[s.name] || {};
   const esc = (x) => String(x || "").replace(/\|/g, "\\|").replace(/\n/g, " ");
-  mx += `| ${s.name} | ${s.origin === "upstream" ? "foundation" : "addition"} | **${statusOf(s.name)}** | ${esc(review(s.name))} | ${esc(r.observed || "not run")} | ${(r.commands || []).map((c) => "`" + esc(c).slice(0, 160) + "`").join("<br>")} | ${(r.artifacts || []).map((a) => esc(a)).join("<br>")} | ${esc(r.gaps)} Native Windows: not run. |\n`;
+  mx += `| ${s.name} | ${s.origin === "upstream" ? "foundation" : s.origin === "glyph" ? "Glyph" : "addition"} | **${statusOf(s.name)}** | ${esc(review(s.name))} | ${esc(r.observed || "not run")} | ${(r.commands || []).map((c) => "`" + esc(c).slice(0, 160) + "`").join("<br>")} | ${(r.artifacts || []).map((a) => esc(a)).join("<br>")} | ${esc(r.gaps)} Native Windows: not run. |\n`;
 }
 mx += `\nReproduce: \`python tests/run_checks.py\` (all) or \`python tests/run_checks.py <skill ...>\`, then \`node tools/gen-docs.mjs\`. Static: \`node tools/validate.mjs\`. Paths: \`node tests/unit_paths.mjs\`.\n`;
 fs.writeFileSync(path.join(ROOT, "docs/VALIDATION_MATRIX.md"), mx);
