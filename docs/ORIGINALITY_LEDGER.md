@@ -51,6 +51,7 @@ Reusing good upstream code is deliberate. Where a row says "paths only", SumitCr
 | design-system-build (new) | n/a (new). | New skill. | garden-ui (the checker caught 3 issues in its own first draft). | functionally verified: evidence/design-system-build/ | Nothing. |
 | interaction-motion-study (new) | n/a (new). | New skill. | disclosure-menu. | functionally verified: evidence/interaction-motion-study/ | Nothing. |
 | visual-reference-analysis (new) | n/a (new). | New skill. | poster-study. | functionally verified: evidence/visual-reference-analysis/ | Nothing. |
+| design-hub (new) | n/a (new). | New skill. | Fixture skills folder with known answers. | functionally verified: evidence/design-hub/ | Nothing; other skills are referenced by name only. |
 
 ## Planning
 

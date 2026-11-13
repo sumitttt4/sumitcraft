@@ -30,7 +30,7 @@ RESULTS = {}
 
 def short(s):
     s = str(s).replace(str(RUNS), "<runs>").replace(str(ROOT), "<repo>").replace(str(Path.home()), "~")
-    return s
+    return re.sub(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}[0-9a-f_-]*", "<id>", s)  # account/org ids
 
 
 def run(cmd, cwd=None, env=None, timeout=900, log=None):
@@ -372,6 +372,16 @@ def t_w2e():
     record("work-to-explanation", "functionally verified" if ok else "smoke tested", f"real case study: exit {rc1}; planted bad draft: exit {rc2}, blockers {kinds}", [r1["cmd"], r2["cmd"]], [], "Patterns are heuristics; a person still reads the draft.", log)
 
 
+def t_design_hub():
+    log = []
+    D = SK / "design-hub"
+    rc1, o1, r1 = run([PY, D / "tests/test_design_hub.py"], log=log)
+    rc2, o2, r2 = run([PY, D / "scripts/find_design_skills.py", "--task", "polish my pricing page, make it accessible, and add a smooth menu animation", "--json", ev_dir("design-hub") / "this-machine.json"], log=log)
+    first = o2.strip().splitlines()[0] if o2.strip() else ""
+    record("design-hub", "functionally verified" if rc1 == 0 and rc2 == 0 else "smoke tested", f"fixture known answers: exit {rc1} ({o1.count('ok   ')} of {o1.count('ok   ') + o1.count('FAIL ')} checks); this machine: {first}",
+           [r1["cmd"], r2["cmd"]], ["evidence/design-hub/this-machine.json"], "Run on one cloud machine only; other users' installs will differ, which is why it scans at run time.", log)
+
+
 def t_guidance(name, note):
     record(name, "static checks passed", note, ["node tools/validate.mjs"], ["tests/scenarios/guidance.md"], "Guidance-only workflow: scenarios are written down; no automatic success score is claimed.")
 
@@ -551,7 +561,7 @@ CHECKS = {
     "learn-a-domain": lambda: t_guidance("learn-a-domain", "guidance-only; scenarios defined, including a professional-advice refusal case"),
     "image-gen": t_image_gen, "brand-kit": t_brand_kit, "skill-router": t_router,
     "design-to-code-inspection": t_d2c, "design-critique": t_critique, "design-system-build": t_dsb, "interaction-motion-study": t_motion,
-    "visual-reference-analysis": t_vra, "work-to-explanation": t_w2e,
+    "visual-reference-analysis": t_vra, "design-hub": t_design_hub, "work-to-explanation": t_w2e,
     "code-loop": t_code_loop, "perspective-illusion": t_perspective, "scripted-screencast": t_screencast, "repo-timelapse": t_timelapse,
     "reverse-engineer-video": t_reverse, "rough-cut": t_rough_cut, "clean-audio": t_clean_audio, "vox-explainer": t_vox,
 }

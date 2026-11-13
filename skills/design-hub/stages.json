@@ -1,0 +1,190 @@
+{
+  "about": "Design stages used by design-hub. Keywords classify skills that are not in known.json. Order is the default pipeline order.",
+  "stages": [
+    {
+      "id": "research",
+      "label": "Research and synthesis",
+      "keywords": [
+        "user research",
+        "interview",
+        "usability test",
+        "survey",
+        "synthesi",
+        "persona",
+        "nps"
+      ]
+    },
+    {
+      "id": "direction",
+      "label": "Direction, taste and reference",
+      "keywords": [
+        "aesthetic",
+        "taste",
+        "inspiration",
+        "reference",
+        "moodboard",
+        "visual direction",
+        "anti-ui-slop",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "brand",
+      "label": "Brand and theme",
+      "keywords": [
+        "brand",
+        "theme",
+        "style guide",
+        "palette",
+        "logo"
+      ]
+    },
+    {
+      "id": "system",
+      "label": "Design system and tokens",
+      "keywords": [
+        "design system",
+        "tokens",
+        "token",
+        "variants",
+        "component library",
+        "hardcoded values"
+      ]
+    },
+    {
+      "id": "build",
+      "label": "Build the UI",
+      "keywords": [
+        "frontend",
+        "landing page",
+        "react",
+        "tailwind",
+        "shadcn",
+        "figma",
+        "build ui",
+        "build the ui",
+        "web page",
+        "web app"
+      ]
+    },
+    {
+      "id": "motion",
+      "label": "Motion and interaction",
+      "keywords": [
+        "animation",
+        "animate",
+        "motion",
+        "gsap",
+        "scrolltrigger",
+        "easing",
+        "transition",
+        "micro-interaction"
+      ]
+    },
+    {
+      "id": "copy",
+      "label": "UX copy",
+      "keywords": [
+        "microcopy",
+        "ux copy",
+        "error message",
+        "empty state",
+        "cta",
+        "button say"
+      ]
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "keywords": [
+        "accessibility",
+        "a11y",
+        "wcag",
+        "screen reader",
+        "keyboard navigation",
+        "contrast",
+        "accessib"
+      ]
+    },
+    {
+      "id": "critique",
+      "label": "Critique and polish",
+      "keywords": [
+        "critique",
+        "review this design",
+        "feedback",
+        "polish",
+        "audit design",
+        "review my ui",
+        "redesign",
+        "best practices"
+      ]
+    },
+    {
+      "id": "inspection",
+      "label": "Spec and pixel inspection",
+      "keywords": [
+        "match the design",
+        "matches the design",
+        "match the mockup",
+        "pixel",
+        "responsive check",
+        "mismatch",
+        "design spec"
+      ]
+    },
+    {
+      "id": "handoff",
+      "label": "Developer handoff",
+      "keywords": [
+        "handoff",
+        "spec sheet",
+        "developer handoff",
+        "redlines"
+      ]
+    },
+    {
+      "id": "visual-assets",
+      "label": "Images, art and visual assets",
+      "keywords": [
+        "poster",
+        "illustration",
+        "image",
+        "generative art",
+        "algorithmic art",
+        "p5.js",
+        "canvas",
+        "gif",
+        "sticker",
+        "cut-out"
+      ]
+    }
+  ],
+  "design_words": [
+    "design",
+    "ui",
+    "ux",
+    "interface",
+    "visual",
+    "brand",
+    "typography",
+    "layout",
+    "accessibility",
+    "a11y",
+    "animation",
+    "motion",
+    "figma",
+    "css",
+    "theme",
+    "poster",
+    "illustration",
+    "component",
+    "wcag",
+    "mockup",
+    "aesthetic",
+    "tailwind",
+    "color",
+    "colour",
+    "font"
+  ]
+}

@@ -1,6 +1,13 @@
 $ /usr/local/bin/python3 <repo>/skills/skill-router/scripts/catalog.py --json
 [exit 0, 0.0 s]
--4d17-9c78-30e4f5c8e1f2_<id>/theme-factory/SKILL.md"
+ for Slack.",
+    "path": "~/.claude/skills/synced/<id>/slack-gif-creator/SKILL.md"
+  },
+  {
+    "name": "theme-factory",
+    "category": "synced",
+    "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+    "path": "~/.claude/skills/synced/<id>/theme-factory/SKILL.md"
   },
   {
     "name": "ui-taste",
