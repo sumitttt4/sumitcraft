@@ -22,13 +22,15 @@ work, and this README does not claim otherwise.
 | Video | perspective-illusion, code-loop, reverse-engineer-video, scripted-screencast, repo-timelapse, rough-cut, clean-audio, vox-explainer | |
 | Engineering | codebase-map, bisect-anything, flaky-test-killer, benchmark-honestly, api-design-review, security-threat-model, dx-audit | |
 | Learning | paper-to-runnable, system-design-from-scratch, from-scratch, teach-back | learn-a-domain |
-| Design | image-gen, brand-kit | **design-hub**, design-critique, design-to-code-inspection, design-system-build, interaction-motion-study, visual-reference-analysis |
+| Design | image-gen, brand-kit | **design-hub**, **glyph** (from Glyph-Skill), design-critique, design-to-code-inspection, design-system-build, interaction-motion-study, visual-reference-analysis |
 | Planning | skill-router, next-step, video-script | work-to-explanation |
 
 **design-hub** is the design category's front door. On whatever machine SumitCraft is installed, it finds every design
 skill present (a design plugin, frontend-taste packs, GSAP, Figma, art skills, SumitCraft's own), sorts them into
 stages, flags overlaps, and merges them into one plan, pairing each step with a SumitCraft check that measures the
-result. It calls other skills by name and never copies them. Try: `python skills/design-hub/scripts/find_design_skills.py --task "polish my landing page and make it accessible"`.
+result. It calls other skills by name and never copies them. **Glyph**, the frontend design-judgement skill from the
+owner's [Glyph-Skill](https://github.com/sumitttt4/Glyph-Skill) repo, is bundled as-is and is design-hub's first choice for
+direction and building when it is installed. Try: `python skills/design-hub/scripts/find_design_skills.py --task "polish my landing page and make it accessible"`.
 
 One line per skill, with prerequisites and status: [docs/CATALOG.md](docs/CATALOG.md). Each skill folder has a
 `SKILL.md` (the method) and a `contract.md` (inputs, deliverables, prerequisites, network and cost behaviour, human

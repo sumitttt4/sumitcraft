@@ -382,6 +382,52 @@ def t_design_hub():
            [r1["cmd"], r2["cmd"]], ["evidence/design-hub/this-machine.json"], "Run on one cloud machine only; other users' installs will differ, which is why it scans at run time.", log)
 
 
+def t_glyph():
+    """Glyph makes, SumitCraft measures: every starter-kit preset rendered in Chromium, contrast of its real computed colours."""
+    log, w = [], fresh("glyph")
+    css = SK / "glyph/assets/starter.css"
+    dirs = ["default"] + sorted(set(re.findall(r'data-direction="([a-z-]+)"', css.read_text())))
+    (w / "starter.css").write_text(css.read_text(), encoding="utf-8")
+    (w / "page.html").write_text("""<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<link rel=stylesheet href=starter.css></head><body class=g><main class=g-wrap><h1>Plots this week</h1><p class=muted>Book a bed in under a minute.</p>
+<a class="g-btn g-btn-primary" href=#>Book a plot</a> <a class="g-btn g-btn-secondary" href=#>See the map</a></main></body></html>""", encoding="utf-8")
+    js = r"""
+import { chromium } from "playwright"; import { pathToFileURL } from "node:url";
+const [page, dirs] = [process.argv[2], process.argv[3].split(",")];
+const lum = (c) => { const m = c.match(/[\d.]+/g).map(Number); if (m.length > 3 && m[3] < 1) return null; const f = (v) => { v /= 255; return v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4; }; return .2126 * f(m[0]) + .7152 * f(m[1]) + .0722 * f(m[2]); };
+const ratio = (a, b) => { const x = lum(a), y = lum(b); if (x == null || y == null) return null; return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+const b = await chromium.launch(), p = await b.newPage({ viewport: { width: 375, height: 700 } }); const rows = [];
+for (const d of dirs) {
+  await p.goto(pathToFileURL(page).href + (d === "default" ? "" : "#" + d));
+  if (d !== "default") await p.evaluate((d) => document.body.setAttribute("data-direction", d), d);  // documented use: class "g" wrapper + data-direction
+  const c = await p.evaluate(() => { const s = getComputedStyle(document.body), probe = (v) => { const e = document.createElement("i"); e.style.color = `var(${v})`; document.body.append(e); const out = getComputedStyle(e).color; e.remove(); return out; };
+    const bg = s.backgroundColor !== "rgba(0, 0, 0, 0)" ? s.backgroundColor : probe("--g-bg");
+    return { bg, fg: probe("--g-fg"), muted: probe("--g-muted"), accent: probe("--g-accent"), onAccent: probe("--g-on-accent"), overflow: document.documentElement.scrollWidth - innerWidth }; });
+  rows.push({ direction: d, text: ratio(c.fg, c.bg), muted: ratio(c.muted, c.bg), button: ratio(c.onAccent, c.accent), overflow375: c.overflow, colors: c });
+}
+await b.close(); console.log(JSON.stringify(rows));
+"""
+    (w / "measure.mjs").write_text(js, encoding="utf-8")
+    shutil.copy(w / "measure.mjs", ROOT / "tests" / ".glyph-measure.tmp.mjs")  # run from the repo so Playwright resolves without symlinks
+    rc, o, r = run([NODE, ROOT / "tests" / ".glyph-measure.tmp.mjs", w / "page.html", ",".join(dirs)], log=log, timeout=600)
+    (ROOT / "tests" / ".glyph-measure.tmp.mjs").unlink(missing_ok=True)
+    try:
+        rows = json.loads(o.strip().splitlines()[-1])
+    except Exception:
+        return record("glyph", "blocked", f"measurement failed (exit {rc})", [r["cmd"]], [], "", log)
+    fmt = lambda v: "n/a" if v is None else f"{v:.2f}"
+    lines = ["| Preset | Text on bg | Muted on bg | Button text on accent | Overflow at 375 px |", "|---|---:|---:|---:|---:|"]
+    fails = []
+    for x in rows:
+        lines.append(f"| {x['direction']} | {fmt(x['text'])} | {fmt(x['muted'])} | {fmt(x['button'])} | {x['overflow375']} px |")
+        for k in ("text", "muted", "button"):
+            if x[k] is not None and x[k] < 4.5: fails.append(f"{x['direction']} {k} {x[k]:.2f}:1")
+        if x["overflow375"] > 0: fails.append(f"{x['direction']} overflows by {x['overflow375']} px at 375")
+    (ev_dir("glyph") / "preset-contrast.md").write_text("# Glyph starter-kit presets, measured in Chromium\n\nWCAG 2.x ratios of the computed colours (4.5:1 for normal text). Measured by SumitCraft; the presets are Glyph's.\n\n" + "\n".join(lines) + "\n\nBelow 4.5:1: " + (", ".join(fails) or "none") + "\n", encoding="utf-8")
+    record("glyph", "functionally verified" if rc == 0 and not fails else "smoke tested", f"{len(rows)} presets rendered; text, muted text and button contrast measured: " + ("all at or above 4.5:1, no overflow at 375 px" if not fails else "below 4.5:1 or overflowing: " + "; ".join(fails)),
+           [r["cmd"]], ["evidence/glyph/preset-contrast.md"], "Contrast only for three colour pairs per preset; Glyph's design judgement itself is guidance and was not executed. Translucent colours are reported as n/a.", log)
+
+
 def t_guidance(name, note):
     record(name, "static checks passed", note, ["node tools/validate.mjs"], ["tests/scenarios/guidance.md"], "Guidance-only workflow: scenarios are written down; no automatic success score is claimed.")
 
@@ -561,7 +607,7 @@ CHECKS = {
     "learn-a-domain": lambda: t_guidance("learn-a-domain", "guidance-only; scenarios defined, including a professional-advice refusal case"),
     "image-gen": t_image_gen, "brand-kit": t_brand_kit, "skill-router": t_router,
     "design-to-code-inspection": t_d2c, "design-critique": t_critique, "design-system-build": t_dsb, "interaction-motion-study": t_motion,
-    "visual-reference-analysis": t_vra, "design-hub": t_design_hub, "work-to-explanation": t_w2e,
+    "visual-reference-analysis": t_vra, "design-hub": t_design_hub, "glyph": t_glyph, "work-to-explanation": t_w2e,
     "code-loop": t_code_loop, "perspective-illusion": t_perspective, "scripted-screencast": t_screencast, "repo-timelapse": t_timelapse,
     "reverse-engineer-video": t_reverse, "rough-cut": t_rough_cut, "clean-audio": t_clean_audio, "vox-explainer": t_vox,
 }

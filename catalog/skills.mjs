@@ -8,6 +8,7 @@
 // origin: "upstream" (from simcraft at 58224d1, modified as listed) or "sumitcraft" (new here).
 // kind: "scripted" (ships scripts) or "guidance" (method only, by design).
 
+export const GLYPH = { url: "https://github.com/sumitttt4/Glyph-Skill", commit: "00d2bad340dd8ca7f20cbbf389513f2705fdec9f", license: "MIT", author: "Glyph Contributors" };
 export const UPSTREAM = { url: "https://github.com/dotslashsimran/simcraft", commit: "58224d131814572224537fb516b8c5d33dd5fa67", date: "2026-11-09", license: "MIT", author: "Simran Sachdeva" };
 
 const L = "Local only: reads and writes files on this machine.";
@@ -409,4 +410,15 @@ export const skills = [
     failures: ["Unknown skills misclassified by keywords (marked, read before trusting)"], limits: ["Knows plugin namespaces only where a plugin.json is present; skill-pack prefixes shown in the UI may differ"],
     example: "examples/fixture-home + tests/test_design_hub.py; also run against this machine's 106 installed skills.",
     ledger: { kept: "n/a (new).", changed: "New skill.", newExample: "Fixture skills folder with known answers.", evidence: "evidence/design-hub/", inherited: "Nothing; other skills are referenced by name only." } },
+
+  { name: "glyph", category: "design", origin: "glyph", kind: "guidance",
+    purpose: "Frontend design judgement for product-specific interfaces: understand, choose a direction, compose with real content, express personality, build every state, decide on motion, and verify real renders. Ships 19 focused references and a plain-CSS starter kit with 12 style-direction presets.",
+    triggers: ["design a landing page for my product", "/glyph audit this dashboard", "give this app a real visual direction"], nonTriggers: ["measuring a build against a fixed spec (design-to-code-inspection)", "applying another company's brand (brand-kit)"],
+    inputs: "A product brief, existing UI or code, brand constraints, the project's stack.", deliverables: "Direction and composition decisions with reasons, implementation (or an implementation prompt), states, and a verification report.",
+    needs: { required: [], optional: ["node", "playwright", "chromium"] }, network: "Local guidance. It links to two public reference libraries as optional reading; nothing is fetched automatically.", cost: "None.",
+    decisions: ["Which direction and composition (the user may choose)", "Whether to animate at all", "Asset provenance and rights"],
+    checks: ["Glyph's own verification and visual-craft checklists", "In SumitCraft: every starter-kit preset's text and accent contrast measured in a browser"],
+    failures: ["Copying a reference design", "Treating a successful build as a successful interface"], limits: ["Guidance, not enforcement; 'commands' are prompt conventions, not CLI commands", "Taste hypotheses are labelled as such, not research findings"],
+    example: "assets/starter.css rendered with each of its 12 direction presets plus the default, contrast measured (evidence/glyph).",
+    ledger: { kept: "The whole bundle (SKILL.md, 19 references, starter.css, LICENSE, notices, migration map), byte for byte, from the owner's Glyph-Skill repo.", changed: "One line appended to SKILL.md linking SumitCraft's contract; registered in design-hub as a direction/build/motion/critique skill.", newExample: "Browser contrast audit of every starter-kit preset.", evidence: "evidence/glyph/", inherited: "Everything else is Glyph's own work." } },
 ];

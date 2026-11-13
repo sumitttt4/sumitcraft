@@ -6,7 +6,7 @@
     "/mnt/skills",
     "/home/user/sumitcraft/skills"
   ],
-  "skills_seen": 107,
+  "skills_seen": 108,
   "design_skills": [
     {
       "name": "emil-design-eng",
@@ -468,6 +468,23 @@
       "also_at": 0
     },
     {
+      "name": "glyph",
+      "plugin": "sumitcraft",
+      "invoke": "sumitcraft:glyph",
+      "stages": [
+        "direction",
+        "build",
+        "motion",
+        "critique"
+      ],
+      "role": "make",
+      "summary": "product-specific frontend direction, composition, build and verification; /glyph design, audit, vibe, prompt",
+      "from": "Glyph-Skill (repo owner's own skill, bundled in SumitCraft)",
+      "known": true,
+      "location": "/home/user/sumitcraft/skills/glyph",
+      "also_at": 0
+    },
+    {
       "name": "visual-reference-analysis",
       "plugin": "sumitcraft",
       "invoke": "sumitcraft:visual-reference-analysis",
@@ -533,6 +550,7 @@
       "frontend-design",
       "ui-ux-pro-max",
       "ui-taste",
+      "sumitcraft:glyph",
       "sumitcraft:visual-reference-analysis"
     ],
     "brand": [
@@ -551,7 +569,8 @@
       "figma-design-to-code",
       "shadcn",
       "impeccable",
-      "web-artifacts-builder"
+      "web-artifacts-builder",
+      "sumitcraft:glyph"
     ],
     "motion": [
       "emil-design-eng",
@@ -563,7 +582,8 @@
       "gsap-frameworks",
       "gsap-timeline",
       "gsap-react",
-      "sumitcraft:interaction-motion-study"
+      "sumitcraft:interaction-motion-study",
+      "sumitcraft:glyph"
     ],
     "accessibility": [
       "accessibility",
@@ -579,6 +599,7 @@
       "impeccable",
       "web-design-guidelines",
       "design:design-critique",
+      "sumitcraft:glyph",
       "sumitcraft:design-critique"
     ],
     "inspection": [
@@ -602,9 +623,10 @@
       {
         "stage": "motion",
         "label": "Motion and interaction",
-        "primary": "emil-design-eng",
+        "primary": "sumitcraft:glyph",
         "evidence": "sumitcraft:interaction-motion-study",
         "alternatives": [
+          "emil-design-eng",
           "gsap-core",
           "gsap-frameworks",
           "gsap-performance",
@@ -614,7 +636,7 @@
           "gsap-timeline",
           "gsap-utils"
         ],
-        "note": "10 installed skills cover this stage; pick one, do not run them all"
+        "note": "11 installed skills cover this stage; pick one, do not run them all"
       },
       {
         "stage": "accessibility",
@@ -634,12 +656,13 @@
         "evidence": "sumitcraft:design-critique",
         "alternatives": [
           "web-design-guidelines",
+          "sumitcraft:glyph",
           "emil-design-eng",
           "impeccable",
           "ui-taste",
           "ui-ux-pro-max"
         ],
-        "note": "7 installed skills cover this stage; pick one, do not run them all"
+        "note": "8 installed skills cover this stage; pick one, do not run them all"
       }
     ]
   }
