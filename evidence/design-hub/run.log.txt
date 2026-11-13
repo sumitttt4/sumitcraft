@@ -1,0 +1,60 @@
+$ /usr/local/bin/python3 <repo>/skills/design-hub/tests/test_design_hub.py
+[exit 0, 0.1 s]
+ok   plugin skills get plugin:name
+ok   both critiques kept apart (plugin vs SumitCraft copy)
+ok   known standalone skill classified
+ok   unknown design skill classified by keywords
+ok   system-design wording is not a design skill
+ok   non-design skill excluded
+ok   overlap reported for critique
+ok   plan covers copy and critique
+ok   critique step pairs a judge with SumitCraft evidence
+
+$ /usr/local/bin/python3 <repo>/skills/design-hub/scripts/find_design_skills.py --task polish my pricing page, make it accessible, and add a smooth menu animation --json <repo>/evidence/design-hub/this-machine.json
+[exit 0, 0.1 s]
+                     make     adds and composes shadcn/ui components
+  impeccable                                 make     design, critique, polish and harden frontend interfaces
+  web-artifacts-builder                      make     multi-component React/Tailwind artifacts
+Motion and interaction:
+  emil-design-eng                            guide    UI polish and animation judgement
+  gsap-plugins                               guide    GSAP plugins (Flip, Draggable, SplitText...)
+  gsap-performance                           guide    animation performance
+  gsap-core                                  guide    GSAP tweens and easing
+  gsap-scrolltrigger                         guide    scroll-driven animation
+  gsap-utils                                 guide    GSAP utilities
+  gsap-frameworks                            guide    GSAP in Vue/Svelte
+  gsap-timeline                              guide    sequenced animation
+  gsap-react                                 guide    GSAP in React
+  sumitcraft:interaction-motion-study        measure  motion spec plus keyboard, focus and reduced-motion checks
+UX copy:
+  design:ux-copy                             make     microcopy, errors, empty states, CTAs
+Accessibility:
+  accessibility                              judge    WCAG 2.2 audit and fixes in code
+  web-design-guidelines                      judge    reviews UI code against web interface guidelines
+  design:accessibility-review                judge    WCAG 2.1 AA audit of a design or page
+  sumitcraft:interaction-motion-study        measure  motion spec plus keyboard, focus and reduced-motion checks
+  sumitcraft:design-system-build             measure  tokens to CSS with contrast, scale and state checks
+Critique and polish:
+  emil-design-eng                            guide    UI polish and animation judgement
+  ui-ux-pro-max                              guide    broad UI/UX reference for pages, components and systems
+  ui-taste                                   make     anti-template playbooks for web and iOS UI
+  impeccable                                 make     design, critique, polish and harden frontend interfaces
+  web-design-guidelines                      judge    reviews UI code against web interface guidelines
+  design:design-critique                     judge    structured feedback on mockups, screenshots or Figma links
+  sumitcraft:design-critique                 measure  critique of a rendered page with before/after pixel evidence
+Spec and pixel inspection:
+  figma-design-to-code                       make     required before implementing a Figma design
+  sumitcraft:design-to-code-inspection       measure  measured mismatches against a spec at several widths
+Developer handoff:
+  design:design-handoff                      make     developer spec sheets: layout, tokens, props, states, breakpoints
+Images, art and visual assets:
+  algorithmic-art                            make     p5.js generative art
+  canvas-design                              make     posters and static art as PNG/PDF
+  sumitcraft:image-gen                       make     provider images behind a spend gate
+
+Overlaps (same stage, several skills): Research and synthesis x2; Direction, taste and reference x4; Brand and theme x3; Design system and tokens x3; Build the UI x6; Motion and interaction x10; Accessibility x5; Critique and polish x7; Spec and pixel inspection x2; Images, art and visual assets x3
+
+Merged plan for: polish my pricing page, make it accessible, and add a smooth menu animation
+  1. Motion and interaction: emil-design-eng  + evidence: sumitcraft:interaction-motion-study  (alternatives: gsap-core, gsap-frameworks, gsap-performance)
+  2. Accessibility: design:accessibility-review  + evidence: sumitcraft:interaction-motion-study  (alternatives: accessibility, web-design-guidelines)
+  3. Critique and polish: design:design-critique  + evidence: sumitcraft:design-critique  (alternatives: web-design-guidelines, emil-design-eng, impeccable)

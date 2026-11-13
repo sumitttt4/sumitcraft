@@ -1,41 +1,48 @@
 $ /usr/local/bin/python3 <repo>/skills/skill-router/scripts/catalog.py --json
 [exit 0, 0.0 s]
--4d17-9c78-30e4f5c8e1f2_1b18335f-891d-4246-9e82-9888b5ddde16/theme-factory/SKILL.md"
+ for Slack.",
+    "path": "~/.claude/skills/synced/<id>/slack-gif-creator/SKILL.md"
+  },
+  {
+    "name": "theme-factory",
+    "category": "synced",
+    "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+    "path": "~/.claude/skills/synced/<id>/theme-factory/SKILL.md"
   },
   {
     "name": "ui-taste",
     "category": "synced",
     "description": "Give your coding agent better UI taste. Build and polish web and iOS interfaces with Uizze's anti-ui-slop playbooks and optional real-product references. Use for UI design, implementation, redesign, critique, or a final visual review in Claude Code, Codex, Cursor, or Copilot.",
-    "path": "~/.claude/skills/synced/74ac5e09-ff86-4d17-9c78-30e4f5c8e1f2_1b18335f-891d-4246-9e82-9888b5ddde16/ui-taste/SKILL.md"
+    "path": "~/.claude/skills/synced/<id>/ui-taste/SKILL.md"
   },
   {
     "name": "ui-ux-pro-max",
     "category": "synced",
     "description": "UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 80 searchable styles (51 active), 192 product palettes and reasoning profiles, 74 font pairings, 120 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stacks.",
-    "path": "~/.claude/skills/synced/74ac5e09-ff86-4d17-9c78-30e4f5c8e1f2_1b18335f-891d-4246-9e82-9888b5ddde16/ui-ux-pro-max/SKILL.md"
+    "path": "~/.claude/skills/synced/<id>/ui-ux-pro-max/SKILL.md"
   },
   {
     "name": "vercel-react-best-practices",
     "category": "synced",
     "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.",
-    "path": "~/.claude/skills/synced/74ac5e09-ff86-4d17-9c78-30e4f5c8e1f2_1b18335f-891d-4246-9e82-9888b5ddde16/vercel-react-best-practices/SKILL.md"
+    "path": "~/.claude/skills/synced/<id>/vercel-react-best-practices/SKILL.md"
   },
   {
     "name": "web-artifacts-builder",
     "category": "synced",
     "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
-    "path": "~/.claude/skills/synced/74ac5e09-ff86-4d17-9c78-30e4f5c8e1f2_1b18335f-891d-4246-9e82-9888b5ddde16/web-artifacts-builder/SKILL.md"
+    "path": "~/.claude/skills/synced/<id>/web-artifacts-builder/SKILL.md"
   },
   {
     "name": "web-design-guidelines",
     "category": "synced",
     "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
-    "path": "~/.claude/skills/synced/74ac5e09-ff86-4d17-9c78-30e4f5c8e1f2_1b18335f-891d-4246-9e82-9888b5ddde16/web-design-guidelines/SKILL.md"
+    "path": "~/.claude/skills/synced/<id>/web-design-guidelines/SKILL.md"
   },
   {
     "name": "xlsx",
     "category": "synced",
     "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .xltx, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path \u2014 even casually (like \\\"the xlsx in my downloads\\\") \u2014 and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved.",
-    "path": "~/.claude/skills/synced/74ac5e09-ff86-4d17-9c78-30e4f5c8e1f2_1b18335f-891d-4246-9e82-9888b5ddde16/xlsx/SKILL.md"
+    "path": "~/.claude/skills/synced/<id>/xlsx/SKILL.md"
   }
 ]

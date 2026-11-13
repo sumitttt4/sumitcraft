@@ -399,4 +399,14 @@ export const skills = [
     decisions: ["Form, reader, permissions"], checks: ["Preflight blocks credentials, private paths, broken evidence"], failures: ["Numbers without evidence"], limits: ["Preflight patterns are heuristics"],
     example: "examples/webgl-backend-case-study.",
     ledger: { kept: "n/a (new).", changed: "New skill.", newExample: "A write-up of a real SumitCraft change.", evidence: "evidence/work-to-explanation/", inherited: "Nothing." } },
+
+  { name: "design-hub", category: "design", origin: "sumitcraft", kind: "scripted",
+    purpose: "Find every design skill installed on the machine (any source), sort them into design stages, show overlaps, and merge them into one plan with a SumitCraft evidence check per step.",
+    triggers: ["design and polish this page, then make it accessible", "which design skill should I use"], nonTriggers: ["one clear design task a single skill covers (use it directly)"],
+    inputs: "A design request; whatever skills are installed.", deliverables: "Inventory by stage, overlap report, merged plan (text or JSON).",
+    needs: { required: ["python"], optional: [] }, network: "Local only: reads SKILL.md frontmatter under the skills and plugins folders; never copies or edits them.", cost: "None.",
+    decisions: ["Confirm a multi-stage plan; taste choices stay with the user"], checks: ["Known-answer fixture: plugin naming, overlaps, exclusions, plan"],
+    failures: ["Unknown skills misclassified by keywords (marked, read before trusting)"], limits: ["Knows plugin namespaces only where a plugin.json is present; skill-pack prefixes shown in the UI may differ"],
+    example: "examples/fixture-home + tests/test_design_hub.py; also run against this machine's 106 installed skills.",
+    ledger: { kept: "n/a (new).", changed: "New skill.", newExample: "Fixture skills folder with known answers.", evidence: "evidence/design-hub/", inherited: "Nothing; other skills are referenced by name only." } },
 ];

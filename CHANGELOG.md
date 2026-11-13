@@ -43,6 +43,12 @@ SumitCraft's changes on top of simcraft. Upstream work is not listed here as our
 - Tests: functional runner with evidence, path unit test, scenarios for guidance-only skills; inactive CI definitions.
 - Claude Code plugin and marketplace manifests (`sumitcraft:<name>` namespacing).
 
+### Added after 0.1.0 review
+- design-hub: discovers every installed design skill on the machine (global, plugin, project, cloud image), classifies
+  them by stage, reports overlaps and merges them into one plan with SumitCraft evidence checks. References other skills
+  by name only (most installed design skills ship no licence file, so none are copied). Known-answer fixture test.
+- Test logs and inventories now redact account and organisation IDs found in folder names.
+
 ### Known gaps
 - No native Windows or macOS run yet. clean-audio and the transcription parts of rough-cut and vox-explainer are blocked
   until the speech-model download is approved. No live image-gen provider call has been made. See the validation matrix.

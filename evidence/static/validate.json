@@ -1,29 +1,29 @@
 {
   "tool": "sumitcraft validate",
-  "when": "2026-11-13T10:20:57.971Z",
+  "when": "2026-11-13T10:27:33.425Z",
   "platform": "linux",
-  "total": 495,
+  "total": 508,
   "failed": 0,
   "groups": {
     "discover": {
-      "ok": 86,
-      "total": 86
+      "ok": 88,
+      "total": 88
     },
     "metadata": {
-      "ok": 93,
-      "total": 93
+      "ok": 96,
+      "total": 96
     },
     "contract": {
-      "ok": 31,
-      "total": 31
+      "ok": 32,
+      "total": 32
     },
     "links": {
-      "ok": 167,
-      "total": 167
+      "ok": 172,
+      "total": 172
     },
     "parse": {
-      "ok": 113,
-      "total": 113
+      "ok": 115,
+      "total": 115
     },
     "license": {
       "ok": 3,

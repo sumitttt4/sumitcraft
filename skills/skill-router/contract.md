@@ -59,6 +59,6 @@ Full steps: [SKILL.md](SKILL.md).
 catalog.py over this repo (31 skills) and routing scenarios.
 
 ## Validation status
-**functionally verified** (2026-11-13, Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18). catalog.py lists 31/31 repo skills
+**functionally verified** (2026-11-13, Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18). catalog.py lists 32/32 repo skills
 
 Visual or audible review: none recorded. Native Windows: not run. Details and gaps: [docs/VALIDATION_MATRIX.md](../../docs/VALIDATION_MATRIX.md).

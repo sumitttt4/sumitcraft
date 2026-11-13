@@ -1,0 +1,646 @@
+{
+  "tool": "sumitcraft design-hub",
+  "roots_scanned": [
+    "~/.claude/skills",
+    "~/.claude/plugins",
+    "/mnt/skills",
+    "/home/user/sumitcraft/skills"
+  ],
+  "skills_seen": 107,
+  "design_skills": [
+    {
+      "name": "emil-design-eng",
+      "plugin": null,
+      "invoke": "emil-design-eng",
+      "stages": [
+        "motion",
+        "critique"
+      ],
+      "role": "guide",
+      "summary": "UI polish and animation judgement",
+      "from": "skill pack",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "gsap-plugins",
+      "plugin": null,
+      "invoke": "gsap-plugins",
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "summary": "GSAP plugins (Flip, Draggable, SplitText...)",
+      "from": "GSAP",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "gsap-performance",
+      "plugin": null,
+      "invoke": "gsap-performance",
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "summary": "animation performance",
+      "from": "GSAP",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "frontend-design",
+      "plugin": null,
+      "invoke": "frontend-design",
+      "stages": [
+        "direction",
+        "build"
+      ],
+      "role": "make",
+      "summary": "intentional aesthetic direction while building UI",
+      "from": "Anthropic skills",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 1
+    },
+    {
+      "name": "theme-factory",
+      "plugin": null,
+      "invoke": "theme-factory",
+      "stages": [
+        "brand"
+      ],
+      "role": "make",
+      "summary": "applies preset themes to artifacts",
+      "from": "Anthropic skills",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "plugin": null,
+      "invoke": "ui-ux-pro-max",
+      "stages": [
+        "direction",
+        "system",
+        "critique"
+      ],
+      "role": "guide",
+      "summary": "broad UI/UX reference for pages, components and systems",
+      "from": "skill pack",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "gsap-core",
+      "plugin": null,
+      "invoke": "gsap-core",
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "summary": "GSAP tweens and easing",
+      "from": "GSAP",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "gsap-scrolltrigger",
+      "plugin": null,
+      "invoke": "gsap-scrolltrigger",
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "summary": "scroll-driven animation",
+      "from": "GSAP",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "brand-guidelines",
+      "plugin": null,
+      "invoke": "brand-guidelines",
+      "stages": [
+        "brand"
+      ],
+      "role": "make",
+      "summary": "applies Anthropic's own brand (only for Anthropic-branded work)",
+      "from": "Anthropic skills",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "ui-taste",
+      "plugin": null,
+      "invoke": "ui-taste",
+      "stages": [
+        "direction",
+        "build",
+        "critique"
+      ],
+      "role": "make",
+      "summary": "anti-template playbooks for web and iOS UI",
+      "from": "Uizze skill pack",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "algorithmic-art",
+      "plugin": null,
+      "invoke": "algorithmic-art",
+      "stages": [
+        "visual-assets"
+      ],
+      "role": "make",
+      "summary": "p5.js generative art",
+      "from": "Anthropic skills",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "figma-design-to-code",
+      "plugin": null,
+      "invoke": "figma-design-to-code",
+      "stages": [
+        "build",
+        "inspection"
+      ],
+      "role": "make",
+      "summary": "required before implementing a Figma design",
+      "from": "Figma",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "shadcn",
+      "plugin": null,
+      "invoke": "shadcn",
+      "stages": [
+        "build"
+      ],
+      "role": "make",
+      "summary": "adds and composes shadcn/ui components",
+      "from": "skill pack",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "impeccable",
+      "plugin": null,
+      "invoke": "impeccable",
+      "stages": [
+        "build",
+        "critique"
+      ],
+      "role": "make",
+      "summary": "design, critique, polish and harden frontend interfaces",
+      "from": "skill pack",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "gsap-utils",
+      "plugin": null,
+      "invoke": "gsap-utils",
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "summary": "GSAP utilities",
+      "from": "GSAP",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "accessibility",
+      "plugin": null,
+      "invoke": "accessibility",
+      "stages": [
+        "accessibility"
+      ],
+      "role": "judge",
+      "summary": "WCAG 2.2 audit and fixes in code",
+      "from": "skill pack",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "web-artifacts-builder",
+      "plugin": null,
+      "invoke": "web-artifacts-builder",
+      "stages": [
+        "build"
+      ],
+      "role": "make",
+      "summary": "multi-component React/Tailwind artifacts",
+      "from": "Anthropic skills",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "web-design-guidelines",
+      "plugin": null,
+      "invoke": "web-design-guidelines",
+      "stages": [
+        "critique",
+        "accessibility"
+      ],
+      "role": "judge",
+      "summary": "reviews UI code against web interface guidelines",
+      "from": "skill pack",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "gsap-frameworks",
+      "plugin": null,
+      "invoke": "gsap-frameworks",
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "summary": "GSAP in Vue/Svelte",
+      "from": "GSAP",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "gsap-timeline",
+      "plugin": null,
+      "invoke": "gsap-timeline",
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "summary": "sequenced animation",
+      "from": "GSAP",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "canvas-design",
+      "plugin": null,
+      "invoke": "canvas-design",
+      "stages": [
+        "visual-assets"
+      ],
+      "role": "make",
+      "summary": "posters and static art as PNG/PDF",
+      "from": "Anthropic skills",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "gsap-react",
+      "plugin": null,
+      "invoke": "gsap-react",
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "summary": "GSAP in React",
+      "from": "GSAP",
+      "known": true,
+      "location": "~/.claude/skills/synced",
+      "also_at": 0
+    },
+    {
+      "name": "accessibility-review",
+      "plugin": "design",
+      "invoke": "design:accessibility-review",
+      "stages": [
+        "accessibility"
+      ],
+      "role": "judge",
+      "summary": "WCAG 2.1 AA audit of a design or page",
+      "from": "design plugin (Anthropic)",
+      "known": true,
+      "location": "~/.claude/plugins/synced",
+      "also_at": 0
+    },
+    {
+      "name": "user-research",
+      "plugin": "design",
+      "invoke": "design:user-research",
+      "stages": [
+        "research"
+      ],
+      "role": "guide",
+      "summary": "plans interviews, usability tests and surveys",
+      "from": "design plugin (Anthropic)",
+      "known": true,
+      "location": "~/.claude/plugins/synced",
+      "also_at": 0
+    },
+    {
+      "name": "research-synthesis",
+      "plugin": "design",
+      "invoke": "design:research-synthesis",
+      "stages": [
+        "research"
+      ],
+      "role": "guide",
+      "summary": "turns research notes into themes and recommendations",
+      "from": "design plugin (Anthropic)",
+      "known": true,
+      "location": "~/.claude/plugins/synced",
+      "also_at": 0
+    },
+    {
+      "name": "design-critique",
+      "plugin": "design",
+      "invoke": "design:design-critique",
+      "stages": [
+        "critique"
+      ],
+      "role": "judge",
+      "summary": "structured feedback on mockups, screenshots or Figma links",
+      "from": "design plugin (Anthropic)",
+      "known": true,
+      "location": "~/.claude/plugins/synced",
+      "also_at": 0
+    },
+    {
+      "name": "design-system",
+      "plugin": "design",
+      "invoke": "design:design-system",
+      "stages": [
+        "system"
+      ],
+      "role": "judge",
+      "summary": "audits and documents an existing design system",
+      "from": "design plugin (Anthropic)",
+      "known": true,
+      "location": "~/.claude/plugins/synced",
+      "also_at": 0
+    },
+    {
+      "name": "ux-copy",
+      "plugin": "design",
+      "invoke": "design:ux-copy",
+      "stages": [
+        "copy"
+      ],
+      "role": "make",
+      "summary": "microcopy, errors, empty states, CTAs",
+      "from": "design plugin (Anthropic)",
+      "known": true,
+      "location": "~/.claude/plugins/synced",
+      "also_at": 0
+    },
+    {
+      "name": "design-handoff",
+      "plugin": "design",
+      "invoke": "design:design-handoff",
+      "stages": [
+        "handoff"
+      ],
+      "role": "make",
+      "summary": "developer spec sheets: layout, tokens, props, states, breakpoints",
+      "from": "design plugin (Anthropic)",
+      "known": true,
+      "location": "~/.claude/plugins/synced",
+      "also_at": 0
+    },
+    {
+      "name": "interaction-motion-study",
+      "plugin": "sumitcraft",
+      "invoke": "sumitcraft:interaction-motion-study",
+      "stages": [
+        "motion",
+        "accessibility"
+      ],
+      "role": "measure",
+      "summary": "motion spec plus keyboard, focus and reduced-motion checks",
+      "from": "SumitCraft",
+      "known": true,
+      "location": "/home/user/sumitcraft/skills/interaction-motion-study",
+      "also_at": 0
+    },
+    {
+      "name": "design-system-build",
+      "plugin": "sumitcraft",
+      "invoke": "sumitcraft:design-system-build",
+      "stages": [
+        "system",
+        "accessibility"
+      ],
+      "role": "measure",
+      "summary": "tokens to CSS with contrast, scale and state checks",
+      "from": "SumitCraft",
+      "known": true,
+      "location": "/home/user/sumitcraft/skills/design-system-build",
+      "also_at": 0
+    },
+    {
+      "name": "brand-kit",
+      "plugin": "sumitcraft",
+      "invoke": "sumitcraft:brand-kit",
+      "stages": [
+        "brand"
+      ],
+      "role": "measure",
+      "summary": "extracts a brand from its site into a kit",
+      "from": "SumitCraft (simcraft)",
+      "known": true,
+      "location": "/home/user/sumitcraft/skills/brand-kit",
+      "also_at": 0
+    },
+    {
+      "name": "visual-reference-analysis",
+      "plugin": "sumitcraft",
+      "invoke": "sumitcraft:visual-reference-analysis",
+      "stages": [
+        "direction"
+      ],
+      "role": "measure",
+      "summary": "measures a reference, then an original study",
+      "from": "SumitCraft",
+      "known": true,
+      "location": "/home/user/sumitcraft/skills/visual-reference-analysis",
+      "also_at": 0
+    },
+    {
+      "name": "design-to-code-inspection",
+      "plugin": "sumitcraft",
+      "invoke": "sumitcraft:design-to-code-inspection",
+      "stages": [
+        "inspection"
+      ],
+      "role": "measure",
+      "summary": "measured mismatches against a spec at several widths",
+      "from": "SumitCraft",
+      "known": true,
+      "location": "/home/user/sumitcraft/skills/design-to-code-inspection",
+      "also_at": 0
+    },
+    {
+      "name": "design-critique",
+      "plugin": "sumitcraft",
+      "invoke": "sumitcraft:design-critique",
+      "stages": [
+        "critique"
+      ],
+      "role": "measure",
+      "summary": "critique of a rendered page with before/after pixel evidence",
+      "from": "SumitCraft",
+      "known": true,
+      "location": "/home/user/sumitcraft/skills/design-critique",
+      "also_at": 0
+    },
+    {
+      "name": "image-gen",
+      "plugin": "sumitcraft",
+      "invoke": "sumitcraft:image-gen",
+      "stages": [
+        "visual-assets"
+      ],
+      "role": "make",
+      "summary": "provider images behind a spend gate",
+      "from": "SumitCraft (simcraft)",
+      "known": true,
+      "location": "/home/user/sumitcraft/skills/image-gen",
+      "also_at": 0
+    }
+  ],
+  "overlaps": {
+    "research": [
+      "design:user-research",
+      "design:research-synthesis"
+    ],
+    "direction": [
+      "frontend-design",
+      "ui-ux-pro-max",
+      "ui-taste",
+      "sumitcraft:visual-reference-analysis"
+    ],
+    "brand": [
+      "theme-factory",
+      "brand-guidelines",
+      "sumitcraft:brand-kit"
+    ],
+    "system": [
+      "ui-ux-pro-max",
+      "design:design-system",
+      "sumitcraft:design-system-build"
+    ],
+    "build": [
+      "frontend-design",
+      "ui-taste",
+      "figma-design-to-code",
+      "shadcn",
+      "impeccable",
+      "web-artifacts-builder"
+    ],
+    "motion": [
+      "emil-design-eng",
+      "gsap-plugins",
+      "gsap-performance",
+      "gsap-core",
+      "gsap-scrolltrigger",
+      "gsap-utils",
+      "gsap-frameworks",
+      "gsap-timeline",
+      "gsap-react",
+      "sumitcraft:interaction-motion-study"
+    ],
+    "accessibility": [
+      "accessibility",
+      "web-design-guidelines",
+      "design:accessibility-review",
+      "sumitcraft:interaction-motion-study",
+      "sumitcraft:design-system-build"
+    ],
+    "critique": [
+      "emil-design-eng",
+      "ui-ux-pro-max",
+      "ui-taste",
+      "impeccable",
+      "web-design-guidelines",
+      "design:design-critique",
+      "sumitcraft:design-critique"
+    ],
+    "inspection": [
+      "figma-design-to-code",
+      "sumitcraft:design-to-code-inspection"
+    ],
+    "visual-assets": [
+      "algorithmic-art",
+      "canvas-design",
+      "sumitcraft:image-gen"
+    ]
+  },
+  "plan": {
+    "task": "polish my pricing page, make it accessible, and add a smooth menu animation",
+    "stages": [
+      "motion",
+      "accessibility",
+      "critique"
+    ],
+    "steps": [
+      {
+        "stage": "motion",
+        "label": "Motion and interaction",
+        "primary": "emil-design-eng",
+        "evidence": "sumitcraft:interaction-motion-study",
+        "alternatives": [
+          "gsap-core",
+          "gsap-frameworks",
+          "gsap-performance",
+          "gsap-plugins",
+          "gsap-react",
+          "gsap-scrolltrigger",
+          "gsap-timeline",
+          "gsap-utils"
+        ],
+        "note": "10 installed skills cover this stage; pick one, do not run them all"
+      },
+      {
+        "stage": "accessibility",
+        "label": "Accessibility",
+        "primary": "design:accessibility-review",
+        "evidence": "sumitcraft:interaction-motion-study",
+        "alternatives": [
+          "accessibility",
+          "web-design-guidelines"
+        ],
+        "note": "5 installed skills cover this stage; pick one, do not run them all"
+      },
+      {
+        "stage": "critique",
+        "label": "Critique and polish",
+        "primary": "design:design-critique",
+        "evidence": "sumitcraft:design-critique",
+        "alternatives": [
+          "web-design-guidelines",
+          "emil-design-eng",
+          "impeccable",
+          "ui-taste",
+          "ui-ux-pro-max"
+        ],
+        "note": "7 installed skills cover this stage; pick one, do not run them all"
+      }
+    ]
+  }
+}

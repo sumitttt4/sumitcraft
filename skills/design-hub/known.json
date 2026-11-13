@@ -1,0 +1,333 @@
+{
+  "about": "Skills design-hub knows by name, mapped to stages with a one-line summary in SumitCraft's own words (no text copied from the skills). Unknown skills are classified by keywords at run time. 'role' says how the hub uses it: make (generates or changes the design), judge (reviews it), measure (produces numbers), guide (method/reference). 'not_design' lists skills that use design words for something else (system design, API design) or are video/engineering skills; they are never classified as design skills by keywords.",
+  "skills": {
+    "user-research": {
+      "stages": [
+        "research"
+      ],
+      "role": "guide",
+      "from": "design plugin (Anthropic)",
+      "summary": "plans interviews, usability tests and surveys"
+    },
+    "research-synthesis": {
+      "stages": [
+        "research"
+      ],
+      "role": "guide",
+      "from": "design plugin (Anthropic)",
+      "summary": "turns research notes into themes and recommendations"
+    },
+    "design-critique@design": {
+      "stages": [
+        "critique"
+      ],
+      "role": "judge",
+      "from": "design plugin (Anthropic)",
+      "summary": "structured feedback on mockups, screenshots or Figma links"
+    },
+    "design-system@design": {
+      "stages": [
+        "system"
+      ],
+      "role": "judge",
+      "from": "design plugin (Anthropic)",
+      "summary": "audits and documents an existing design system"
+    },
+    "design-handoff": {
+      "stages": [
+        "handoff"
+      ],
+      "role": "make",
+      "from": "design plugin (Anthropic)",
+      "summary": "developer spec sheets: layout, tokens, props, states, breakpoints"
+    },
+    "accessibility-review": {
+      "stages": [
+        "accessibility"
+      ],
+      "role": "judge",
+      "from": "design plugin (Anthropic)",
+      "summary": "WCAG 2.1 AA audit of a design or page"
+    },
+    "ux-copy": {
+      "stages": [
+        "copy"
+      ],
+      "role": "make",
+      "from": "design plugin (Anthropic)",
+      "summary": "microcopy, errors, empty states, CTAs"
+    },
+    "accessibility": {
+      "stages": [
+        "accessibility"
+      ],
+      "role": "judge",
+      "from": "skill pack",
+      "summary": "WCAG 2.2 audit and fixes in code"
+    },
+    "frontend-design": {
+      "stages": [
+        "direction",
+        "build"
+      ],
+      "role": "make",
+      "from": "Anthropic skills",
+      "summary": "intentional aesthetic direction while building UI"
+    },
+    "ui-taste": {
+      "stages": [
+        "direction",
+        "build",
+        "critique"
+      ],
+      "role": "make",
+      "from": "Uizze skill pack",
+      "summary": "anti-template playbooks for web and iOS UI"
+    },
+    "impeccable": {
+      "stages": [
+        "build",
+        "critique"
+      ],
+      "role": "make",
+      "from": "skill pack",
+      "summary": "design, critique, polish and harden frontend interfaces"
+    },
+    "ui-ux-pro-max": {
+      "stages": [
+        "direction",
+        "system",
+        "critique"
+      ],
+      "role": "guide",
+      "from": "skill pack",
+      "summary": "broad UI/UX reference for pages, components and systems"
+    },
+    "web-design-guidelines": {
+      "stages": [
+        "critique",
+        "accessibility"
+      ],
+      "role": "judge",
+      "from": "skill pack",
+      "summary": "reviews UI code against web interface guidelines"
+    },
+    "emil-design-eng": {
+      "stages": [
+        "motion",
+        "critique"
+      ],
+      "role": "guide",
+      "from": "skill pack",
+      "summary": "UI polish and animation judgement"
+    },
+    "shadcn": {
+      "stages": [
+        "build"
+      ],
+      "role": "make",
+      "from": "skill pack",
+      "summary": "adds and composes shadcn/ui components"
+    },
+    "web-artifacts-builder": {
+      "stages": [
+        "build"
+      ],
+      "role": "make",
+      "from": "Anthropic skills",
+      "summary": "multi-component React/Tailwind artifacts"
+    },
+    "figma-design-to-code": {
+      "stages": [
+        "build",
+        "inspection"
+      ],
+      "role": "make",
+      "from": "Figma",
+      "summary": "required before implementing a Figma design"
+    },
+    "theme-factory": {
+      "stages": [
+        "brand"
+      ],
+      "role": "make",
+      "from": "Anthropic skills",
+      "summary": "applies preset themes to artifacts"
+    },
+    "brand-guidelines": {
+      "stages": [
+        "brand"
+      ],
+      "role": "make",
+      "from": "Anthropic skills",
+      "summary": "applies Anthropic's own brand (only for Anthropic-branded work)"
+    },
+    "canvas-design": {
+      "stages": [
+        "visual-assets"
+      ],
+      "role": "make",
+      "from": "Anthropic skills",
+      "summary": "posters and static art as PNG/PDF"
+    },
+    "algorithmic-art": {
+      "stages": [
+        "visual-assets"
+      ],
+      "role": "make",
+      "from": "Anthropic skills",
+      "summary": "p5.js generative art"
+    },
+    "gsap-core": {
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "from": "GSAP",
+      "summary": "GSAP tweens and easing"
+    },
+    "gsap-timeline": {
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "from": "GSAP",
+      "summary": "sequenced animation"
+    },
+    "gsap-scrolltrigger": {
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "from": "GSAP",
+      "summary": "scroll-driven animation"
+    },
+    "gsap-react": {
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "from": "GSAP",
+      "summary": "GSAP in React"
+    },
+    "gsap-frameworks": {
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "from": "GSAP",
+      "summary": "GSAP in Vue/Svelte"
+    },
+    "gsap-plugins": {
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "from": "GSAP",
+      "summary": "GSAP plugins (Flip, Draggable, SplitText...)"
+    },
+    "gsap-performance": {
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "from": "GSAP",
+      "summary": "animation performance"
+    },
+    "gsap-utils": {
+      "stages": [
+        "motion"
+      ],
+      "role": "guide",
+      "from": "GSAP",
+      "summary": "GSAP utilities"
+    },
+    "brand-kit": {
+      "stages": [
+        "brand"
+      ],
+      "role": "measure",
+      "from": "SumitCraft (simcraft)",
+      "summary": "extracts a brand from its site into a kit"
+    },
+    "image-gen": {
+      "stages": [
+        "visual-assets"
+      ],
+      "role": "make",
+      "from": "SumitCraft (simcraft)",
+      "summary": "provider images behind a spend gate"
+    },
+    "visual-reference-analysis": {
+      "stages": [
+        "direction"
+      ],
+      "role": "measure",
+      "from": "SumitCraft",
+      "summary": "measures a reference, then an original study"
+    },
+    "design-system-build": {
+      "stages": [
+        "system",
+        "accessibility"
+      ],
+      "role": "measure",
+      "from": "SumitCraft",
+      "summary": "tokens to CSS with contrast, scale and state checks"
+    },
+    "interaction-motion-study": {
+      "stages": [
+        "motion",
+        "accessibility"
+      ],
+      "role": "measure",
+      "from": "SumitCraft",
+      "summary": "motion spec plus keyboard, focus and reduced-motion checks"
+    },
+    "design-critique@sumitcraft": {
+      "stages": [
+        "critique"
+      ],
+      "role": "measure",
+      "from": "SumitCraft",
+      "summary": "critique of a rendered page with before/after pixel evidence"
+    },
+    "design-to-code-inspection": {
+      "stages": [
+        "inspection"
+      ],
+      "role": "measure",
+      "from": "SumitCraft",
+      "summary": "measured mismatches against a spec at several widths"
+    }
+  },
+  "not_design": [
+    "system-design-from-scratch",
+    "api-design-review",
+    "bisect-anything",
+    "paper-to-runnable",
+    "dx-audit",
+    "pdf-reading",
+    "file-reading",
+    "code-loop",
+    "perspective-illusion",
+    "vox-explainer",
+    "scripted-screencast",
+    "repo-timelapse",
+    "reverse-engineer-video",
+    "rough-cut",
+    "clean-audio",
+    "codebase-map",
+    "flaky-test-killer",
+    "benchmark-honestly",
+    "security-threat-model",
+    "from-scratch",
+    "teach-back",
+    "skill-router",
+    "next-step",
+    "video-script",
+    "learn-a-domain",
+    "work-to-explanation",
+    "design-hub"
+  ]
+}
