@@ -1,0 +1,14 @@
+{
+  "name": "editorial-collage",
+  "status": "upstream preset, credited: this is simcraft's 'style C' by Simran Sachdeva, kept as one option, not the definition of quality",
+  "palette": { "field_a": "#1E2B3A", "field_b": "#C7302B", "paper": "#F2EAD8", "ink": "#141414", "accent": "#F5C518", "on_accent": "#141414", "muted": "#6b6253" },
+  "typography": {
+    "display": { "family": "Avenir Next Condensed", "fallback": "\"Arial Narrow\", \"Roboto Condensed\", \"Liberation Sans Narrow\", sans-serif", "weight": 800, "transform": "uppercase", "letter_spacing_em": -0.01 },
+    "quote": { "family": "Iowan Old Style", "fallback": "Georgia, serif" },
+    "mono": { "family": "GeistMono", "fallback": "ui-monospace, monospace" }
+  },
+  "spacing": { "type_scale": 1.0, "card_radius": "0px" },
+  "composition": { "split": true, "notes": "two colour fields with a diagonal split that changes each beat; one idea per frame, huge type" },
+  "texture": { "edges": "torn", "grain": 0.1 },
+  "motion": { "twos": true, "notes": "stepped 12 fps motion, slow push-in on every beat, nothing holds still for 0.5 s" }
+}

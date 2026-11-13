@@ -1,0 +1,14 @@
+{
+  "name": "night-signal",
+  "status": "provisional alternative written for SumitCraft; a starting point that needs the creator's taste decision, not a proven style",
+  "palette": { "field_a": "#0E1116", "field_b": "#1B2330", "paper": "#E9EDF2", "ink": "#0E1116", "accent": "#3DDC97", "on_accent": "#0E1116", "muted": "#8A94A6" },
+  "typography": {
+    "display": { "family": "Bahnschrift", "fallback": "\"DIN Alternate\", \"Roboto Condensed\", \"Arial Narrow\", sans-serif", "weight": 700, "transform": "uppercase", "letter_spacing_em": 0.01 },
+    "quote": { "family": "Charter", "fallback": "Georgia, serif" },
+    "mono": { "family": "GeistMono", "fallback": "Consolas, ui-monospace, monospace" }
+  },
+  "spacing": { "type_scale": 1.0, "card_radius": "4px" },
+  "composition": { "split": true, "notes": "dark fields with a low-contrast diagonal, one bright signal colour for highlights only" },
+  "texture": { "edges": "clean", "grain": 0.05 },
+  "motion": { "twos": true, "notes": "stepped motion, like the upstream preset" }
+}
