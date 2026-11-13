@@ -1,0 +1,484 @@
+{
+  "tool": "sumitcraft tests/run_checks.py",
+  "updated": "2026-11-13T10:20:57",
+  "skills": {
+    "api-design-review": {
+      "status": "functionally verified",
+      "observed": "v1->v2 diff exit 1 with BREAKING findings; v1->v1 exit 0; lint and SDK surface ran (exit 0, 0)",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/api-design-review/scripts/breaking_diff.py <repo>/skills/api-design-review/examples/bookshop-v1.json <repo>/skills/api-design-review/examples/bookshop-v2.yaml",
+        "/usr/local/bin/python3 <repo>/skills/api-design-review/scripts/breaking_diff.py <repo>/skills/api-design-review/examples/bookshop-v1.json <repo>/skills/api-design-review/examples/bookshop-v1.json",
+        "/usr/local/bin/python3 <repo>/skills/api-design-review/scripts/lint_openapi.py <repo>/skills/api-design-review/examples/bookshop-v1.json",
+        "/usr/local/bin/python3 <repo>/skills/api-design-review/scripts/sdk_surface.py <repo>/skills/api-design-review/examples/sample-sdk.d.ts"
+      ],
+      "artifacts": [
+        "evidence/api-design-review/run.log.txt"
+      ],
+      "gaps": "",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:11"
+    },
+    "benchmark-honestly": {
+      "status": "smoke tested",
+      "observed": "equal-work comparison ran; verdict line: No clear difference between b and a: time ratio 1.027, 95% CI 0.954 to 1.081 includes 1.0 or the test disagrees (p=0.47). Do not claim a speedup. More runs or a",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/benchmark-honestly/scripts/bench.py -n a -n b \"/usr/local/bin/python3\" \"<repo>/skills/benchmark-honestly/examples/two_sorts.py\" a \"/usr/local/bin/python3\" \"<repo>/skills/benchmark-honestly/examples/two_sorts.py\" b --runs 12 --warmup 2 --md <runs>/benchmark-honestly/report.md --json <runs>/benchmark-honestly/report.json --shell"
+      ],
+      "artifacts": [
+        "evidence/benchmark-honestly/two_sorts_report.md",
+        "evidence/benchmark-honestly/run.log.txt"
+      ],
+      "gaps": "Open-loop latency tester not re-run. The equal-work case should report no clear difference; read the verdict.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:13:36"
+    },
+    "bisect-anything": {
+      "status": "functionally verified",
+      "observed": "selftest: all planted scenarios found the right commit (14.8 s)",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/bisect-anything/examples/selftest.py"
+      ],
+      "artifacts": [
+        "evidence/bisect-anything/run.log.txt"
+      ],
+      "gaps": "Windows process-tree kill path (taskkill /T) not exercised: no native Windows run.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:13:30"
+    },
+    "brand-kit": {
+      "status": "smoke tested",
+      "observed": "fictional local brand: extract exit 0, propose exit 0, board exit 0",
+      "commands": [
+        "/opt/node22/bin/node <repo>/skills/brand-kit/scripts/extract.mjs http://127.0.0.1:46845/index.html <runs>/brand-kit/kits/fernwick",
+        "/usr/local/bin/python3 <repo>/skills/brand-kit/scripts/propose.py <runs>/brand-kit/kits/fernwick --name Fernwick",
+        "/usr/local/bin/python3 <repo>/skills/brand-kit/scripts/board.py <runs>/brand-kit/kits/fernwick"
+      ],
+      "artifacts": [
+        "evidence/brand-kit/brand.json",
+        "evidence/brand-kit/board.png",
+        "evidence/brand-kit/run.log.txt"
+      ],
+      "gaps": "No real brand extracted (by design for fixtures). Official-guideline check is a manual step.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:20:57"
+    },
+    "clean-audio": {
+      "status": "blocked",
+      "observed": "needs Whisper in rough-cut/.venv for the clarity check; the model download (about 0.5 GB for small) has not been approved",
+      "commands": [],
+      "artifacts": [],
+      "gaps": "Next: python skills/rough-cut/setup.py --yes, then the commands in docs/VALIDATION_MATRIX.md.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:20:33"
+    },
+    "code-loop": {
+      "status": "functionally verified",
+      "observed": "exact seam, real loop: frame at LOOP vs frame 0: mean 0.001, max 1 (0-255), 0 pixels differ by more than 2 (pass); planted 1.37-cycle loop: frame at LOOP vs frame 0: mean 18.252, max 219 (0-255), 31105 pixels differ by more than 2 (caught); declared-hold clip: 'frozen spans' failure without --holds, reported as intended with --holds. Overall verdicts: preview FAIL: seam pop: part of the picture jumps by 2.8 levels at the wrap; 1 pops inside the loop; small final (320x180, 30 fps, 4-8 samples): PASS",
+      "commands": [
+        "/opt/node22/bin/node <repo>/skills/code-loop/scripts/render_loop.mjs shader_starter.html good.mp4 --preview --size=480x270 --maxk=2",
+        "/usr/local/bin/python3 <repo>/skills/code-loop/scripts/check_loop.py good.mp4 --heat blink.png",
+        "/opt/node22/bin/node <repo>/skills/code-loop/scripts/render_loop.mjs bad_loop.html bad.mp4 --preview --size=480x270 --maxk=2",
+        "/usr/local/bin/python3 <repo>/skills/code-loop/scripts/check_loop.py bad.mp4",
+        "/usr/local/bin/python3 <repo>/skills/code-loop/scripts/check_loop.py hold.mp4 --freeze-sec 0.5",
+        "/usr/local/bin/python3 <repo>/skills/code-loop/scripts/check_loop.py hold.mp4 --freeze-sec 0.5 --holds 0.75-1.65",
+        "/opt/node22/bin/node <repo>/skills/code-loop/scripts/render_loop.mjs shader_starter.html final_small.mp4 --size=320x180 --fps=30 --mink=4 --maxk=8",
+        "/usr/local/bin/python3 <repo>/skills/code-loop/scripts/check_loop.py final_small.mp4 --heat blink_final.png"
+      ],
+      "artifacts": [
+        "evidence/code-loop/good.render.json",
+        "evidence/code-loop/preview-frame-2s.png",
+        "evidence/code-loop/run.log.txt"
+      ],
+      "gaps": "The synthetic hold clip is not a loop, so its seam/blink verdicts are meaningless; only its freeze line is the test. Renders were small (480x270 preview, 320x180 final) on software WebGL; no 1080p final; Metal/D3D11 backends not exercised (no macOS/Windows run).",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:20:00"
+    },
+    "codebase-map": {
+      "status": "smoke tested",
+      "observed": "entrypoints/deps/hotspots ran on this repo; Python trace recorded 6 hops in hashstore.py",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/codebase-map/scripts/entrypoints.py <repo>",
+        "/usr/local/bin/python3 <repo>/skills/codebase-map/scripts/deps.py <repo>/skills --json <runs>/codebase-map/deps.json --mermaid <runs>/codebase-map/deps.mmd",
+        "/usr/local/bin/python3 <repo>/skills/codebase-map/scripts/hotspots.py <repo> --deps <runs>/codebase-map/deps.json --anonymize",
+        "/usr/local/bin/python3 <repo>/skills/codebase-map/scripts/trace_py.py --repo <repo> --out <runs>/codebase-map/trace.txt -- <repo>/skills/from-scratch/examples/content-hash-store/hashstore.py --step 2"
+      ],
+      "artifacts": [
+        "evidence/codebase-map/trace.txt",
+        "evidence/codebase-map/run.log.txt"
+      ],
+      "gaps": "MAP.md synthesis is a human/agent step and was not written for this repo here.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:11"
+    },
+    "design-critique": {
+      "status": "functionally verified",
+      "observed": "before/after diff exit 0 (375px: 6.83% pixels changed, box 24,70,327,436); button contrast before 1.41:1 fails, after 6.19:1 passes",
+      "commands": [
+        "/opt/node22/bin/node <repo>/skills/design-critique/scripts/before_after.mjs <repo>/skills/design-critique/examples/signup-form/before.html <repo>/skills/design-critique/examples/signup-form/after.html --widths 375,1280 --out <runs>/design-critique",
+        "/usr/local/bin/python3 <repo>/skills/design-system-build/scripts/tokens.py --pair #ffffff #b9e4bf",
+        "/usr/local/bin/python3 <repo>/skills/design-system-build/scripts/tokens.py --pair #ffffff #1f6f3a"
+      ],
+      "artifacts": [
+        "evidence/design-critique/375-before.png",
+        "evidence/design-critique/375-after.png",
+        "evidence/design-critique/375-diff.png",
+        "evidence/design-critique/before_after.md",
+        "evidence/design-critique/run.log.txt"
+      ],
+      "gaps": "The critique itself is judgement; only its evidence measurements are automated.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:22"
+    },
+    "design-system-build": {
+      "status": "functionally verified",
+      "observed": "tokens.json exit 0 (32 checks, 0 failed); broken copy exit 1 (36 checks, 11 failed); CSS audit clean exit 0, hard-coded page exit 1; committed tokens.css reproduces: True",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/design-system-build/scripts/tokens.py <repo>/skills/design-system-build/examples/garden-ui/tokens.json --css <runs>/design-system-build/tokens.css --report <runs>/design-system-build/good.md",
+        "/usr/local/bin/python3 <repo>/skills/design-system-build/scripts/tokens.py <repo>/skills/design-system-build/examples/garden-ui/tokens-broken.json --report <runs>/design-system-build/broken.md",
+        "/usr/local/bin/python3 <repo>/skills/design-system-build/scripts/tokens.py --audit-css <repo>/skills/design-system-build/examples/garden-ui/components.html",
+        "/usr/local/bin/python3 <repo>/skills/design-system-build/scripts/tokens.py --audit-css <repo>/skills/design-critique/examples/signup-form/before.html"
+      ],
+      "artifacts": [
+        "evidence/design-system-build/token-report.md",
+        "evidence/design-system-build/token-report-broken.md",
+        "evidence/design-system-build/run.log.txt"
+      ],
+      "gaps": "",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:23"
+    },
+    "design-to-code-inspection": {
+      "status": "functionally verified",
+      "observed": "planted fixture: exit 1, 10 mismatches; fixed: exit 0, 0 mismatches",
+      "commands": [
+        "/opt/node22/bin/node <repo>/skills/design-to-code-inspection/scripts/inspect_layout.mjs <repo>/skills/design-to-code-inspection/examples/pricing-card/spec.json --out <runs>/design-to-code-inspection/bad",
+        "/opt/node22/bin/node <repo>/skills/design-to-code-inspection/scripts/inspect_layout.mjs <repo>/skills/design-to-code-inspection/examples/pricing-card/spec.json --page fixed.html --out <runs>/design-to-code-inspection/good"
+      ],
+      "artifacts": [
+        "evidence/design-to-code-inspection/report-planted.md",
+        "evidence/design-to-code-inspection/report-fixed.md",
+        "evidence/design-to-code-inspection/fixed-375.png",
+        "evidence/design-to-code-inspection/run.log.txt"
+      ],
+      "gaps": "",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:21"
+    },
+    "dx-audit": {
+      "status": "smoke tested",
+      "observed": "offline docs fixture: init/snapshot/step/run/amend/metrics/render exit codes [0, 0, 0, 0, 0, 0, 0]",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/dx-audit/scripts/friction.py init <runs>/dx-audit/audit --tool Tally (fixture) --goal print tally ok --success prints 'tally ok' --docs file://<runs>/dx-audit/docs%20site/index.html --env Linux fixture --redact <runs>/dx-audit=~",
+        "/opt/node22/bin/node <repo>/skills/dx-audit/scripts/snapshot.mjs file://<runs>/dx-audit/docs%20site/index.html <runs>/dx-audit/audit --links --name 01-quickstart",
+        "/usr/local/bin/python3 <repo>/skills/dx-audit/scripts/friction.py step <runs>/dx-audit/audit --url index.html --action Open the quickstart --shot screenshots/01-quickstart.png",
+        "/usr/local/bin/python3 <repo>/skills/dx-audit/scripts/friction.py run <runs>/dx-audit/audit --url index.html --action Run the snippet --cwd <runs>/dx-audit --show python -c ... --success-if-ok -- \"/usr/local/bin/python3\" -c \"print('tally ok')\"",
+        "/usr/local/bin/python3 <repo>/skills/dx-audit/scripts/friction.py amend <runs>/dx-audit/audit 2 --tag dead-link --sev 1 --note Next link is a 404 in the fixture --fix Link to configuration.html",
+        "/usr/local/bin/python3 <repo>/skills/dx-audit/scripts/friction.py metrics <runs>/dx-audit/audit",
+        "/usr/local/bin/python3 <repo>/skills/dx-audit/scripts/friction.py render <runs>/dx-audit/audit"
+      ],
+      "artifacts": [
+        "evidence/dx-audit/audit.md",
+        "evidence/dx-audit/timeline.png",
+        "evidence/dx-audit/run.log.txt"
+      ],
+      "gaps": "No real third-party tool audited; the env -i sandbox recipe is POSIX-only.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:38"
+    },
+    "flaky-test-killer": {
+      "status": "functionally verified",
+      "observed": "planted suite: 30 runs, 22 failed, rate 73.3% (95% CI 55.6% to 85.8%); fixed variant: 30 runs, 0 failed, rate 0.0% (95% CI 0.0% to 11.4%); one-sided Fisher p = 4.135e-10",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/flaky-test-killer/scripts/flake_rate.py -n 30 --json <runs>/flaky-test-killer/before.json -- /usr/local/bin/python3 run_tests.py --seed {seed}",
+        "/usr/local/bin/python3 <repo>/skills/flaky-test-killer/scripts/flake_rate.py -n 30 --json <runs>/flaky-test-killer/after.json --compare <runs>/flaky-test-killer/before.json -- /usr/local/bin/python3 run_tests.py --seed {seed}"
+      ],
+      "artifacts": [
+        "evidence/flaky-test-killer/run.log.txt"
+      ],
+      "gaps": "Stressor sweep and polluter search not re-run here; node-shop not run.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:17:16"
+    },
+    "from-scratch": {
+      "status": "functionally verified",
+      "observed": "worked example matches `git hash-object` for empty, ASCII, Unicode and binary input; tamper detection shown",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/from-scratch/examples/content-hash-store/hashstore.py --step 4",
+        "/usr/local/bin/python3 <repo>/skills/from-scratch/examples/content-hash-store/hashstore.py --compare-git"
+      ],
+      "artifacts": [
+        "evidence/from-scratch/run.log.txt"
+      ],
+      "gaps": "The method itself is guidance; only the worked example is executable.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:19"
+    },
+    "image-gen": {
+      "status": "smoke tested",
+      "observed": "offline only: --check exit 0; --dry-run exit 0 shows 3 paid calls; without --approve-spend exit 3, no request sent. No provider was called.",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/image-gen/scripts/gen_image.py --check",
+        "/usr/local/bin/python3 <repo>/skills/image-gen/scripts/gen_image.py a red teapot --n 3 --cutout --dry-run",
+        "/usr/local/bin/python3 <repo>/skills/image-gen/scripts/gen_image.py a red teapot --n 3"
+      ],
+      "artifacts": [
+        "evidence/image-gen/run.log.txt"
+      ],
+      "gaps": "Live provider generation not run: needs the user's key and approval of a paid call. This is not a provider pass.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:19"
+    },
+    "interaction-motion-study": {
+      "status": "functionally verified",
+      "observed": "study: exit 0, 0 failed checks; hover-only: exit 1, 6 failed checks",
+      "commands": [
+        "/opt/node22/bin/node <repo>/skills/interaction-motion-study/scripts/check_study.mjs <repo>/skills/interaction-motion-study/examples/disclosure-menu/index.html --out <runs>/interaction-motion-study/good",
+        "/opt/node22/bin/node <repo>/skills/interaction-motion-study/scripts/check_study.mjs <repo>/skills/interaction-motion-study/examples/disclosure-menu/hover-only.html --out <runs>/interaction-motion-study/bad"
+      ],
+      "artifacts": [
+        "evidence/interaction-motion-study/check-study.md",
+        "evidence/interaction-motion-study/check-hover-only.md",
+        "evidence/interaction-motion-study/open.png",
+        "evidence/interaction-motion-study/run.log.txt"
+      ],
+      "gaps": "Screen-reader announcements and touch not verified.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:29"
+    },
+    "learn-a-domain": {
+      "status": "static checks passed",
+      "observed": "guidance-only; scenarios defined, including a professional-advice refusal case",
+      "commands": [
+        "node tools/validate.mjs"
+      ],
+      "artifacts": [
+        "tests/scenarios/guidance.md"
+      ],
+      "gaps": "Guidance-only workflow: scenarios are written down; no automatic success score is claimed.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:20:33"
+    },
+    "next-step": {
+      "status": "static checks passed",
+      "observed": "guidance-only; scenarios defined",
+      "commands": [
+        "node tools/validate.mjs"
+      ],
+      "artifacts": [
+        "tests/scenarios/guidance.md"
+      ],
+      "gaps": "Guidance-only workflow: scenarios are written down; no automatic success score is claimed.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:20:33"
+    },
+    "paper-to-runnable": {
+      "status": "smoke tested",
+      "observed": "grokking sanity ladder (--check) exit 0: rst relative error 9.8e-08: ok | 3. overfit one batch of 64 (no weight decay) | after 300 steps: loss 0.0010, batch accuracy 1.00: ok | 4. chance level at init | val accuracy 0.009 vs chance 0.010: ok | all checks passed",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/paper-to-runnable/examples/grokking/grok.py --check"
+      ],
+      "artifacts": [
+        "evidence/paper-to-runnable/run.log.txt"
+      ],
+      "gaps": "Full toy run, ablation and visualisation not re-run (time; matplotlib not installed here). fetch_paper not run (network).",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:32"
+    },
+    "perspective-illusion": {
+      "status": "smoke tested",
+      "observed": "street.html stills render exit 0; [gl] requested default, launched default; renderer: ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver) (software rendering, no GPU acceleration)",
+      "commands": [
+        "npm install --no-audit --no-fund three@0.170.0 playwright@1.63.0",
+        "/opt/node22/bin/node render.mjs street.html x.mp4 --stills=0.3,3"
+      ],
+      "artifacts": [
+        "evidence/perspective-illusion/street-still-0.png",
+        "evidence/perspective-illusion/street-still-1.png",
+        "evidence/perspective-illusion/run.log.txt"
+      ],
+      "gaps": "Only stills; no preview or final video (software WebGL is slow). scramble_night needs the unshipped cut-outs.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:14:11"
+    },
+    "repo-timelapse": {
+      "status": "smoke tested",
+      "observed": "extract exit 0 (anonymised; redaction applied: True); stills render exit 0",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/repo-timelapse/scripts/extract.py <repo> -o <runs>/repo-timelapse/history.json --anonymize --redact-messages upstream --name SumitCraft",
+        "/opt/node22/bin/node <repo>/skills/repo-timelapse/scripts/render.mjs <runs>/repo-timelapse/history.json <runs>/repo-timelapse/timelapse.mp4 --stills 2,6 --duration 8"
+      ],
+      "artifacts": [
+        "evidence/repo-timelapse/history.messages.txt",
+        "evidence/repo-timelapse/still-0.png",
+        "evidence/repo-timelapse/still-1.png",
+        "evidence/repo-timelapse/run.log.txt"
+      ],
+      "gaps": "Few commits in this repo, so the video is thin by the skill's own rule; no full video rendered here.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:50"
+    },
+    "reverse-engineer-video": {
+      "status": "functionally verified",
+      "observed": "synthetic clip with cuts at 1.5/3.0/4.5 s: detected [1.5, 3.0, 4.5]",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/reverse-engineer-video/scripts/analyze.py <runs>/reverse-engineer-video/clip.mp4 -o <runs>/reverse-engineer-video/out"
+      ],
+      "artifacts": [
+        "evidence/reverse-engineer-video/detected_cuts.json",
+        "evidence/reverse-engineer-video/contact_sheet.png",
+        "evidence/reverse-engineer-video/run.log.txt"
+      ],
+      "gaps": "Camera-motion labels not checked against a known answer; OpenCV, Whisper and tesseract paths not exercised.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:41"
+    },
+    "rough-cut": {
+      "status": "smoke tested",
+      "observed": "model-free synthetic take: find_cuts exit 0, kept text 'so the plan works' (filler dropped, retake kept once); render exit 0",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/rough-cut/scripts/find_cuts.py <runs>/rough-cut",
+        "/usr/local/bin/python3 <repo>/skills/rough-cut/scripts/render.py <runs>/rough-cut --w 320 --v 1"
+      ],
+      "artifacts": [
+        "evidence/rough-cut/edl.json",
+        "evidence/rough-cut/cut_sheet.md",
+        "evidence/rough-cut/run.log.txt"
+      ],
+      "gaps": "transcribe.py and verify.py need Whisper weights (0.5-1.5 GB download): blocked pending approval. No real speech, no Hindi/English test yet.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:13:00"
+    },
+    "scripted-screencast": {
+      "status": "smoke tested",
+      "observed": "demo run from a folder named 'demo folder \u00fc \u2713': preview exit 0 (1 mp4), stills exit 0, 2 stills",
+      "commands": [
+        "/opt/node22/bin/node <repo>/skills/scripted-screencast/scripts/render.mjs <runs>/scripted-screencast/demo folder \u00fc \u2713/tidy-demo.mjs --preview",
+        "/opt/node22/bin/node <repo>/skills/scripted-screencast/scripts/render.mjs <runs>/scripted-screencast/demo folder \u00fc \u2713/tidy-demo.mjs --preview --stills 2,6"
+      ],
+      "artifacts": [
+        "evidence/scripted-screencast/still-0.png",
+        "evidence/scripted-screencast/still-1.png",
+        "evidence/scripted-screencast/run.log.txt"
+      ],
+      "gaps": "Windows drive-letter URL path verified by code review and the URL unit check in tests/unit_paths.mjs, not on Windows.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:20:22"
+    },
+    "security-threat-model": {
+      "status": "functionally verified",
+      "observed": "vulnerable: exit 1 (failures=13); fixed: exit 0 (Ran 18 tests)",
+      "commands": [
+        "/usr/local/bin/python3 -m unittest discover -s tests  [TARGET=vulnerable]",
+        "/usr/local/bin/python3 -m unittest discover -s tests  [TARGET=fixed]"
+      ],
+      "artifacts": [
+        "evidence/security-threat-model/run.log.txt"
+      ],
+      "gaps": "Owned local fixture only, by design.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:19"
+    },
+    "skill-router": {
+      "status": "functionally verified",
+      "observed": "catalog.py lists 31/31 repo skills",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/skill-router/scripts/catalog.py --json"
+      ],
+      "artifacts": [
+        "evidence/skill-router/run.log.txt"
+      ],
+      "gaps": "Routing judgement is covered by scenarios in tests/scenarios/guidance.md, not executed automatically.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:19"
+    },
+    "system-design-from-scratch": {
+      "status": "functionally verified",
+      "observed": "raft-election: exit 0, Ran 10 tests; rate-limiter: exit 0, Ran 13 tests",
+      "commands": [
+        "/usr/local/bin/python3 -m unittest test_raft -v",
+        "/usr/local/bin/python3 -m unittest test_limiters -v"
+      ],
+      "artifacts": [
+        "evidence/system-design-from-scratch/run.log.txt"
+      ],
+      "gaps": "Load tests and fault sweeps from DESIGN.md not re-run here.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:31"
+    },
+    "teach-back": {
+      "status": "static checks passed",
+      "observed": "guidance-only; scenarios defined",
+      "commands": [
+        "node tools/validate.mjs"
+      ],
+      "artifacts": [
+        "tests/scenarios/guidance.md"
+      ],
+      "gaps": "Guidance-only workflow: scenarios are written down; no automatic success score is claimed.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:20:33"
+    },
+    "video-script": {
+      "status": "static checks passed",
+      "observed": "guidance-only; scenarios defined",
+      "commands": [
+        "node tools/validate.mjs"
+      ],
+      "artifacts": [
+        "tests/scenarios/guidance.md"
+      ],
+      "gaps": "Guidance-only workflow: scenarios are written down; no automatic success score is claimed.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:20:33"
+    },
+    "visual-reference-analysis": {
+      "status": "functionally verified",
+      "observed": "accent coverage measured 0.1793 vs 0.1798 from the fixture's geometry; analysis exit 0",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/visual-reference-analysis/scripts/analyze_image.py <repo>/skills/visual-reference-analysis/examples/poster-study/reference.png --out <runs>/visual-reference-analysis/ref"
+      ],
+      "artifacts": [
+        "evidence/visual-reference-analysis/known-answer.txt",
+        "evidence/visual-reference-analysis/run.log.txt"
+      ],
+      "gaps": "Hierarchy and meaning are judgement, reviewed by eye, not measured.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:12:30"
+    },
+    "vox-explainer": {
+      "status": "smoke tested",
+      "observed": "one scene as stills in 3 presets from a given word-timing file: exit codes [0, 0, 0], 6 stills",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/vox-explainer/scripts/build.py <runs>/vox-explainer/editorial-collage.json --words <runs>/vox-explainer/words.json --stills 1.9,4.5",
+        "/usr/local/bin/python3 <repo>/skills/vox-explainer/scripts/build.py <runs>/vox-explainer/quiet-paper.json --words <runs>/vox-explainer/words.json --stills 1.9,4.5",
+        "/usr/local/bin/python3 <repo>/skills/vox-explainer/scripts/build.py <runs>/vox-explainer/night-signal.json --words <runs>/vox-explainer/words.json --stills 1.9,4.5"
+      ],
+      "artifacts": [
+        "evidence/vox-explainer/editorial-collage-0.png",
+        "evidence/vox-explainer/editorial-collage-1.png",
+        "evidence/vox-explainer/quiet-paper-0.png",
+        "evidence/vox-explainer/quiet-paper-1.png",
+        "evidence/vox-explainer/night-signal-0.png",
+        "evidence/vox-explainer/night-signal-1.png",
+        "evidence/vox-explainer/run.log.txt"
+      ],
+      "gaps": "No voiceover transcription (Whisper) and no preview/final video here; photo beats with url not exercised.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:13:03"
+    },
+    "work-to-explanation": {
+      "status": "functionally verified",
+      "observed": "real case study: exit 0; planted bad draft: exit 1, blockers ['evidence', 'front-matter', 'private-path', 'secret']",
+      "commands": [
+        "/usr/local/bin/python3 <repo>/skills/work-to-explanation/scripts/preflight.py <repo>/skills/work-to-explanation/examples/webgl-backend-case-study/draft.md",
+        "/usr/local/bin/python3 <repo>/skills/work-to-explanation/scripts/preflight.py <runs>/work-to-explanation/bad-draft.md"
+      ],
+      "artifacts": [
+        "evidence/work-to-explanation/run.log.txt"
+      ],
+      "gaps": "Patterns are heuristics; a person still reads the draft.",
+      "platform": "Linux 6.18.44-fc-v445 (x86_64), Python 3.13.18",
+      "when": "2026-11-13T10:20:38"
+    }
+  }
+}

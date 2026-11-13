@@ -62,3 +62,5 @@ These apply to every preset and brand. Palette, typography, edges and motion sty
 - The motion check flags holds of 0.5 s or more. A deliberate hold is allowed: say so, and have a person watch the preview. The check is a diagnostic, not a substitute for watching.
 
 Research, design reasoning and what each choice fixes: [reference.md](reference.md).
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

@@ -1,0 +1,39 @@
+$ /usr/local/bin/python3 -m unittest test_raft -v
+[exit 0, 1.3 s]
+test_full_disks_spend_the_fault_budget (test_raft.Disks.test_full_disks_spend_the_fault_budget) ... ok
+test_one_full_disk_plus_a_leader_crash_still_elects (test_raft.Disks.test_one_full_disk_plus_a_leader_crash_still_elects) ... ok
+test_fixed_timeouts_split_the_vote_forever (test_raft.Election.test_fixed_timeouts_split_the_vote_forever) ... ok
+test_healthy_cluster_elects_one_leader_quickly (test_raft.Election.test_healthy_cluster_elects_one_leader_quickly) ... ok
+test_new_leader_after_leader_crash (test_raft.Election.test_new_leader_after_leader_crash) ... ok
+test_minority_leader_cannot_commit_and_steps_down_on_heal (test_raft.Partitions.test_minority_leader_cannot_commit_and_steps_down_on_heal) ... ok
+test_pre_vote_stops_a_returning_node_from_deposing_the_leader (test_raft.Partitions.test_pre_vote_stops_a_returning_node_from_deposing_the_leader) ... ok
+test_checker_catches_missing_log_check (test_raft.RandomFaults.test_checker_catches_missing_log_check) ... ok
+test_checker_catches_unpersisted_vote (test_raft.RandomFaults.test_checker_catches_unpersisted_vote) ... ok
+test_correct_raft_survives_random_faults (test_raft.RandomFaults.test_correct_raft_survives_random_faults) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 1.200s
+
+OK
+
+$ /usr/local/bin/python3 -m unittest test_limiters -v
+[exit 0, 0.1 s]
+sliding counter worst window / limit on random traces: 1.80
+test_idle_key_recovers_full_allowance (test_limiters.AllLimiters.test_idle_key_recovers_full_allowance) ... ok
+test_keys_are_independent (test_limiters.AllLimiters.test_keys_are_independent) ... ok
+test_boundary_burst_reaches_twice_the_limit (test_limiters.FixedWindowProperties.test_boundary_burst_reaches_twice_the_limit) ... ok
+test_each_aligned_window_within_limit (test_limiters.FixedWindowProperties.test_each_aligned_window_within_limit) ... ok
+test_boundary_burst_is_blocked (test_limiters.SlidingCounterProperties.test_boundary_burst_is_blocked) ... ok
+test_current_window_never_exceeds_limit_so_any_window_below_2x (test_limiters.SlidingCounterProperties.test_current_window_never_exceeds_limit_so_any_window_below_2x) ... ok
+test_admits_exactly_when_oracle_says_there_is_room (test_limiters.SlidingLogProperties.test_admits_exactly_when_oracle_says_there_is_room) ... ok
+test_no_window_exceeds_limit (test_limiters.SlidingLogProperties.test_no_window_exceeds_limit) ... ok
+test_backwards_clock_jump_does_not_lock_out (test_limiters.TokenBucketProperties.test_backwards_clock_jump_does_not_lock_out) ... ok
+test_gcra_locks_out_after_backwards_clock_jump (test_limiters.TokenBucketProperties.test_gcra_locks_out_after_backwards_clock_jump) ... ok
+test_gcra_makes_identical_decisions (test_limiters.TokenBucketProperties.test_gcra_makes_identical_decisions) ... ok
+test_long_run_rate_converges_under_saturation (test_limiters.TokenBucketProperties.test_long_run_rate_converges_under_saturation) ... ok
+test_never_exceeds_burst_plus_rate_times_interval (test_limiters.TokenBucketProperties.test_never_exceeds_burst_plus_rate_times_interval) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.081s
+
+OK

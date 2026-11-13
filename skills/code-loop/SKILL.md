@@ -79,3 +79,5 @@ Fine grain and noise compress badly and turn to mush after a platform re-encode,
 [perspective-illusion](../perspective-illusion/SKILL.md) is one style built on this engine: a telephoto line-art scene with dolly zooms, multi-pass ink lines and a scripted camera. Its templates use an earlier form of the same page contract, without `window.LOOP` and `?w=&h=`, and its `render_fast.mjs` is the ancestor of `render_loop.mjs`.
 
 Details on each topic, more looping techniques and troubleshooting are in [reference.md](reference.md).
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

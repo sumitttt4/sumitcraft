@@ -64,3 +64,5 @@ after: 0/300 failed (rate < 1.0% at 95%), Fisher p = 7e-41; sweep clean on tz, c
 `python3 <skill>/examples/make_examples.py --out /some/tmp/dir` makes a unittest project and a node:test project with an order dependency, a month end bug, a timezone bug, a sleep race and an unawaited promise. `--variant fixed` writes the fixed versions to compare against.
 
 Per-ecosystem commands (pytest, jest, vitest, node:test, go, cargo, JUnit), the full cause taxonomy, and the statistics are in [reference.md](reference.md).
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

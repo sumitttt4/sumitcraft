@@ -1,0 +1,266 @@
+$ /usr/local/bin/python3 <repo>/skills/codebase-map/scripts/entrypoints.py <repo>
+[exit 0, 0.4 s]
+ skills/bisect-anything/scripts/oracles/img_diff.py:105 | argparse |  |
+| skills/bisect-anything/scripts/oracles/serve_oracle.py:66 | argparse |  |
+| skills/code-loop/scripts/check_loop.py:61 | argparse |  |
+| skills/codebase-map/scripts/deps.py:560 | argparse |  |
+| skills/codebase-map/scripts/entrypoints.py:283 | argparse |  |
+| skills/codebase-map/scripts/hotspots.py:95 | argparse |  |
+| skills/codebase-map/scripts/trace_py.py:28 | argparse |  |
+| skills/dx-audit/scripts/friction.py:704 | argparse |  |
+| skills/dx-audit/scripts/friction.py:720 | argparse subcommand | init |
+| skills/dx-audit/scripts/friction.py:731 | argparse subcommand | step |
+| skills/dx-audit/scripts/friction.py:739 | argparse subcommand | run |
+| skills/dx-audit/scripts/friction.py:747 | argparse subcommand | amend |
+| skills/dx-audit/scripts/friction.py:753 | argparse subcommand | redact |
+| skills/dx-audit/scripts/friction.py:758 | argparse subcommand | errcheck |
+| skills/dx-audit/scripts/friction.py:766 | argparse subcommand | grade |
+| skills/dx-audit/scripts/friction.py:775 | argparse subcommand | metrics |
+| skills/dx-audit/scripts/friction.py:780 | argparse subcommand | render |
+| skills/dx-audit/scripts/friction.py:785 | argparse subcommand | reel |
+| skills/flaky-test-killer/examples/make_examples.py:428 | argparse |  |
+| skills/flaky-test-killer/scripts/find_polluter.py:143 | argparse |  |
+| skills/flaky-test-killer/scripts/flake_rate.py:318 | argparse |  |
+| skills/flaky-test-killer/scripts/stress.py:306 | argparse |  |
+| skills/paper-to-runnable/examples/grokking/grok.py:218 | argparse |  |
+| skills/paper-to-runnable/examples/grokking/visualize.py:115 | argparse |  |
+| skills/paper-to-runnable/scripts/animate.py:79 | argparse |  |
+| skills/paper-to-runnable/scripts/fetch_paper.py:243 | argparse |  |
+| skills/repo-timelapse/scripts/extract.py:166 | argparse |  |
+| skills/reverse-engineer-video/scripts/analyze.py:62 | argparse |  |
+
+...and 6 more.
+
+## Background jobs and schedules
+
+_None found._
+
+## HTTP routes and pages (0)
+
+_None found._
+
+## Data model
+
+_No ORM models, schema files or CREATE TABLE statements found. The data may live in an external service, in plain classes (dataclasses, pydantic, TS types), or in JSON files._
+
+## Config read from the environment (15 names)
+
+| name | read in | first place | in a .env template |
+|---|---|---|---|
+| FFMPEG | 26 places | skills/brand-kit/scripts/board.py:46 | no template |
+| APPDATA | 3 places | skills/image-gen/scripts/gen_image.py:34 | no template |
+| SUMITCRAFT_CONFIG | 3 places | skills/image-gen/scripts/gen_image.py:30 | no template |
+| WHISPER_MODEL | 3 places | skills/reverse-engineer-video/scripts/audio.py:213 | no template |
+| XDG_CONFIG_HOME | 3 places | skills/image-gen/scripts/gen_image.py:36 | no template |
+| FLAKE_FAKE_FREEZE | 2 places | skills/flaky-test-killer/scripts/shims/node/clock_shim.cjs:9 | no template |
+| FLAKE_FAKE_NOW_EPOCH | 2 places | skills/flaky-test-killer/scripts/shims/node/clock_shim.cjs:5 | no template |
+| SUMITCRAFT_GL | 2 places | skills/code-loop/scripts/gpu_backend.mjs:15 | no template |
+| TESSERACT | 2 places | skills/reverse-engineer-video/scripts/ocr.py:9 | no template |
+| BISECT_COMMIT | 1 place | skills/bisect-anything/examples/selftest.py:43 | no template |
+| BISECT_RUN | 1 place | skills/bisect-anything/examples/selftest.py:43 | no template |
+| DEMO_INSTALL_LOG | 1 place | skills/bisect-anything/examples/make_demo_repo.py:94 | no template |
+| FONT | 1 place | skills/reverse-engineer-video/scripts/common.py:106 | no template |
+| PAYMENTS_API_KEY | 1 place | skills/security-threat-model/examples/invoice-api/fixed/app.py:166 | no template |
+| PAYMENTS_WEBHOOK_SECRET | 1 place | skills/security-threat-model/examples/invoice-api/fixed/app.py:148 | no template |
+
+## Tests (5 files)
+
+| folder | test files |
+|---|---|
+| skills/system-design-from-scratch | 2 |
+| skills/benchmark-honestly | 1 |
+| skills/security-threat-model | 1 |
+| tests/run_checks.py | 1 |
+
+$ /usr/local/bin/python3 <repo>/skills/codebase-map/scripts/deps.py <repo>/skills --json <runs>/codebase-map/deps.json --mermaid <runs>/codebase-map/deps.mmd
+[exit 0, 0.3 s]
+i_design_review["api-design-review<br/>4 files"]
+  n_benchmark_honestly["benchmark-honestly<br/>9 files"]
+  n_bisect_anything["bisect-anything<br/>10 files"]
+  n_brand_kit["brand-kit<br/>3 files"]
+  n_code_loop["code-loop<br/>3 files"]
+  n_codebase_map["codebase-map<br/>6 files"]
+  n_dx_audit["dx-audit<br/>3 files"]
+  n_flaky_test_killer["flaky-test-killer<br/>6 files"]
+  n_paper_to_runnable["paper-to-runnable<br/>5 files"]
+  n_perspective_illusion["perspective-illusion<br/>5 files"]
+  n_repo_timelapse["repo-timelapse<br/>2 files"]
+  n_reverse_engineer_video["reverse-engineer-video<br/>9 files"]
+  n_rough_cut["rough-cut<br/>6 files"]
+  n_scripted_screencast["scripted-screencast<br/>4 files"]
+  n_security_threat_model["security-threat-model<br/>5 files"]
+  n_system_design_from_scratch["system-design-from-scratch<br/>7 files"]
+  n_vox_explainer["vox-explainer<br/>4 files"]
+```
+
+## Layers (top depends on bottom)
+
+Level 0 imports nothing else in the repo: the foundation. Higher levels build on lower ones. Folders in the same cycle share a level.
+
+| level | folders |
+|---|---|
+| 0 | (root) (rest), api-design-review, benchmark-honestly, bisect-anything, brand-kit, code-loop, codebase-map, dx-audit, flaky-test-killer, paper-to-runnable, perspective-illusion, repo-timelapse, reverse-engineer-video, rough-cut, scripted-screencast, security-threat-model, system-design-from-scratch, vox-explainer |
+
+## Folders
+
+| folder | files | used by (folders) | uses (folders) | instability |
+|---|---|---|---|---|
+| (root) (rest) | 11 | 0 | 0 | - |
+| bisect-anything | 10 | 0 | 0 | - |
+| benchmark-honestly | 9 | 0 | 0 | - |
+| reverse-engineer-video | 9 | 0 | 0 | - |
+| system-design-from-scratch | 7 | 0 | 0 | - |
+| codebase-map | 6 | 0 | 0 | - |
+| rough-cut | 6 | 0 | 0 | - |
+| flaky-test-killer | 6 | 0 | 0 | - |
+| paper-to-runnable | 5 | 0 | 0 | - |
+| security-threat-model | 5 | 0 | 0 | - |
+| perspective-illusion | 5 | 0 | 0 | - |
+| vox-explainer | 4 | 0 | 0 | - |
+| scripted-screencast | 4 | 0 | 0 | - |
+| api-design-review | 4 | 0 | 0 | - |
+| code-loop | 3 | 0 | 0 | - |
+| brand-kit | 3 | 0 | 0 | - |
+| dx-audit | 3 | 0 | 0 | - |
+| repo-timelapse | 2 | 0 | 0 | - |
+
+Instability near 0 = many things depend on it and it depends on little (change it carefully). Near 1 = it depends on others and nothing depends on it (safe to change).
+
+## Folder cycles (runtime imports only)
+
+_None. The folder graph is a clean DAG._
+
+## File cycles (runtime imports only): 0 groups
+
+_None._
+
+## Load-bearing files (most distinct importers)
+
+| file | imported by |
+|---|---|
+| reverse-engineer-video/scripts/common.py | 5 |
+| rough-cut/scripts/common.py | 4 |
+| bisect-anything/scripts/_common.py | 3 |
+| codebase-map/scripts/common.py | 3 |
+| perspective-illusion/templates/gpu_backend.mjs | 3 |
+| api-design-review/scripts/_spec.py | 2 |
+| reverse-engineer-video/scripts/sheets.py | 2 |
+| system-design-from-scratch/examples/rate-limiter/limiters.py | 2 |
+| benchmark-honestly/scripts/env_report.py | 1 |
+| clean-audio/scripts/common.py | 1 |
+| code-loop/scripts/gpu_backend.mjs | 1 |
+| flaky-test-killer/scripts/flake_rate.py | 1 |
+| reverse-engineer-video/scripts/cuts.py | 1 |
+| reverse-engineer-video/scripts/motion.py | 1 |
+| reverse-engineer-video/scripts/audio.py | 1 |
+
+## Possibly dead files: 0 with no importers
+
+Not imported by anything, and not an entrypoint, test or framework-loaded file by name or folder. Check for dynamic imports, plugin registries, string-based loading and config before deleting.
+
+_None._
+
+## Most used external packages
+
+| lang | package | import statements |
+|---|---|---|
+| python | numpy | 15 |
+| js | playwright | 13 |
+| python | matplotlib | 8 |
+| python | mlx_whisper | 3 |
+| python | faster_whisper | 3 |
+| python (local file, sys.path) | faultsim | 3 |
+| python | yaml | 2 |
+| python (local file, sys.path) | animate | 1 |
+| python | pypdf | 1 |
+| python | PIL | 1 |
+| python | whisper | 1 |
+| python | cv2 | 1 |
+| python (local file, sys.path) | loadgen | 1 |
+
+$ /usr/local/bin/python3 <repo>/skills/codebase-map/scripts/hotspots.py <repo> --deps <runs>/codebase-map/deps.json --anonymize
+[exit 0, 0.1 s]
+ | 644 | 15 | 1 | Dev A (100%) |
+| 28.1 | skills/system-design-from-scratch/examples/raft-election/raft.py | 2 | 357 | 300 | 642 | 6 | 1 | Dev A (100%) |
+| 27.6 | skills/benchmark-honestly/scripts/env_report.py | 2 | 377 | 336 | 631 | 14 | 1 | Dev A (100%) |
+| 25.3 | skills/api-design-review/scripts/_spec.py | 2 | 324 | 282 | 577 | 10 | 1 | Dev A (100%) |
+| 25.1 | skills/flaky-test-killer/scripts/stress.py | 2 | 350 | 293 | 573 | 8 | 1 | Dev A (100%) |
+| 23.3 | skills/bisect-anything/scripts/bisect.py | 2 | 344 | 290 | 533 | 10 | 1 | Dev A (100%) |
+| 22.9 | skills/reverse-engineer-video/scripts/motion.py | 2 | 378 | 329 | 524 | 5 | 1 | Dev A (100%) |
+| 22.8 | skills/flaky-test-killer/scripts/flake_rate.py | 2 | 405 | 345 | 521 | 8 | 1 | Dev A (100%) |
+
+## Change coupling (files that change together)
+
+Degree = shared commits / average revisions. Cross-folder pairs are the hidden dependencies. `import link = NO` means nothing in the code says these two are connected.
+
+_No pairs above the thresholds. Lower `--min-shared` or widen `--days`._
+
+## Ownership by folder (lines changed in window)
+
+| folder | lines changed | authors | top authors |
+|---|---|---|---|
+| skills/system-design-from-scratch | 2146 | 1 | Dev A 100% |
+| skills/api-design-review | 2126 | 1 | Dev A 100% |
+| skills/bisect-anything | 1998 | 1 | Dev A 100% |
+| skills/reverse-engineer-video | 1740 | 1 | Dev A 100% |
+| skills/codebase-map | 1720 | 1 | Dev A 100% |
+| skills/flaky-test-killer | 1514 | 1 | Dev A 100% |
+| skills/benchmark-honestly | 1270 | 1 | Dev A 100% |
+| skills/security-threat-model | 1074 | 1 | Dev A 100% |
+| skills/dx-audit | 1033 | 1 | Dev A 100% |
+| skills/paper-to-runnable | 826 | 1 | Dev A 100% |
+| skills/scripted-screencast | 769 | 1 | Dev A 100% |
+| skills/rough-cut | 668 | 1 | Dev A 100% |
+| skills/repo-timelapse | 598 | 1 | Dev A 100% |
+| skills/code-loop | 434 | 1 | Dev A 100% |
+| skills/image-gen | 331 | 1 | Dev A 100% |
+| skills/brand-kit | 296 | 1 | Dev A 100% |
+| skills/vox-explainer | 288 | 1 | Dev A 100% |
+| skills/clean-audio | 259 | 1 | Dev A 100% |
+| skills/design-system-build | 187 | 1 | Dev A 100% |
+| skills/perspective-illusion | 172 | 1 | Dev A 100% |
+
+## Knowledge at risk (main author not active in last 90 days)
+
+_None: every file's main author is still active._
+
+## Bug magnets (2+ fix/revert commits in window)
+
+_None._
+
+## Frozen code (untouched for a year before HEAD, largest first)
+
+Either a stable foundation or dead code. Check deps.py orphans before deciding.
+
+_None._
+
+## New code (created in the 30 days before HEAD)
+
+| file | LOC | created |
+|---|---|---|
+| skills/codebase-map/scripts/deps.py | 724 | 2026-11-13 |
+| skills/dx-audit/scripts/friction.py | 687 | 2026-11-13 |
+| skills/api-design-review/scripts/lint_openapi.py | 621 | 2026-11-13 |
+| skills/benchmark-honestly/scripts/bench.py | 562 | 2026-11-13 |
+| skills/api-design-review/scripts/sdk_surface.py | 551 | 2026-11-13 |
+| skills/system-design-from-scratch/scripts/loadgen.py | 522 | 2026-11-13 |
+| skills/api-design-review/scripts/breaking_diff.py | 442 | 2026-11-13 |
+| skills/repo-timelapse/scripts/extract.py | 419 | 2026-11-13 |
+| skills/flaky-test-killer/examples/make_examples.py | 359 | 2026-11-13 |
+| skills/system-design-from-scratch/scripts/faultsim.py | 355 | 2026-11-13 |
+| skills/flaky-test-killer/scripts/flake_rate.py | 345 | 2026-11-13 |
+| skills/scripted-screencast/scripts/capture.mjs | 339 | 2026-11-13 |
+| skills/benchmark-honestly/scripts/env_report.py | 336 | 2026-11-13 |
+| skills/codebase-map/scripts/entrypoints.py | 333 | 2026-11-13 |
+| skills/reverse-engineer-video/scripts/motion.py | 329 | 2026-11-13 |
+| skills/reverse-engineer-video/scripts/analyze.py | 329 | 2026-11-13 |
+| skills/system-design-from-scratch/examples/raft-election/raft.py | 300 | 2026-11-13 |
+| skills/flaky-test-killer/scripts/stress.py | 293 | 2026-11-13 |
+| skills/bisect-anything/scripts/bisect.py | 290 | 2026-11-13 |
+| skills/api-design-review/scripts/_spec.py | 282 | 2026-11-13 |
+
+$ /usr/local/bin/python3 <repo>/skills/codebase-map/scripts/trace_py.py --repo <repo> --out <runs>/codebase-map/trace.txt -- <repo>/skills/from-scratch/examples/content-hash-store/hashstore.py --step 2
+[exit 0, 0.1 s]
+put hello -> ce013625030ba8dba906f756967f9e9ca394464a stored at objects/ce/013625030ba8dba906f756967f9e9ca394464a
+
+trace written to <runs>/codebase-map/trace.txt

@@ -55,3 +55,5 @@ Every image gets a `<name>.json` sidecar with the exact prompt, model and settin
 - **Generated images are not evidence.** Never present one as a photo, screenshot, document or quote. The sidecar records it as generated.
 - For a series, generate one anchor image first. Then pass that same anchor as `--ref` to every other image. Never chain image 2 into image 3, because small errors pile up.
 - Show the user the contact sheet before using images anywhere. Regenerate one variation instead of all of them.
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

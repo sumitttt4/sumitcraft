@@ -73,3 +73,5 @@ Fix every broken one. Finish with a five-line summary in chat and the path to `M
 - Explain jargon the first time it appears, and put every project-specific term in the glossary.
 - First tasks must be small, real and safe: a test to add for a hotspot, a log line on the traced path, a dead file to confirm.
 - Depth, per-language tracing recipes, heuristics and their limits: [reference.md](reference.md). A real example: [examples/MAP.md](examples/MAP.md).
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

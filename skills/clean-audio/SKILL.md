@@ -48,3 +48,5 @@ Run with the rough-cut skill's Python (`PY` below): `<skill>/../rough-cut/.venv/
 - Don't push audio to digital silence between words. A little room sound is kept on purpose.
 
 What each step does, why it's built this way, and the test numbers: [reference.md](reference.md).
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

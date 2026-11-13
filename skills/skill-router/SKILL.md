@@ -77,3 +77,5 @@ These use skills from this repo. The method is the same for any skill set.
 - Chaining when one skill already covers both stages.
 - Skipping a stage's own checks to get to the next skill faster.
 - Forgetting a skill's safety rules when it runs inside a chain. Each skill's rules still apply in full.
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

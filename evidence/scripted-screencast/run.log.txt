@@ -1,0 +1,49 @@
+$ /opt/node22/bin/node <repo>/skills/scripted-screencast/scripts/render.mjs <runs>/scripted-screencast/demo folder ü ✓/tidy-demo.mjs --preview
+[exit 0, 20.6 s]
+capturing tidy-demo at 24 fps, 1x pixels
+
+  captured 1s
+  captured 2s
+  captured 3s
+  captured 4s
+  captured 5s
+  captured 6s
+  captured 7s
+  captured 8s
+  captured 9s
+  captured 10s
+  captured 11s
+  captured 12s
+  captured 13s
+  captured 14s
+  captured 15s
+  captured 16s
+  captured 17s
+  captured 410 frames (17.1 s), 217 unique screenshots
+
+  composing 0%
+  composing 6%
+  composing 12%
+  composing 18%
+  composing 23%
+  composing 29%
+  composing 35%
+  composing 41%
+  composing 47%
+  composing 53%
+  composing 59%
+  composing 64%
+  composing 70%
+  composing 76%
+  composing 82%
+  composing 88%
+  composing 94%
+  composing 100%
+  wrote <runs>/scripted-screencast/demo folder ü ✓/tidy-demo.preview.mp4 (960x540, 24 fps, 17.1 s)
+done in 20 s
+
+$ /opt/node22/bin/node <repo>/skills/scripted-screencast/scripts/render.mjs <runs>/scripted-screencast/demo folder ü ✓/tidy-demo.mjs --preview --stills 2,6
+[exit 0, 0.6 s]
+<runs>/scripted-screencast/demo folder ü ✓/stills/tidy-demo.preview_2s.jpg
+<runs>/scripted-screencast/demo folder ü ✓/stills/tidy-demo.preview_6s.jpg
+done in 0 s

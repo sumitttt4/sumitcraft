@@ -1,0 +1,60 @@
+{
+  "about": "Visual or audible reviews actually performed, by whom, on what. Only things someone looked at or listened to are listed. Agent reviews are labelled as such; they are not a substitute for the creator's own review.",
+  "reviews": {
+    "design-to-code-inspection": {
+      "kind": "visually reviewed (agent)",
+      "what": "fixed pricing card at 375 px: layout, gutter, button and fine print as specified",
+      "file": "evidence/design-to-code-inspection/fixed-375.png"
+    },
+    "design-critique": {
+      "kind": "visually reviewed (agent)",
+      "what": "375 px before, after and magenta diff: changes confined to the form; after state has visible labels, solid primary button, fix-it error",
+      "file": "evidence/design-critique/375-diff.png"
+    },
+    "design-system-build": {
+      "kind": "visually reviewed (agent)",
+      "what": "components.html at 1280 px: cards, enabled/disabled buttons, invalid input with message",
+      "file": "skills/design-system-build/examples/garden-ui/components.html"
+    },
+    "visual-reference-analysis": {
+      "kind": "visually reviewed (agent)",
+      "what": "overlay grid/centroid/palette agree with the poster; study is a different composition with the same principles",
+      "file": "skills/visual-reference-analysis/examples/poster-study/study.png"
+    },
+    "vox-explainer": {
+      "kind": "visually reviewed (agent)",
+      "what": "same beat in three presets: palette, case, composition and highlight differ as specified. Finding: the editorial-collage condensed face is not installed on this Linux machine, so it falls back to a regular-width sans",
+      "file": "evidence/vox-explainer/editorial-collage-0.png"
+    },
+    "perspective-illusion": {
+      "kind": "visually reviewed (agent)",
+      "what": "street.html still at 3 s: line art, two-tone shading, cones, poles and red sky render under software WebGL; no stills of corner views checked",
+      "file": "evidence/perspective-illusion/street-still-1.png"
+    },
+    "brand-kit": {
+      "kind": "visually reviewed (agent)",
+      "what": "board for the fictional Fernwick brand: palette, type, site and two sample frames match the fixture page; sample copy is now neutral (it was upstream copy about one AI company)",
+      "file": "evidence/brand-kit/board.png"
+    },
+    "repo-timelapse": {
+      "kind": "visually reviewed (agent)",
+      "what": "still of this repo: treemap, anonymised author, date, line count and caption readable",
+      "file": "evidence/repo-timelapse/still-1.png"
+    },
+    "interaction-motion-study": {
+      "kind": "visually reviewed (agent)",
+      "what": "open state screenshot of the disclosure menu; motion itself was not watched by a person",
+      "file": "evidence/interaction-motion-study/open.png"
+    },
+    "scripted-screencast": {
+      "kind": "visually reviewed (agent)",
+      "what": "preview still at 6 s rendered from 'demo folder \u00fc \u2713': window frame, cursor, caption and staged data correct",
+      "file": "evidence/scripted-screencast/still-1.png"
+    },
+    "code-loop": {
+      "kind": "visually reviewed (agent)",
+      "what": "preview frame at 2 s of the shader starter; the loop itself was checked numerically, not watched on repeat by a person",
+      "file": "evidence/code-loop/preview-frame-2s.png"
+    }
+  }
+}

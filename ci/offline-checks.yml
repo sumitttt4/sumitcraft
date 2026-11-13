@@ -1,0 +1,24 @@
+name: offline-checks
+on: [workflow_dispatch, pull_request]
+permissions: { contents: read }
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: npm ci || npm install
+      - run: npx playwright install --with-deps chromium
+      - run: python -m pip install numpy pyyaml
+      - run: node tools/doctor.mjs
+      - run: node tools/validate.mjs --json evidence/static/validate.json
+      - run: node tests/unit_paths.mjs
+      - run: python tests/run_checks.py codebase-map bisect-anything flaky-test-killer api-design-review security-threat-model system-design-from-scratch from-scratch image-gen skill-router design-to-code-inspection design-critique design-system-build interaction-motion-study visual-reference-analysis work-to-explanation reverse-engineer-video code-loop scripted-screencast
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: evidence-linux, path: evidence/ }

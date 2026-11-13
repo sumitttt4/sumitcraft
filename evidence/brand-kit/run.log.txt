@@ -1,0 +1,40 @@
+$ /opt/node22/bin/node <repo>/skills/brand-kit/scripts/extract.mjs http://127.0.0.1:46845/index.html <runs>/brand-kit/kits/fernwick
+[exit 0, 3.1 s]
+read 1 page(s), 0 font files, logo: none -> <runs>/brand-kit/kits/fernwick/raw.json
+
+$ /usr/local/bin/python3 <repo>/skills/brand-kit/scripts/propose.py <runs>/brand-kit/kits/fernwick --name Fernwick
+[exit 0, 0.0 s]
+{
+ "name": "Fernwick",
+ "mode": "light",
+ "colors": {
+  "surface": "#FBF7F0",
+  "paper": "#FFFFFF",
+  "ink": "#14213D",
+  "muted": null,
+  "accent": "#E85D04",
+  "on_accent": "#FFFFFF",
+  "extras": []
+ },
+ "shape": {
+  "button_radius": "pill",
+  "card_radius": "12px",
+  "texture": "none"
+ },
+ "vox": {
+  "field_a": "#FBF7F0",
+  "field_b": "#E85D04",
+  "paper": "#FFFFFF",
+  "ink": "#14213D",
+  "accent": "#E85D04",
+  "on_accent": "#FFFFFF",
+  "edges": "clean",
+  "grain": 0.0,
+  "display_case": "none"
+ }
+}
+fonts: {'display': ('system-ui', 0), 'body': ('Georgia', 0), 'mono': ('ui-monospace', 0)}
+
+$ /usr/local/bin/python3 <repo>/skills/brand-kit/scripts/board.py <runs>/brand-kit/kits/fernwick
+[exit 0, 1.7 s]
+<runs>/brand-kit/kits/fernwick/board.png

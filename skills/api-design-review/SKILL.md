@@ -73,3 +73,5 @@ Keep findings concrete. "Errors are inconsistent" is not a finding. "`POST /orde
 ## 5. Hand over
 
 Show the user the summary and the top findings in chat, and give the path to `review.md`. If they want to fix things, start with the P0 findings, then the P1 findings that are breaking, and re-run the lint and the diff after each change.
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

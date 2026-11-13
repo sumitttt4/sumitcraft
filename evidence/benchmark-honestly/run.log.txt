@@ -1,0 +1,25 @@
+$ /usr/local/bin/python3 <repo>/skills/benchmark-honestly/scripts/bench.py -n a -n b "/usr/local/bin/python3" "<repo>/skills/benchmark-honestly/examples/two_sorts.py" a "/usr/local/bin/python3" "<repo>/skills/benchmark-honestly/examples/two_sorts.py" b --runs 12 --warmup 2 --md <runs>/benchmark-honestly/report.md --json <runs>/benchmark-honestly/report.json --shell
+[exit 0, 5.4 s]
+a  median 177.68 ms   CI 171.72 ms to 184.53 ms  p5 171.49 ms  p95 204.59 ms  MAD 9.01 ms
+b  median 182.41 ms   CI 172.71 ms to 186.67 ms  p5 170.44 ms  p95 209.93 ms  MAD 11.62 ms
+
+WARNINGS
+  - environment: Busy processes right now: python3 (22%).
+  - environment: Running inside a VM or container. Neighbours on the same host add noise.
+
+VERDICT
+  No clear difference between b and a: time ratio 1.027, 95% CI 0.954 to 1.081 includes 1.0 or the test disagrees (p=0.47). Do not claim a speedup. More runs or a quieter machine may narrow it.
+warmup: 2 run(s) per command
+measuring: 12 runs per command, shuffled order
+  2/24
+  4/24
+  6/24
+  8/24
+  10/24
+  12/24
+  14/24
+  16/24
+  18/24
+  20/24
+  22/24
+  24/24

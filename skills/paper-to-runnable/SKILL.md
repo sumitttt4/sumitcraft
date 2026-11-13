@@ -84,3 +84,5 @@ Then write `explainer.md`: one question, one story, one lesson, about 300 words,
 - The ablation is not optional. Without it you have a training curve, not evidence.
 - A toy reproduction supports the mechanism, not the paper's exact numbers. Say so.
 - If the result fails to reproduce after honest effort, that is a valid outcome. Report it with what you tried.
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

@@ -1,0 +1,107 @@
+$ /opt/node22/bin/node <repo>/skills/code-loop/scripts/render_loop.mjs shader_starter.html good.mp4 --preview --size=480x270 --maxk=2
+[exit 0, 12.1 s]
+[gl] requested default, launched default; renderer: ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver) (software rendering, no GPU acceleration)
+frame 0/240  2 samples  0s
+frame 30/240  2 samples  1s
+frame 60/240  2 samples  3s
+frame 90/240  2 samples  4s
+frame 120/240  2 samples  6s
+frame 150/240  2 samples  7s
+frame 180/240  2 samples  8s
+frame 210/240  2 samples  10s
+seam: frame at LOOP differs from frame 0, run check_loop.py to see by how much
+wrote <runs>/code-loop/good.mp4
+done: 240 frames, 444 renders this run (1.9 per frame), 0.2 min
+
+$ /usr/local/bin/python3 <repo>/skills/code-loop/scripts/check_loop.py good.mp4 --heat blink.png
+[exit 1, 0.8 s]
+good.mp4: 240x134, 240 frames at 30 fps (8.00 s), checked at 640x358
+seam (exact): frame at LOOP vs frame 0: mean 0.001, max 1 (0-255), 0 pixels differ by more than 2
+seam (video): last to first frame changes 6.50, nearby steps 4.99; worst local jump at the seam 2.76 (0-255, under 2 is invisible)
+  pop at frame 230 -> 231 (t=7.70s): a local jump of 3.2 levels
+freeze: 0 spans held for 0.5 s or more (still = change under 0.6 in 0.1 s); 0 duplicated single frames
+blink: 0 pixels (of 229120) blink in more than 5% of frames; worst moments: t=0.97s 0.06%, t=0.83s 0.05%, t=0.93s 0.05%, t=0.43s 0.05%
+  heatmap: blink.png (red = blinks)
+RESULT: FAIL: seam pop: part of the picture jumps by 2.8 levels at the wrap; 1 pops inside the loop
+
+$ /opt/node22/bin/node <repo>/skills/code-loop/scripts/render_loop.mjs bad_loop.html bad.mp4 --preview --size=480x270 --maxk=2
+[exit 0, 12.3 s]
+[gl] requested default, launched default; renderer: ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver) (software rendering, no GPU acceleration)
+frame 0/240  2 samples  0s
+frame 30/240  2 samples  2s
+frame 60/240  2 samples  3s
+frame 90/240  2 samples  4s
+frame 120/240  1 samples  6s
+frame 150/240  2 samples  7s
+frame 180/240  2 samples  8s
+frame 210/240  2 samples  10s
+seam: frame at LOOP differs from frame 0, run check_loop.py to see by how much
+wrote <runs>/code-loop/bad.mp4
+done: 240 frames, 460 renders this run (1.9 per frame), 0.2 min
+
+$ /usr/local/bin/python3 <repo>/skills/code-loop/scripts/check_loop.py bad.mp4
+[exit 1, 0.7 s]
+bad.mp4: 240x134, 240 frames at 30 fps (8.00 s), checked at 640x358
+seam (exact): frame at LOOP vs frame 0: mean 18.252, max 219 (0-255), 31105 pixels differ by more than 2
+seam (video): last to first frame changes 18.81, nearby steps 5.00; worst local jump at the seam 101.89 (0-255, under 2 is invisible)
+freeze: 0 spans held for 0.5 s or more (still = change under 0.6 in 0.1 s); 0 duplicated single frames
+blink: 0 pixels (of 229120) blink in more than 5% of frames; worst moments: t=0.00s 0.88%, t=7.97s 0.17%, t=0.93s 0.09%, t=0.90s 0.05%
+RESULT: FAIL: exact seam: the frame after the last does not match the first, so something is not periodic; seam pop: part of the picture jumps by 101.9 levels at the wrap
+
+$ /usr/bin/ffmpeg -v error -y -f lavfi -i testsrc2=size=320x180:rate=30:duration=0.8 -f lavfi -i testsrc2=size=320x180:rate=30:duration=0.8 -filter_complex [0]tpad=stop_mode=clone:stop_duration=0.8[a];[a][1]concat=n=2:v=1[v] -map [v] -pix_fmt yuv420p <runs>/code-loop/hold.mp4
+[exit 0, 0.1 s]
+
+
+$ /usr/local/bin/python3 <repo>/skills/code-loop/scripts/check_loop.py hold.mp4 --freeze-sec 0.5
+[exit 1, 0.3 s]
+hold.mp4: 320x180, 72 frames at 30 fps (2.40 s), checked at 640x360
+seam (exact): no .seam-first.png / .seam-next.png beside the video, skipped
+seam (video): last to first frame changes 10.68, nearby steps 2.38; worst local jump at the seam 62.38 (0-255, under 2 is invisible)
+  pop at frame 47 -> 48 (t=1.60s): a local jump of 67.2 levels
+  pop at frame 22 -> 23 (t=0.77s): a local jump of 12.7 levels
+  pop at frame 21 -> 22 (t=0.73s): a local jump of 10.7 levels
+  pop at frame 70 -> 71 (t=2.37s): a local jump of 8.6 levels
+  frozen: 0.73 s from t=0.87s
+freeze: 1 spans held for 0.5 s or more (still = change under 0.6 in 0.1 s); 0 duplicated single frames
+blink: 2748 pixels (of 230400) blink in more than 5% of frames; worst moments: t=2.37s 1.89%, t=0.00s 1.76%, t=1.60s 1.67%, t=0.50s 0.65%
+RESULT: FAIL: seam pop: part of the picture jumps by 62.4 levels at the wrap; 4 pops inside the loop; frozen spans; 2748 blinking pixels
+
+$ /usr/local/bin/python3 <repo>/skills/code-loop/scripts/check_loop.py hold.mp4 --freeze-sec 0.5 --holds 0.75-1.65
+[exit 1, 0.3 s]
+hold.mp4: 320x180, 72 frames at 30 fps (2.40 s), checked at 640x360
+seam (exact): no .seam-first.png / .seam-next.png beside the video, skipped
+seam (video): last to first frame changes 10.68, nearby steps 2.38; worst local jump at the seam 62.38 (0-255, under 2 is invisible)
+  pop at frame 47 -> 48 (t=1.60s): a local jump of 67.2 levels
+  pop at frame 22 -> 23 (t=0.77s): a local jump of 12.7 levels
+  pop at frame 21 -> 22 (t=0.73s): a local jump of 10.7 levels
+  pop at frame 70 -> 71 (t=2.37s): a local jump of 8.6 levels
+  frozen: 0.73 s from t=0.87s  (inside a declared hold: intended)
+  declared holds: 0.75-1.65s; a person should still watch them
+freeze: 1 spans held for 0.5 s or more (still = change under 0.6 in 0.1 s); 0 duplicated single frames
+blink: 2748 pixels (of 230400) blink in more than 5% of frames; worst moments: t=2.37s 1.89%, t=0.00s 1.76%, t=1.60s 1.67%, t=0.50s 0.65%
+RESULT: FAIL: seam pop: part of the picture jumps by 62.4 levels at the wrap; 4 pops inside the loop; 2748 blinking pixels
+
+$ /opt/node22/bin/node <repo>/skills/code-loop/scripts/render_loop.mjs shader_starter.html final_small.mp4 --size=320x180 --fps=30 --mink=4 --maxk=8
+[exit 0, 34.8 s]
+[gl] requested default, launched default; renderer: ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver) (software rendering, no GPU acceleration)
+frame 0/240  4 samples  0s
+frame 30/240  4 samples  4s
+frame 60/240  4 samples  9s
+frame 90/240  4 samples  13s
+frame 120/240  4 samples  17s
+frame 150/240  4 samples  21s
+frame 180/240  4 samples  25s
+frame 210/240  4 samples  29s
+seam: frame at LOOP differs from frame 0, run check_loop.py to see by how much
+wrote <runs>/code-loop/final_small.mp4
+done: 240 frames, 960 renders this run (4.0 per frame), 0.6 min
+
+$ /usr/local/bin/python3 <repo>/skills/code-loop/scripts/check_loop.py final_small.mp4 --heat blink_final.png
+[exit 0, 0.8 s]
+final_small.mp4: 320x180, 240 frames at 30 fps (8.00 s), checked at 640x360
+seam (exact): frame at LOOP vs frame 0: mean 0.000, max 1 (0-255), 0 pixels differ by more than 2
+seam (video): last to first frame changes 5.66, nearby steps 5.33; worst local jump at the seam 0.00 (0-255, under 2 is invisible)
+freeze: 0 spans held for 0.5 s or more (still = change under 0.6 in 0.1 s); 0 duplicated single frames
+blink: 0 pixels (of 230400) blink in more than 5% of frames; worst moments: t=0.93s 0.08%, t=0.97s 0.07%, t=0.83s 0.07%, t=1.07s 0.07%
+  heatmap: blink_final.png (red = blinks)
+RESULT: PASS

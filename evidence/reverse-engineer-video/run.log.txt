@@ -1,0 +1,14 @@
+$ /usr/bin/ffmpeg -v error -y -f lavfi -t 1.5 -i testsrc2=size=480x270:rate=30 -f lavfi -t 1.5 -i mandelbrot=size=480x270:rate=30 -f lavfi -t 1.5 -i smptebars=size=480x270:rate=30 -f lavfi -t 1.5 -i rgbtestsrc=size=480x270:rate=30 -f lavfi -t 6 -i sine=frequency=440:sample_rate=48000 -filter_complex [0][1][2][3]concat=n=4:v=1:a=0[v] -map [v] -map 4:a -pix_fmt yuv420p -shortest <runs>/reverse-engineer-video/clip.mp4
+[exit 0, 0.4 s]
+
+
+$ /usr/local/bin/python3 <repo>/skills/reverse-engineer-video/scripts/analyze.py <runs>/reverse-engineer-video/clip.mp4 -o <runs>/reverse-engineer-video/out
+[exit 0, 1.8 s]
+[  0.0s] clip.mp4: 480x270 30 fps 6.00s; analysing at 320x180 30 fps
+[  0.4s] 4 shots (3 hard cuts, 0 gradual), 0 flash frames
+[  1.2s] camera motion: numpy phase correlation
+[  1.3s] audio: 1 onsets, tempo None BPM (clarity 0.00), 0.0% of cuts within 50 ms of an onset (chance 1.5%)
+[  1.3s] transcript: skipped (no Whisper package in this Python)
+[  1.3s] on-screen text: skipped (tesseract not installed)
+[  1.7s] pictures: contact_sheet.jpg, shots_detail.jpg, timeline.png
+[  1.7s] done: <runs>/reverse-engineer-video/out

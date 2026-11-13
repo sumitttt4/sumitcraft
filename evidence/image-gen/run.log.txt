@@ -1,0 +1,30 @@
+$ /usr/local/bin/python3 <repo>/skills/image-gen/scripts/gen_image.py --check
+[exit 0, 0.1 s]
+GEMINI_API_KEY not set
+OPENAI_API_KEY not set
+key file: <runs>/image-gen/cfg/keys.env (missing)
+
+$ /usr/local/bin/python3 <repo>/skills/image-gen/scripts/gen_image.py a red teapot --n 3 --cutout --dry-run
+[exit 0, 0.1 s]
+image-gen plan:
+  provider: none (no key set)
+  model: n/a
+  paid_image_calls: 3
+  reference_images: 0
+  cutout: True
+  aspect: None
+  estimated_cost: unknown to this script: check the provider's current pricing page before approving
+  data_sent: the prompt to the provider
+
+$ /usr/local/bin/python3 <repo>/skills/image-gen/scripts/gen_image.py a red teapot --n 3
+[exit 3, 0.0 s]
+image-gen plan:
+  provider: none (no key set)
+  model: n/a
+  paid_image_calls: 3
+  reference_images: 0
+  cutout: False
+  aspect: None
+  estimated_cost: unknown to this script: check the provider's current pricing page before approving
+  data_sent: the prompt to the provider
+not approved: re-run with --approve-spend once the user has approved this plan (no request was sent).

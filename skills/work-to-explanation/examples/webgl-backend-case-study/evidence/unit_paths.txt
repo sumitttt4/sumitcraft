@@ -1,0 +1,7 @@
+ok   file:///C:/Users/Demo%20User/site/index.html
+ok   file:///D:/D%C3%A9mo%20%E2%9C%93/app.html
+ok   file:///c:/x/y.html
+ok   http://localhost:3000/
+ok   file:///tmp/demo%20folder%20%C3%BC/index.html
+ok   https://example.com/a b
+upstream form on Windows would give: file://C:\Users\Demo User\site\index.html

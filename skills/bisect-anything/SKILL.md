@@ -60,3 +60,5 @@ For things that are not commits (package versions, nightly builds, config values
 ## Check your work
 
 Run `python3 examples/selftest.py`. It builds a 40-commit demo repo with a planted bug, slowdown, visual change and unbuildable commits, and checks that every scenario finds the right commit (about one minute).
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

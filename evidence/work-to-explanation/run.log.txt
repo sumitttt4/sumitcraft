@@ -1,0 +1,12 @@
+$ /usr/local/bin/python3 <repo>/skills/work-to-explanation/scripts/preflight.py <repo>/skills/work-to-explanation/examples/webgl-backend-case-study/draft.md
+[exit 0, 0.0 s]
+0 blockers, 0 warnings (no blockers: a person still reads it before it goes anywhere)
+
+$ /usr/local/bin/python3 <repo>/skills/work-to-explanation/scripts/preflight.py <runs>/work-to-explanation/bad-draft.md
+[exit 1, 0.0 s]
+BLOCK front-matter  line 0: missing "status:" in the header
+BLOCK front-matter  line 0: missing "permissions:" in the header
+BLOCK private-path  line 5: /home/alex/
+BLOCK secret        line 6: looks like a credential (value not printed)
+BLOCK evidence      line 7: missing.txt not found
+5 blockers, 0 warnings

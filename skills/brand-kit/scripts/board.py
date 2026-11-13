@@ -27,9 +27,9 @@ h1{{font:600 15px ui-monospace;letter-spacing:.12em;text-transform:uppercase;col
 .meta{{font:13px ui-monospace;color:#555;margin-top:16px;line-height:1.7}} .frames img{{width:100%;border-radius:10px;margin-bottom:12px}}
 </style><div class=wrap>
 <div class=card><h1>{html.escape(b["name"])} · palette ({b["mode"]})</h1>{swatches}<div style="margin-top:18px">{logo}</div></div>
-<div class=card><h1>type</h1><div class=d>The quick agent ships the PR</div>
-<div class=bd>Body: {html.escape(F["body"]["family"])}. An agent reads the codebase, writes the fix and opens a pull request.</div>
-<div class=mn>mono: {html.escape(F["mono"]["family"])} · const ship = await agent.run()</div>
+<div class=card><h1>type</h1><div class=d>Sphinx of black quartz, judge my vow</div>
+<div class=bd>Body: {html.escape(F["body"]["family"])}. The quick brown fox jumps over the lazy dog, then reads the small print twice.</div>
+<div class=mn>mono: {html.escape(F["mono"]["family"])} · const total = items.reduce((a, b) => a + b, 0)</div>
 {f'<div class=sf>serif: {html.escape(F["serif"]["family"])}</div>' if "serif" in F else ""}
 <div class=meta>display {html.escape(disp["family"])} {disp.get("weight")} · case {disp.get("transform")} · tracking {disp.get("letter_spacing_em")}em<br>
 buttons {b["shape"]["button_radius"]} · cards {b["shape"]["card_radius"]} · texture {b["shape"]["texture"]}<br>
@@ -41,13 +41,14 @@ image style: {html.escape(b["image_style"])}</div></div>
 # two sample frames from the vox engine in this brand's theme
 vox = Path(__file__).resolve().parents[2] / "vox-explainer"  # sibling skill folder
 tmp = Path(tempfile.mkdtemp())
-words = [[0.0, 0.4, "Here's"], [0.4, 0.6, "the"], [0.6, 1.0, "thing"], [3.0, 3.4, "Agents"], [3.4, 3.8, "ship"], [3.8, 4.3, "code"]]
+# Neutral sample copy (upstream used copy about one AI company); only the brand's look should vary here.
+words = [[0.0, 0.4, "Here's"], [0.4, 0.6, "the"], [0.6, 1.0, "point"], [3.0, 3.4, "Small"], [3.4, 3.8, "things"], [3.8, 4.3, "add"], [4.3, 4.7, "up"]]
 (tmp / "w.json").write_text(json.dumps(words))
 subprocess.run([os.environ.get("FFMPEG", "ffmpeg"),
                 "-v", "error", "-y", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo", "-t", "6", str(tmp / "a.wav")], check=True)
 (tmp / "s.json").write_text(json.dumps({"audio": "a.wav", "brand": str(d), "beats": [
-    {"at": "Here's", "device": "card", "bg": "a", "label": "Sample card", "head": "Here's the thing about agents", "headmark": "agents", "headmark_at": "thing"},
-    {"at": "Agents", "device": "big", "bg": "b", "text": "Agents ship code", "mark": "code", "mark_at": "ship"}]}))
+    {"at": "Here's", "device": "card", "bg": "a", "label": "Sample card", "head": "Here's the point of this sample", "headmark": "point", "headmark_at": "point"},
+    {"at": "Small", "device": "big", "bg": "b", "text": "Small things add up", "mark": "add up", "mark_at": "add"}]}))
 subprocess.run([sys.executable, str(vox / "scripts/build.py"), str(tmp / "s.json"), "--words", str(tmp / "w.json"), "--stills", "2.2,5.2"],
                check=True, capture_output=True)
 frames = "".join(f'<img src="{(tmp / f"still_{t}.jpg").as_uri()}">' for t in ("2.2", "5.2"))

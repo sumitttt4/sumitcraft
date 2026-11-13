@@ -1,0 +1,13 @@
+$ /opt/node22/bin/node <repo>/skills/design-critique/scripts/before_after.mjs <repo>/skills/design-critique/examples/signup-form/before.html <repo>/skills/design-critique/examples/signup-form/after.html --widths 375,1280 --out <runs>/design-critique
+[exit 0, 1.0 s]
+375px: 6.83% pixels changed, box 24,70,327,436
+1280px: 2.06% pixels changed, box 450,70,380,415
+report: <runs>/design-critique/before_after.md
+
+$ /usr/local/bin/python3 <repo>/skills/design-system-build/scripts/tokens.py --pair #ffffff #b9e4bf
+[exit 0, 0.0 s]
+#ffffff on #b9e4bf: 1.41:1  text FAIL (4.5)  large/ui FAIL (3.0)
+
+$ /usr/local/bin/python3 <repo>/skills/design-system-build/scripts/tokens.py --pair #ffffff #1f6f3a
+[exit 0, 0.0 s]
+#ffffff on #1f6f3a: 6.19:1  text pass (4.5)  large/ui pass (3.0)

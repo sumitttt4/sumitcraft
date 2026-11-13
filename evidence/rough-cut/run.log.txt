@@ -1,0 +1,17 @@
+$ /usr/bin/ffmpeg -v error -y -f lavfi -i aevalsrc='0.6*(between(t,0.3,0.55)*sin(2*PI*220*t)+between(t,0.75,1.05)*sin(2*PI*220*t)+between(t,1.2,1.4)*sin(2*PI*220*t)+between(t,1.45,1.85)*sin(2*PI*220*t)+between(t,3.05,3.25)*sin(2*PI*220*t)+between(t,3.3,3.7)*sin(2*PI*220*t)+between(t,3.75,4.2)*sin(2*PI*220*t))':s=48000:d=4.8 -f lavfi -i color=c=gray:s=320x180:r=30:d=4.8 -shortest -c:v libx264 -pix_fmt yuv420p -c:a aac <runs>/rough-cut/raw/take1.mp4
+[exit 0, 0.2 s]
+
+
+$ /usr/bin/ffmpeg -v error -y -i <runs>/rough-cut/raw/take1.mp4 -ac 1 -ar 16000 <runs>/rough-cut/audio/take1.wav
+[exit 0, 0.1 s]
+
+
+$ /usr/local/bin/python3 <repo>/skills/rough-cut/scripts/find_cuts.py <runs>/rough-cut
+[exit 0, 0.1 s]
+2 pieces, 0:03.90 -> 0:01.73, 2.3 w/s. See cuts/cut_sheet.md
+
+$ /usr/local/bin/python3 <repo>/skills/rough-cut/scripts/render.py <runs>/rough-cut --w 320 --v 1
+[exit 0, 0.6 s]
+1/2
+2/2
+wrote <runs>/rough-cut/renders/v1_320.mp4

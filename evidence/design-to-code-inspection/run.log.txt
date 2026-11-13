@@ -1,0 +1,17 @@
+$ /opt/node22/bin/node <repo>/skills/design-to-code-inspection/scripts/inspect_layout.mjs <repo>/skills/design-to-code-inspection/examples/pricing-card/spec.json --out <runs>/design-to-code-inspection/bad
+[exit 1, 0.9 s]
+50 checks, 10 mismatches -> <runs>/design-to-code-inspection/bad/report.md
+  [375] no-horizontal-scroll: expected scrollWidth <= viewport, measured 1px overflow
+  [375] card-mobile:box.width: expected 343px ±2, measured 360px
+  [375] cta:target-size: expected >= 44px, measured 304x36
+  [375] fine-print:style.font-size: expected 14px, measured 12px
+  [768] card:style.border-radius: expected 12px, measured 8px
+  [768] cta:target-size: expected >= 44px, measured 304x36
+  [768] fine-print:style.font-size: expected 14px, measured 12px
+  [1280] card:style.border-radius: expected 12px, measured 8px
+  [1280] cta:target-size: expected >= 44px, measured 304x36
+  [1280] fine-print:style.font-size: expected 14px, measured 12px
+
+$ /opt/node22/bin/node <repo>/skills/design-to-code-inspection/scripts/inspect_layout.mjs <repo>/skills/design-to-code-inspection/examples/pricing-card/spec.json --page fixed.html --out <runs>/design-to-code-inspection/good
+[exit 0, 0.7 s]
+50 checks, 0 mismatches -> <runs>/design-to-code-inspection/good/report.md

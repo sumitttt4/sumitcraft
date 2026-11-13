@@ -177,3 +177,5 @@ Everything animated must be a pure function of `ms`, periodic in the loop length
 - `ffmpeg -stream_loop ... -c copy` makes loops that some players stop early. Re-encode instead.
 - For X, side-by-sides at 32:9 are too wide to upload. Stack them vertically.
 - Use original characters and made-up brands only. Copy the technique of a reference, never its artwork.
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

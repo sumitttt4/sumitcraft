@@ -41,3 +41,5 @@ Do the steps in order. Show the user each step's output before moving on, and as
 - "0 failures in N seeds" means the failure rate is probably below about 3/N, not zero. Say that.
 - Compare at least two designs on the same workload. The trade-off is the point.
 - When citing a production system, describe only what its public docs or papers say.
+
+Contract, prerequisites and validation status: [contract.md](contract.md).

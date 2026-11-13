@@ -1,0 +1,87 @@
+$ /usr/local/bin/python3 -m unittest discover -s tests
+[exit 1, 4.1 s]
+old_event_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/skills/security-threat-model/examples/invoice-api/tests/test_threats.py", line 149, in test_replayed_old_event_is_rejected
+    self.assertEqual(status, 401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_unsigned_webhook_is_rejected (test_threats.T4_WebhookForgery.test_unsigned_webhook_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/skills/security-threat-model/examples/invoice-api/tests/test_threats.py", line 136, in test_unsigned_webhook_is_rejected
+    self.assertEqual(status, 401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_wrong_secret_is_rejected (test_threats.T4_WebhookForgery.test_wrong_secret_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/skills/security-threat-model/examples/invoice-api/tests/test_threats.py", line 143, in test_wrong_secret_is_rejected
+    self.assertEqual(status, 401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_no_secrets_in_source (test_threats.T5_HardcodedSecret.test_no_secrets_in_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/skills/security-threat-model/examples/invoice-api/tests/test_threats.py", line 162, in test_no_secrets_in_source
+    self.assertEqual(r.returncode, 0, r.stdout)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 0 :   app.py:15  Stripe-style key  sk_t************ey  (marked fake)
+
+1 finding(s). A real secret that was ever committed or shipped is leaked: rotate it at the provider first, then move it to an env var or secret manager. Deleting the line does not remove it from history.
+
+
+======================================================================
+FAIL: test_crash_returns_generic_error (test_threats.T6_ErrorLeak.test_crash_returns_generic_error)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/skills/security-threat-model/examples/invoice-api/tests/test_threats.py", line 170, in test_crash_returns_generic_error
+    self.assertEqual((status, resp), (500, {"error": "internal error"}))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: (500, {'error': "Error binding parameter 2: type 'dict' is not supported"}) != (500, {'error': 'internal error'})
+
+First differing element 1:
+{'error': "Error binding parameter 2: type 'dict' is not supported"}
+{'error': 'internal error'}
+
+- (500, {'error': "Error binding parameter 2: type 'dict' is not supported"})
++ (500, {'error': 'internal error'})
+
+======================================================================
+FAIL: test_sql_error_text_is_not_returned (test_threats.T6_ErrorLeak.test_sql_error_text_is_not_returned)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/skills/security-threat-model/examples/invoice-api/tests/test_threats.py", line 176, in test_sql_error_text_is_not_returned
+    self.assertNotIn(leak, text, f"database error text sent to the client: {body}")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'unrecognized' unexpectedly found in '{"error": "unrecognized token: \\"\'\\""}' : database error text sent to the client: {'error': 'unrecognized token: "\'"'}
+
+----------------------------------------------------------------------
+Ran 18 tests in 3.982s
+
+FAILED (failures=13)
+
+$ /usr/local/bin/python3 -m unittest discover -s tests
+[exit 0, 4.1 s]
+................tinybill: unhandled error on POST /api/webhooks/payments
+Traceback (most recent call last):
+  File "<repo>/skills/security-threat-model/examples/invoice-api/fixed/app.py", line 187, in handle_any
+    status, body = 200, fn(ctx, *match.groups())
+                        ~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/skills/security-threat-model/examples/invoice-api/fixed/app.py", line 159, in payment_webhook
+    ctx.db.execute("UPDATE invoices SET status = ? WHERE id = ?", (event.get("status", "paid"), event.get("invoice_id")))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.ProgrammingError: Error binding parameter 2: type 'dict' is not supported
+
+..
+----------------------------------------------------------------------
+Ran 18 tests in 3.993s
+
+OK
