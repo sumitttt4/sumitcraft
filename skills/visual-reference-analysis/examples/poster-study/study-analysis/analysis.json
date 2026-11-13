@@ -1,0 +1,76 @@
+{
+  "tool": "sumitcraft visual-reference-analysis analyze_image.py",
+  "image": "study.png",
+  "size": [
+    600,
+    840
+  ],
+  "analysed_at": [
+    365,
+    512
+  ],
+  "palette": [
+    {
+      "hex": "#e9eef0",
+      "share": 0.8234
+    },
+    {
+      "hex": "#2e7d5b",
+      "share": 0.148
+    },
+    {
+      "hex": "#17222d",
+      "share": 0.0107
+    },
+    {
+      "hex": "#adb7b9",
+      "share": 0.0071
+    },
+    {
+      "hex": "#7b858a",
+      "share": 0.0068
+    },
+    {
+      "hex": "#47515a",
+      "share": 0.0041
+    }
+  ],
+  "value": {
+    "dark_share": 0.0113,
+    "mid_share": 0.1633,
+    "light_share": 0.8254,
+    "spread_p5_p95": 0.515
+  },
+  "saturation": {
+    "median_chroma": 0.0275,
+    "p90_chroma": 0.3098
+  },
+  "detail_grid_thirds": [
+    [
+      0.378,
+      0.207,
+      0.0
+    ],
+    [
+      0.162,
+      0.08,
+      0.037
+    ],
+    [
+      0.094,
+      0.027,
+      0.014
+    ]
+  ],
+  "quiet_space_share": 0.8381,
+  "detail_centroid_xy": [
+    0.292,
+    0.354
+  ],
+  "mirror_similarity_lr": 0.561,
+  "edge_direction": {
+    "horizontal": 0.19,
+    "vertical": 0.557,
+    "diagonal": 0.253
+  }
+}

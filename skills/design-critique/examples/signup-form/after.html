@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Larkfield sign-up (after)</title>
+<style>
+  body { margin: 0; background: #fafafa; font: 16px/1.5 system-ui, "Segoe UI", Roboto, sans-serif; color: #222; }
+  form { max-width: 380px; margin: 40px auto; padding: 24px; background: #fff; border-radius: 6px; }
+  h1 { font-size: 22px; margin: 0 0 20px; }
+  label { display: block; font-weight: 600; margin: 0 0 4px; }
+  .field { margin-bottom: 16px; }
+  input { display: block; width: 100%; box-sizing: border-box; min-height: 44px; padding: 9px 10px; border: 1px solid #8a8a8a; border-radius: 4px; font: inherit; }
+  input:focus-visible { outline: 3px solid #1f6f3a; outline-offset: 1px; }
+  .err { color: #b3261e; font-size: 14px; margin: 4px 0 0; }
+  .err::before { content: "\26A0\FE0E  "; }
+  .bad { border-color: #b3261e; border-width: 2px; }
+  .help { font-size: 14px; color: #555; margin: 4px 0 0; }
+  .row { display: flex; gap: 12px; margin-top: 24px; flex-direction: row-reverse; justify-content: flex-start; }
+  button { min-height: 44px; padding: 8px 16px; border-radius: 4px; border: 1px solid #1f6f3a; background: #1f6f3a; color: #ffffff; font: inherit; font-weight: 600; }
+  button.secondary { background: #fff; color: #333; border-color: #8a8a8a; font-weight: 400; }
+  button:focus-visible { outline: 3px solid #222; outline-offset: 2px; }
+</style></head>
+<body>
+<form novalidate>
+  <h1>Join Larkfield</h1>
+  <div class="field"><label for="n">Full name</label><input id="n" autocomplete="name" value="Asha Rao"></div>
+  <div class="field"><label for="e">Email</label><input id="e" class="bad" type="email" autocomplete="email" value="asha@" aria-invalid="true" aria-describedby="e-err">
+    <p class="err" id="e-err">Add the part after @, for example asha@example.com</p></div>
+  <div class="field"><label for="p">Password</label><input id="p" type="password" autocomplete="new-password" aria-describedby="p-help">
+    <p class="help" id="p-help">At least 8 characters</p></div>
+  <div class="row"><button type="submit">Create account</button><button type="button" class="secondary">Cancel</button></div>
+</form>
+</body></html>

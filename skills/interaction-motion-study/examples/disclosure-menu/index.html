@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Disclosure menu study</title>
+<style>
+  :root { --ink: #1d1d1b; --surface: #fff; --canvas: #f4f1ea; --accent: #1f6f3a; --dur: 180ms; --ease-out: cubic-bezier(.2, 0, 0, 1); }
+  @media (prefers-reduced-motion: reduce) { :root { --dur: 0ms; } }
+  body { margin: 0; background: var(--canvas); color: var(--ink); font: 16px/1.5 system-ui, "Segoe UI", Roboto, sans-serif; }
+  main { padding: 40px 16px; max-width: 640px; margin: 0 auto; }
+  .menu { position: relative; display: inline-block; }
+  .trigger { min-height: 44px; padding: 0 16px; border: 1px solid var(--ink); border-radius: 6px; background: var(--surface); font: inherit; cursor: pointer; }
+  .trigger:focus-visible, .panel a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .panel { position: absolute; top: calc(100% + 6px); left: 0; min-width: 220px; margin: 0; padding: 6px; list-style: none; background: var(--surface);
+           border-radius: 8px; box-shadow: 0 8px 24px rgb(0 0 0 / .12); transform-origin: top left;
+           opacity: 0; transform: translateY(-4px) scale(.98); visibility: hidden;
+           transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out), visibility 0s linear var(--dur); }
+  .menu[data-open] .panel { opacity: 1; transform: none; visibility: visible; transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out), visibility 0s; }
+  .panel a { display: block; padding: 10px 12px; border-radius: 6px; color: inherit; text-decoration: none; }
+  .panel a:hover { background: var(--canvas); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Garden actions</h1>
+  <div class="menu" id="menu">
+    <button class="trigger" id="trigger" type="button" aria-expanded="false" aria-controls="panel">Actions</button>
+    <ul class="panel" id="panel" role="list">
+      <li><a href="#book">Book a plot</a></li>
+      <li><a href="#rota">Join the watering rota</a></li>
+      <li><a href="#swap">Swap seeds</a></li>
+    </ul>
+  </div>
+  <p>Text after the menu, so focus has somewhere to go.</p>
+</main>
+<script>
+  const menu = document.getElementById("menu"), trigger = document.getElementById("trigger"), panel = document.getElementById("panel");
+  const links = () => [...panel.querySelectorAll("a")];
+  function setOpen(open, { focusFirst = false, returnFocus = false } = {}) {
+    menu.toggleAttribute("data-open", open);
+    trigger.setAttribute("aria-expanded", String(open));
+    if (open && focusFirst) links()[0].focus();
+    if (!open && returnFocus) trigger.focus();
+  }
+  // Interruption: the CSS transition reverses from wherever it is, because only one attribute flips.
+  trigger.addEventListener("click", (e) => setOpen(trigger.getAttribute("aria-expanded") !== "true", { focusFirst: e.detail === 0 }));
+  menu.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && trigger.getAttribute("aria-expanded") === "true") { e.preventDefault(); setOpen(false, { returnFocus: true }); }
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      const l = links(), i = l.indexOf(document.activeElement);
+      if (i >= 0) { e.preventDefault(); l[(i + (e.key === "ArrowDown" ? 1 : l.length - 1)) % l.length].focus(); }
+    }
+  });
+  document.addEventListener("pointerdown", (e) => { if (!menu.contains(e.target)) setOpen(false); });
+  menu.addEventListener("focusout", (e) => { if (!menu.contains(e.relatedTarget) && e.relatedTarget) setOpen(false); });
+</script>
+</body>
+</html>

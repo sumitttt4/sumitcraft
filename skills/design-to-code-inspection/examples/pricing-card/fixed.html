@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pricing card (meets spec)</title>
+<style>
+  :root { --ink: #1d1d1b; --accent: #2f5bea; --bg: #f3f1ec; --muted: #5e5a52; --gutter: 16px; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, "Segoe UI", Roboto, sans-serif; }
+  main { min-height: 100vh; display: grid; place-items: center; padding: 48px var(--gutter); }
+  .card { width: min(360px, 100%); background: #ffffff; border-radius: 12px; padding: 28px; box-shadow: 0 1px 2px rgb(0 0 0 / .06), 0 8px 24px rgb(0 0 0 / .06); }
+  .card h2 { margin: 0 0 4px; font-size: 28px; font-weight: 700; color: var(--ink); }
+  .price { margin: 8px 0 16px; font-size: 40px; font-weight: 700; color: var(--ink); }
+  .price small { font-size: 16px; font-weight: 400; color: var(--muted); }
+  ul { margin: 0 0 24px; padding-left: 20px; }
+  .cta { display: block; width: 100%; min-height: 48px; border: 0; border-radius: 10px; background: var(--accent); color: #ffffff; font: inherit; font-weight: 600; cursor: pointer; }
+  .cta:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+  .fine { margin: 12px 0 0; font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <section class="card" aria-labelledby="plan">
+    <h2 id="plan">Studio</h2>
+    <p class="price">$12 <small>per month</small></p>
+    <ul><li>Unlimited projects</li><li>Version history</li><li>Shared review links</li></ul>
+    <button class="cta" type="button">Start a free trial</button>
+    <p class="fine">Cancel any time. Prices are made up for this fixture.</p>
+  </section>
+</main>
+</body>
+</html>

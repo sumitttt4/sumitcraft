@@ -1,9 +1,17 @@
 {
-  "name": "simcraft",
+  "name": "sumitcraft",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
-  "dependencies": {
-    "playwright": "1.60.0"
+  "description": "A local-first creative and engineering skill workshop for Claude Code, built on simcraft.",
+  "license": "MIT",
+  "engines": { "node": ">=18.19" },
+  "scripts": {
+    "doctor": "node tools/doctor.mjs",
+    "validate": "node tools/validate.mjs",
+    "skills": "node tools/install.mjs list"
   },
-  "license": "MIT"
+  "dependencies": {
+    "playwright": "1.63.0"
+  }
 }

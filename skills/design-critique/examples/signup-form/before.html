@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Larkfield sign-up (before)</title>
+<style>
+  body { margin: 0; background: #fafafa; font: 15px/1.4 system-ui, "Segoe UI", Roboto, sans-serif; color: #222; }
+  form { max-width: 380px; margin: 40px auto; padding: 24px; background: #fff; border-radius: 6px; }
+  h1 { font-size: 22px; margin: 0 0 20px; }
+  input { display: block; width: 100%; box-sizing: border-box; padding: 9px 10px; margin-bottom: 9px; border: 1px solid #e3e3e3; border-radius: 4px; font: inherit; outline: none; }
+  input::placeholder { color: #c4c4c4; }
+  .err { color: #e53935; font-size: 11px; margin: -4px 0 14px; }
+  .bad { border-color: #e53935; }
+  .help { font-size: 11px; color: #b0b0b0; margin: 0 0 22px; }
+  .row { display: flex; gap: 6px; margin-top: 18px; }
+  button { padding: 8px 14px; border-radius: 4px; border: 1px solid #9bd3a3; background: #b9e4bf; color: #ffffff; font: inherit; }
+  button.secondary { background: #fff; color: #555; border-color: #ddd; }
+</style></head>
+<body>
+<form novalidate>
+  <h1>Join Larkfield</h1>
+  <input placeholder="Full name" value="Asha Rao">
+  <input class="bad" placeholder="Email" value="asha@">
+  <p class="err">Invalid</p>
+  <input type="password" placeholder="Password">
+  <p class="help">8+ chars</p>
+  <div class="row"><button type="button" class="secondary">Cancel</button><button type="submit">Create account</button></div>
+</form>
+</body></html>
