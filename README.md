@@ -24,6 +24,32 @@ work, and this README does not claim otherwise.
 | Learning | paper-to-runnable, system-design-from-scratch, from-scratch, teach-back | learn-a-domain |
 | Design | image-gen, brand-kit | **design-hub**, **glyph** (from Glyph-Skill), design-critique, design-to-code-inspection, design-system-build, interaction-motion-study, visual-reference-analysis |
 | Planning | skill-router, next-step, video-script | work-to-explanation |
+| Docs | | **pdf**, **docx**, **pptx**, **xlsx** (Apache-2.0, from anthropics/skills) |
+
+**Vendored gap skills** sit in the same `skills/` tree and install with the rest (`node tools/install.mjs install --category docs`, or `--category video` for the new video skills). One skill per gap. Existing SumitCraft skills were not rewritten.
+
+| Gap | Skill |
+|---|---|
+| Mixed clips, plus a quiet music mix | vlog-auto-edit |
+| Burned-in captions | burned-in-captions |
+| Thumbnail options | thumbnail-ab |
+| Upload packaging (aspect ratio and encode) | platform-video-export |
+| Long-form script and shot list | long-form-storyboard |
+| Commits, pull-request text, git operations | git-authoring |
+| Root-cause debugging | systematic-debugging |
+| Test-first implementation | test-driven-development |
+| Implementation plan | writing-plans |
+| Prove a "done" claim | verification-before-completion |
+| Diff review (standards and spec) | code-review |
+| Local Compose stack | docker-compose-patterns |
+| React and Next.js performance | react-best-practices |
+| Session handoff | handoff |
+| Meeting notes to owned tasks | meeting-notes-to-tasks |
+| Primary-source research notes | primary-source-research |
+| Web interface guidelines audit | web-design-guidelines |
+| PDF, Word, slides, spreadsheets | pdf, docx, pptx, xlsx |
+
+Skills that were not vendored, and how to install them yourself, are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 **design-hub** is the design category's front door. On whatever machine SumitCraft is installed, it finds every design
 skill present (a design plugin, frontend-taste packs, GSAP, Figma, art skills, SumitCraft's own), sorts them into

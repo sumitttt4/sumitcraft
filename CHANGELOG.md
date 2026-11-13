@@ -53,6 +53,12 @@ SumitCraft's changes on top of simcraft. Upstream work is not listed here as our
   registered in design-hub. SumitCraft measured its 13 starter-kit presets in Chromium: 11 pass, and the `bold` (3.28:1)
   and `retro` (4.30:1) button colours fall below 4.5:1 (fixes suggested in evidence/glyph, not applied).
 
+### Vendored gap skills
+Twenty-one third-party skills, one per gap the workshop did not already cover. Existing skill folders were not
+edited. Sources, licences, and the skills that were left out are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+None of the new skills has a recorded run; the validation matrix lists them as not run. The installer accepts
+`--category docs` and lists vendor skills under their category.
+
 ### Known gaps
 - No native Windows or macOS run yet. clean-audio and the transcription parts of rough-cut and vox-explainer are blocked
   until the speech-model download is approved. No live image-gen provider call has been made. See the validation matrix.

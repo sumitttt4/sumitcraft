@@ -36,6 +36,64 @@ outputs. Each bundled asset:
 | dx-audit uv example screenshots, page snapshots, journey.mp4 | upstream `skills/coding/dx-audit/examples/uv-first-project/` | Screenshots and copied text of Astral's uv documentation (third-party content) | **Not imported.** The audit text is kept; its screenshot links point at the upstream commit. |
 | Brand kits | per-user data folder, never in the repo | Third-party fonts and logos | Never committed; fixtures use a made-up brand. |
 
+## Vendored gap skills
+
+These were added so one install covers everyday gaps the foundation does not. Each folder keeps the upstream
+licence file. SumitCraft changed only the folder name, the frontmatter description (so the agent can tell it
+apart from a skill already in the workshop), and a link to `contract.md`. The method is upstream. None of these
+has been run here.
+
+The skills-bundle snapshot is the zip supplied for this change, built 2026-11-13. It did not record a git SHA.
+Cloned skills are pinned to the commit below.
+
+| Skill | Gap | Source | Licence | Pin |
+|---|---|---|---|---|
+| vlog-auto-edit | Mixed-footage edit and a quiet music mix | https://github.com/znyupup/ai-video-editing-skill | MIT, nyx研究所 (znyupup) | `b6429ab` |
+| burned-in-captions | Captions burned into a finished video | https://github.com/xianyu110/ecommerce-video-skills | MIT, xianyu110 | `96c49b3` |
+| thumbnail-ab | Thumbnail and title variants | same ecommerce-video-skills repo | MIT, xianyu110 | `96c49b3` |
+| platform-video-export | Upload packaging (aspect ratio and encode) | same ecommerce-video-skills repo | MIT, xianyu110 | `96c49b3` |
+| long-form-storyboard | Long-form script, sections, and a shot list | https://github.com/genfeedai/skills | MIT, Genfeed.ai | `b5f8c25` |
+| git-authoring | Commit messages, pull-request text, git operations | https://github.com/n-shadloo/git-authoring | MIT, Nima Shadloo | skills-bundle snapshot 2026-11-13 |
+| systematic-debugging | Root-cause debugging before a fix | https://github.com/obra/superpowers | MIT, Jesse Vincent | skills-bundle snapshot 2026-11-13 |
+| test-driven-development | Test-first implementation | https://github.com/obra/superpowers | MIT, Jesse Vincent | skills-bundle snapshot 2026-11-13 |
+| writing-plans | Implementation plan before coding | https://github.com/obra/superpowers | MIT, Jesse Vincent | skills-bundle snapshot 2026-11-13 |
+| verification-before-completion | Run the check before claiming done | https://github.com/obra/superpowers | MIT, Jesse Vincent | skills-bundle snapshot 2026-11-13 |
+| code-review | Diff review against standards and the spec | https://github.com/mattpocock/skills | MIT, Matt Pocock | skills-bundle snapshot 2026-11-13 |
+| handoff | Session handoff for another agent | https://github.com/mattpocock/skills | MIT, Matt Pocock | skills-bundle snapshot 2026-11-13 |
+| primary-source-research | Research notes from primary sources | https://github.com/mattpocock/skills | MIT, Matt Pocock | skills-bundle snapshot 2026-11-13 |
+| docker-compose-patterns | Local multi-service Compose setup | https://github.com/docker/skills | Apache-2.0, Docker, Inc. | skills-bundle snapshot 2026-11-13 |
+| react-best-practices | React and Next.js performance rules | https://github.com/vercel-labs/agent-skills | MIT, stated in that repo's README | skills-bundle snapshot 2026-11-13 |
+| web-design-guidelines | Web interface guidelines audit of UI code | https://github.com/vercel-labs/agent-skills | MIT, stated in that repo's README | skills-bundle snapshot 2026-11-13 |
+| meeting-notes-to-tasks | Meeting notes to owned, dated tasks | https://github.com/DevelopersGlobal/ai-agent-skills | MIT, DevelopersGlobal | skills-bundle snapshot 2026-11-13 |
+| pdf, docx, pptx, xlsx | PDF, Word, slides, spreadsheets | https://github.com/anthropics/skills | Apache-2.0 | skills-bundle snapshot 2026-11-13 |
+
+Anthropic's repository README says the document skills (docx, pdf, pptx, xlsx) are Apache-2.0, and each skill
+ships Apache-2.0 as `LICENSE.txt`, which allows redistribution when that licence travels with the files. It
+does. The same README's third-party notices name ffmpeg (GPL) and imageio (BSD) as dependencies of Anthropic's
+product. Those programs are not included in this copy. The Office XML schemas under the docx, pptx, and xlsx
+skills are part of the upstream skill and are kept with it.
+
+Vercel states MIT in the README of vercel-labs/agent-skills and does not put a copyright line or the full
+permission text inside the skill. This copy keeps upstream's pointer and adds the MIT permission text so
+recipients have the terms.
+
+### Not vendored (optional external install)
+
+| Item | Why it is not in this repo | If you still want it |
+|---|---|---|
+| Remotion agent skills, including remotion-captions and remotion-multimedia | Remotion's licence allows use for making videos. It does not allow copying Remotion code into another product that is relicensed or redistributed. | `npx skills add remotion-dev/skills` |
+| inference.sh storyboard skill | The repository publishes no licence. | https://github.com/inference-sh/skills (guides/video/storyboard-creation) |
+| A separate music or sound-effects skill | No maintained, permissively licensed skill was found that was not a paid API wrapper. vlog-auto-edit includes a local ffmpeg music mix. | Remotion's multimedia skill, under the Remotion licence above |
+| 00-skill-index from the skills bundle | skill-router already picks from installed descriptions. | |
+| coding-posture | A general execution loop. skill-router plus the specialist skills above cover the same jobs. | https://github.com/alexei-led/coding-posture (MIT) |
+| addyosmani debugging-and-error-recovery | Same root-cause gap as systematic-debugging. | https://github.com/addyosmani/agent-skills (MIT) |
+| mattpocock `pr` | Pull-request writing is part of git-authoring. | https://github.com/mattpocock/skills (MIT) |
+| davidondrej deep-research | Paid DeepAPI. primary-source-research is the local research skill. | https://github.com/davidondrej/skills (MIT) |
+| davidondrej keep-track | Overlaps next-step. | https://github.com/davidondrej/skills (MIT) |
+| developersglobal research-and-summarize | A layered summary. learn-a-domain and work-to-explanation already cover study and write-up. | https://github.com/DevelopersGlobal/ai-agent-skills (MIT) |
+| anthropics frontend-design | Overlaps glyph. | `npx skills add anthropics/skills` (Apache-2.0) |
+| hallmark | Overlaps glyph and design-critique. | https://github.com/Nutlope/hallmark (MIT) |
+
 ## SumitCraft fixtures
 
 All SumitCraft fixtures (pricing card, Larkfield sign-up and garden UI, disclosure menu, posters, Fernwick test brand,
