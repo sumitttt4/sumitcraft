@@ -1,0 +1,14 @@
+{
+  "name": "quiet-paper",
+  "status": "provisional alternative written for SumitCraft; a starting point that needs the creator's taste decision, not a proven style",
+  "palette": { "field_a": "#F4F1EA", "field_b": "#E6E0D3", "paper": "#FFFFFF", "ink": "#1D1D1B", "accent": "#2F6FEB", "on_accent": "#FFFFFF", "muted": "#5E5A52" },
+  "typography": {
+    "display": { "family": "Inter", "fallback": "\"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif", "weight": 650, "transform": "none", "letter_spacing_em": -0.025 },
+    "quote": { "family": "Georgia", "fallback": "\"Times New Roman\", serif" },
+    "mono": { "family": "GeistMono", "fallback": "Consolas, ui-monospace, monospace" }
+  },
+  "spacing": { "type_scale": 0.92, "card_radius": "10px" },
+  "composition": { "split": false, "notes": "one calm field per beat, more air around the type, sentence case" },
+  "texture": { "edges": "clean", "grain": 0 },
+  "motion": { "twos": false, "notes": "smooth 30 fps motion; the push-in stays so nothing freezes" }
+}
