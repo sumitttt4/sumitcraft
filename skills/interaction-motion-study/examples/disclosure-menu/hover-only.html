@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Disclosure menu study (common mistakes)</title>
+<style>
+  body { margin: 0; background: #f4f1ea; color: #1d1d1b; font: 16px/1.5 system-ui, sans-serif; }
+  main { padding: 40px 16px; }
+  .menu { position: relative; display: inline-block; }
+  .trigger { padding: 8px 14px; border: 1px solid #1d1d1b; border-radius: 6px; background: #fff; font: inherit; outline: none; }
+  .panel { position: absolute; top: 100%; left: 0; min-width: 220px; margin: 0; padding: 6px; list-style: none; background: #fff;
+           opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity 450ms ease-in-out, transform 450ms ease-in-out; }
+  .menu:hover .panel { opacity: 1; transform: none; pointer-events: auto; }
+  .panel a { display: block; padding: 10px 12px; color: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Garden actions</h1>
+  <div class="menu" id="menu">
+    <div class="trigger" id="trigger">Actions</div>
+    <ul class="panel" id="panel"><li><a href="#book">Book a plot</a></li><li><a href="#rota">Join the watering rota</a></li><li><a href="#swap">Swap seeds</a></li></ul>
+  </div>
+</main>
+</body>
+</html>

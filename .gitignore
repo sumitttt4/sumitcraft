@@ -15,3 +15,10 @@ frames/
 
 # dx-audit private redaction maps
 .redact.json
+
+# SumitCraft local outputs
+inspection/
+before_after/
+study-check/
+reference-analysis/
+evidence/runs/

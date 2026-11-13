@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Larkfield components (token demo)</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--color-canvas); color: var(--color-ink); font: var(--font-size-md)/var(--font-line-body) var(--font-family-body); }
+  main { max-width: var(--layout-max-width); margin: 0 auto; padding: var(--space-xl) var(--space-md); }
+  h1 { font-size: var(--font-size-xl); line-height: var(--font-line-tight); margin: 0 0 var(--space-lg); }
+  .grid { display: grid; gap: var(--space-md); grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--layout-card-min)), 1fr)); }
+  .card { background: var(--color-surface); border-radius: var(--radius-card); padding: var(--space-lg); transition: transform var(--motion-duration-quick) var(--motion-easing-standard); }
+  .card:hover { transform: translateY(calc(-1 * var(--space-xs))); }
+  .card:focus-visible { outline: var(--space-xs) solid var(--color-focus); outline-offset: var(--space-xs); }
+  .card h2 { font-size: var(--font-size-lg); margin: 0 0 var(--space-sm); }
+  .card p { margin: 0 0 var(--space-md); color: var(--color-ink-muted); }
+  .btn { min-height: var(--control-min-height); padding: 0 var(--control-padding-x); border: 0; border-radius: var(--radius-control);
+         background: var(--color-accent); color: var(--color-on-accent); font: inherit; font-weight: var(--font-weight-strong);
+         transition: background-color var(--motion-duration-quick) var(--motion-easing-standard); cursor: pointer; }
+  .btn:hover { background: var(--color-accent-hover); }
+  .btn:focus-visible { outline: var(--space-xs) solid var(--color-focus); outline-offset: var(--space-xs); }
+  .btn:disabled { background: var(--color-disabled-bg); color: var(--color-disabled-ink); cursor: not-allowed; }
+  label { display: block; font-weight: var(--font-weight-strong); margin-bottom: var(--space-xs); }
+  input { width: 100%; min-height: var(--control-min-height); padding: 0 var(--space-sm); border: var(--border-width) solid var(--color-border); border-radius: var(--radius-control); font: inherit; }
+  input:focus-visible { outline: var(--space-xs) solid var(--color-focus); outline-offset: 0; }
+  input[aria-invalid="true"] { border-color: var(--color-danger); }
+  .err { color: var(--color-danger); font-size: var(--font-size-sm); margin: var(--space-xs) 0 0; }
+  .row { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Plots this week</h1>
+  <div class="grid">
+    <article class="card" tabindex="0"><h2>Bed 4, north fence</h2><p>Full sun. Water butt next to it.</p>
+      <div class="row"><button class="btn" type="button">Book it</button><button class="btn" type="button" disabled>Waitlist full</button></div></article>
+    <article class="card" tabindex="0"><h2>Herb spiral</h2><p>Shared. Two hours a week.</p><button class="btn" type="button">Join the rota</button></article>
+    <article class="card" tabindex="0"><h2>Get reminders</h2>
+      <label for="em">Email</label><input id="em" type="email" value="asha@" aria-invalid="true" aria-describedby="em-err">
+      <p class="err" id="em-err">Add the part after @, for example asha@example.com</p></article>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "page": "index.html",
+  "about": "Written spec for a pricing card (an original SumitCraft fixture). index.html has planted mismatches; fixed.html meets the spec.",
+  "widths": [375, 768, 1280],
+  "height": 800,
+  "tolerance_px": 2,
+  "checks": [
+    { "id": "card", "selector": ".card", "at": [1280, 768], "box": { "width": 360 }, "style": { "border-radius": "12px", "background-color": "#ffffff" } },
+    { "id": "card-mobile", "selector": ".card", "at": [375], "box": { "x": 16, "width": 343 } },
+    { "id": "plan-name", "selector": ".card h2", "style": { "font-size": "28px", "font-weight": "700", "color": "#1d1d1b" }, "text": "Studio" },
+    { "id": "price", "selector": ".price", "style": { "font-size": "40px", "color": "#1d1d1b" } },
+    { "id": "features", "selector": ".card li", "count": 3 },
+    { "id": "cta", "selector": ".card .cta", "min_target_px": 44, "style": { "border-radius": "10px", "color": "#ffffff", "background-color": "#2f5bea" } },
+    { "id": "fine-print", "selector": ".fine", "visible": true, "style": { "font-size": "14px" } }
+  ]
+}
