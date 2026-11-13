@@ -70,6 +70,7 @@ const hasVenv = fs.existsSync(venvPy);
 }
 
 const g = run("git", ["--version"]); add("git", !!g && g.code === 0, g ? firstLine(g.out) : "not found");
+const bun = run("bun", ["--version"]); add("bun", !!bun && bun.code === 0, bun ? firstLine(bun.out) : "not found (only long-form-storyboard's checker)");
 const FF = process.env.FFMPEG || "ffmpeg";
 const ff = run(FF, ["-version"]); add("ffmpeg", !!ff && ff.code === 0, ff ? firstLine(ff.out) : `not found (${process.env.FFMPEG ? "FFMPEG is set but does not run" : "not on PATH; set FFMPEG to its full path"})`);
 const fpPath = process.env.FFMPEG ? path.join(path.dirname(process.env.FFMPEG), WIN ? "ffprobe.exe" : "ffprobe") : "ffprobe";
@@ -133,8 +134,9 @@ const HOW = {
   chromium: "npx playwright install chromium   (downloads the browser binary, roughly 150-200 MB)",
   numpy: `${checks.python?.command || "python"} -m pip install --user numpy   (or use a skill's setup.py, which installs into that skill's own .venv)`,
   whisper: `${checks.python?.command || "python"} skills/rough-cut/setup.py   (shows the plan; add --yes to create the venv; weights download later, about 0.5-1.5 GB)`,
+  bun: "install Bun 1.1+ from https://bun.sh (only long-form-storyboard's checker needs it)",
 };
-const order = ["node", "python", "git", "ffmpeg", "playwright", "chromium", "numpy", "whisper"];
+const order = ["node", "python", "git", "ffmpeg", "playwright", "chromium", "numpy", "whisper", "bun"];
 const blocking = order.filter((id) => checks[id] && !checks[id].ok && readiness.some((r) => r.missing.includes(id)));
 const report = { tool: "sumitcraft doctor", when: new Date().toISOString(), os: osInfo(), checks, gl, readiness,
   summary: { ready: readiness.filter((r) => r.ready).length, total: readiness.length },

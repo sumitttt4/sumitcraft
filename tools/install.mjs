@@ -3,7 +3,7 @@
 //
 //   node tools/install.mjs list
 //   node tools/install.mjs status   [--scope user|project | --target DIR]
-//   node tools/install.mjs install  <name ...> | --all | --category video  [--scope user|project | --target DIR] [--dry-run] [--yes] [--update]
+//   node tools/install.mjs install  <name ...> | --all | --category <video|engineering|learning|design|planning|docs>  [--scope user|project | --target DIR] [--dry-run] [--yes] [--update]
 //   node tools/install.mjs uninstall <name ...> | --all                   [--scope user|project | --target DIR] [--dry-run] [--yes]
 //   (Windows: powershell -ExecutionPolicy Bypass -File tools\install.ps1 <same arguments>)
 //
@@ -42,7 +42,7 @@ function select() {
   let list = flag("--all") ? [...known.keys()] : val("--category") ? skills.filter((s) => s.category === val("--category")).map((s) => s.name) : names;
   const bad = list.filter((n) => !known.has(n));
   if (bad.length) { console.error(`unknown skill(s): ${bad.join(", ")}. Run: node tools/install.mjs list`); process.exit(2); }
-  if (!list.length) { console.error("name at least one skill, or --all, or --category <video|engineering|learning|design|planning>"); process.exit(2); }
+  if (!list.length) { console.error("name at least one skill, or --all, or --category <video|engineering|learning|design|planning|docs>"); process.exit(2); }
   return list;
 }
 const marker = (dir) => { try { return JSON.parse(fs.readFileSync(path.join(dir, MARK), "utf8")); } catch { return null; } };
@@ -62,9 +62,9 @@ function guardGlobal(action) {
 }
 
 if (cmd === "list") {
-  for (const cat of ["video", "engineering", "learning", "design", "planning"]) {
+  for (const cat of ["video", "engineering", "learning", "design", "planning", "docs"]) {
     console.log(`\n${cat}`);
-    for (const s of skills.filter((x) => x.category === cat)) console.log(`  ${s.name.padEnd(28)} ${s.origin === "upstream" ? "foundation" : "addition  "}  ${s.kind}`);
+    for (const s of skills.filter((x) => x.category === cat)) console.log(`  ${s.name.padEnd(32)} ${s.origin === "upstream" ? "foundation" : s.origin === "vendor" ? "vendor    " : "addition  "}  ${s.kind}`);
   }
   console.log(`\n${skills.length} skills. Install some with: node tools/install.mjs install <name ...> --scope project`);
 } else if (cmd === "status") {
