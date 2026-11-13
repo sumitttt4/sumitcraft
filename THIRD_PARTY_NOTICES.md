@@ -5,11 +5,11 @@
 SumitCraft is built on **simcraft** by Simran Sachdeva.
 
 - Source: https://github.com/dotslashsimran/simcraft
-- Commit imported: `58224d131814572224537fb516b8c5d33dd5fa67` (2026-11-09), unmodified, as this repository's first commit (`ba831ad`).
+- Commit imported: `58224d131814572224537fb516b8c5d33dd5fa67` (2026-11-09), unmodified, as this repository's first commit (`6f0e6ae`).
 - License: MIT, Copyright (c) 2026 Simran Sachdeva. The notice is kept in [LICENSE](LICENSE).
 - The 24 foundation skills, their scripts, references, templates and examples are substantially upstream work. What
   SumitCraft changed is listed per skill in [docs/ORIGINALITY_LEDGER.md](docs/ORIGINALITY_LEDGER.md) and in
-  [CHANGELOG.md](CHANGELOG.md); `git log` from `ba831ad` shows every change as a diff.
+  [CHANGELOG.md](CHANGELOG.md); `git log` from `6f0e6ae` shows every change as a diff.
 - Upstream itself credits: image-gen inspired by adamd9/skill-image-gen (MIT), vox-explainer inspired by Charlie Hills'
   vox-animation skill (MIT). Upstream states its code was written from scratch.
 

@@ -1,8 +1,8 @@
 # Changelog
 
 SumitCraft's changes on top of simcraft. Upstream work is not listed here as ours; see
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Commit `ba831ad` is the unmodified upstream import, so
-`git diff ba831ad` shows every change below.
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Commit `6f0e6ae` is the unmodified upstream import, so
+`git diff 6f0e6ae` shows every change below.
 
 ## 0.1.0 (2026-11-13)
 

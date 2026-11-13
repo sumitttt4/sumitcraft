@@ -70,7 +70,7 @@ Each item is resolved, or deliberately left with a reason, in [ORIGINALITY_LEDGE
 
 ## Implementation order used
 
-1. Import upstream unmodified (commit `ba831ad`) so every later change is a reviewable diff.
+1. Import upstream unmodified (commit `6f0e6ae`) so every later change is a reviewable diff.
 2. Flatten layout and fix paths; portability fixes 2-8 with platform-specific branches rather than removals.
 3. Generalise 9-15 into configurable, asked-for choices; add the spend gate.
 4. Add the expansion skills with fixtures that fail on planted problems and pass on fixed ones.

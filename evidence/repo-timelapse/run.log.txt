@@ -13,7 +13,7 @@ Biggest top-level folders now:
   (root files)                 187 lines
 
 Bulk commits (often vendored, generated or imported code; consider --exclude):
-  ba831ad 2026-11-13 +32,945  "(message withheld)"
+  6f0e6ae 2026-11-13 +32,945  "(message withheld)"
       in: skills/coding (95 files), skills/video (66 files), skills/learning (25 files)
 
 Languages now: Python 53%, Markdown 18%, HTML 13%, Config 10%, JavaScript 5%, Asset 1%
