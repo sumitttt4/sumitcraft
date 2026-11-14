@@ -5,7 +5,7 @@ Labels, weakest to strongest: **not run**, **blocked**, **static checks passed**
 
 **Platform of every recorded run: Linux (cloud container), headless Chromium with SwiftShader software WebGL.** Nothing has been run on native Windows or macOS. Windows support is implemented and documented, and its status is **unverified** until the commands in [SETUP.md](SETUP.md#verify-on-windows) are run on a Windows machine and recorded here.
 
-Summary: 16 functionally verified, 12 smoke tested, 4 static checks passed, 1 blocked, 21 not run (of 54).
+Summary: 16 functionally verified, 12 smoke tested, 4 static checks passed, 1 blocked, 22 not run (of 55).
 
 Static layer (`node tools/validate.mjs`, 2026-11-13): 846/846 checks pass (discover 132/132, metadata 162/162, contract 54/54, links 322/322, parse 171/171, license 3/3, secrets 1/1, platform 1/1).
 
@@ -44,6 +44,7 @@ Static layer (`node tools/validate.mjs`, 2026-11-13): 846/846 checks pass (disco
 | work-to-explanation | addition | **functionally verified** | none recorded | real case study: exit 0; planted bad draft: exit 1, blockers ['evidence', 'front-matter', 'private-path', 'secret'] | `/usr/local/bin/python3 <repo>/skills/work-to-explanation/scripts/preflight.py <repo>/skills/work-to-explanation/examples/webgl-backend-case-study/draft.md`<br>`/usr/local/bin/python3 <repo>/skills/work-to-explanation/scripts/preflight.py <runs>/work-to-explanation/bad-draft.md` | evidence/work-to-explanation/run.log.txt | Patterns are heuristics; a person still reads the draft. Native Windows: not run. |
 | design-hub | addition | **functionally verified** | none recorded | fixture known answers: exit 0 (9 of 9 checks); this machine: 37 design skills found among 108 installed skills (~/.claude/skills, ~/.claude/plugins, /mnt/skills, <repo>/skills) | `/usr/local/bin/python3 <repo>/skills/design-hub/tests/test_design_hub.py`<br>`/usr/local/bin/python3 <repo>/skills/design-hub/scripts/find_design_skills.py --task polish my pricing page, make it accessible, and add a smooth menu animation` | evidence/design-hub/this-machine.json<br>evidence/design-hub/run.log.txt | Run on one cloud machine only; other users' installs will differ, which is why it scans at run time. Native Windows: not run. |
 | glyph | Glyph | **smoke tested** | none recorded | 13 presets rendered; text, muted text and button contrast measured: below 4.5:1 or overflowing: bold button 3.28:1; retro button 4.30:1 | `/opt/node22/bin/node <repo>/tests/.glyph-measure.tmp.mjs <runs>/glyph/page.html default,bold,brutalist,cinematic,commerce,dark-technical,editorial,luminous,luxu` | evidence/glyph/preset-contrast.md<br>evidence/glyph/run.log.txt | Contrast only for three colour pairs per preset; Glyph's design judgement itself is guidance and was not executed. Translucent colours are reported as n/a. Native Windows: not run. |
+| glaze | addition | **not run** | none recorded | not run |  |  |  Native Windows: not run. |
 | vlog-auto-edit | vendor | **not run** | none recorded | not run |  |  |  Native Windows: not run. |
 | burned-in-captions | vendor | **not run** | none recorded | not run |  |  |  Native Windows: not run. |
 | thumbnail-ab | vendor | **not run** | none recorded | not run |  |  |  Native Windows: not run. |

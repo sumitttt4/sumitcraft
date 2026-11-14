@@ -94,6 +94,15 @@ recipients have the terms.
 | anthropics frontend-design | Overlaps glyph. | `npx skills add anthropics/skills` (Apache-2.0) |
 | hallmark | Overlaps glyph and design-critique. | https://github.com/Nutlope/hallmark (MIT) |
 
+## Glaze
+
+Sumit's component library. The `glaze` skill documents how to install it. The component source is not copied into this repository.
+
+- Site: https://glazeui.xyz
+- Source: https://github.com/sumitttt4/Glazeui at `ae670d209b6557b24007686d84cb8d2d35bb9398`
+- Licence: Apache-2.0. Redistributing the library's source requires its `LICENSE` and `NOTICE.md`.
+- Portfolio: https://sumitsharma.pro (the Glaze card links the project site)
+
 ## SumitCraft fixtures
 
 All SumitCraft fixtures (pricing card, Larkfield sign-up and garden UI, disclosure menu, posters, Fernwick test brand,

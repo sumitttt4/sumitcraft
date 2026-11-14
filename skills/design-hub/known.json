@@ -310,6 +310,14 @@
       "role": "make",
       "from": "Glyph-Skill (repo owner's own skill, bundled in SumitCraft)",
       "summary": "product-specific frontend direction, composition, build and verification; /glyph design, audit, vibe, prompt"
+    },
+    "glaze": {
+      "stages": [
+        "build"
+      ],
+      "role": "make",
+      "from": "Glaze (repo owner's component library)",
+      "summary": "ready React components for interfaces, AI chat and voice, installed one at a time"
     }
   },
   "not_design": [

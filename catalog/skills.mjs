@@ -423,5 +423,21 @@ export const skills = [
     example: "assets/starter.css rendered with each of its 12 direction presets plus the default, contrast measured (evidence/glyph).",
     ledger: { kept: "The whole bundle (SKILL.md, 19 references, starter.css, LICENSE, notices, migration map), byte for byte, from the owner's Glyph-Skill repo.", changed: "One line appended to SKILL.md linking SumitCraft's contract; registered in design-hub as a direction/build/motion/critique skill.", newExample: "Browser contrast audit of every starter-kit preset.", evidence: "evidence/glyph/", inherited: "Everything else is Glyph's own work." } },
 
+  { name: "glaze", category: "design", origin: "sumitcraft", kind: "guidance",
+    purpose: "Install ready Glaze React components (interfaces, AI chat, voice, animated icons) one at a time, in one of four finishes, before writing a component by hand.",
+    triggers: ["build this AI chat with Glaze", "add a glass voice orb to my Next.js app"],
+    nonTriggers: ["choose a visual direction from scratch (glyph)", "audit existing UI code against guidelines (web-design-guidelines)", "React performance rules (react-best-practices)"],
+    inputs: "A React 19 and Tailwind CSS 4 project, ideally already initialised with shadcn.",
+    deliverables: "The Glaze theme installed once, then the named components, with a finish set on html or on one region.",
+    needs: { required: [], optional: ["node"] },
+    network: "Installing a component runs the shadcn CLI, which fetches that component's registry item from GitHub (sumitttt4/glazeui). The skill itself does not call an API.",
+    cost: "None. Glaze's components are free.",
+    decisions: ["Which finish (Normal, Glass, Frost, Aurora)", "Which components to install"],
+    checks: ["The theme was installed before any component", "The stylesheet imports glaze.css and materials.css", "Imports come from the installed files, not a hand-written substitute"],
+    failures: ["Components look unstyled because the theme step was skipped", "Glass or Frost with nothing behind them"],
+    limits: ["Guidance. The components are not copied into this repo. Not run here.", "The live registry was read on 2026-11-14; names can change upstream"],
+    example: "Not run in this import. Commands are the ones published in the Glaze README and llms.txt.",
+    ledger: { kept: "n/a (new). The component library stays in its own repository.", changed: "New skill that documents the published install command, finishes, and registry names.", newExample: "None run here.", evidence: "docs/VALIDATION_MATRIX.md", inherited: "Nothing. Glaze itself is Apache-2.0 and is not vendored." } },
+
   ...dailySkills,
 ];

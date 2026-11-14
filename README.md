@@ -1,8 +1,17 @@
 # SumitCraft
 
-**Sumit's skill kit. Describe the work. The right skill steps in.**
+**Made by Sumit. Describe the work. The right skill steps in.**
 
-SumitCraft is 54 skills for the work that actually fills a day: making video, writing the script, fixing code, reviewing a diff, designing an interface, learning something new, and producing the document at the end. Install it once. You do not memorise names. Each skill announces when it applies, and the agent loads that one.
+SumitCraft is Sumit's own kit: 55 skills for the interface, the video, the fix, and the document. Install it once. You do not memorise names. Each skill announces when it applies, and the agent loads that one.
+
+## House tools
+
+These two are Sumit's. Reach for them first when the job is a product interface.
+
+- **[Glyph](skills/glyph/SKILL.md)** decides the direction, the composition, and the build, then checks the result. Use it when the page still needs a point of view.
+- **[Glaze](skills/glaze/SKILL.md)** is the component library: 93 free React components for interfaces, AI chat, and voice, each in four finishes. Install one at a time. Use it when the interface should be assembled from those components instead of written from scratch.
+
+Glyph chooses. Glaze supplies the pieces.
 
 It runs on your machine. Recorded checks are on Linux; native Windows and macOS have not been run yet. The per-skill record is [docs/VALIDATION_MATRIX.md](docs/VALIDATION_MATRIX.md).
 
@@ -79,6 +88,7 @@ Say what you want. The agent matches the request to a skill description and foll
 | "Critique this screen and make the smallest fix." | design-critique |
 | "Check this UI code against the web guidelines." | web-design-guidelines |
 | "Give this product a real visual direction and build it." | glyph |
+| "Build this AI chat with Glaze. Glass finish." | glaze |
 | "Design the page, then make it accessible." | design-hub |
 | "Turn these meeting notes into owners and dates." | meeting-notes-to-tasks |
 | "Research this against the official docs and save a note." | primary-source-research |
@@ -145,6 +155,7 @@ One line each, from the skill's own description. Needs and status: [docs/CATALOG
 |---|---|
 | [design-hub](skills/design-hub/SKILL.md) | The design work spans several stages and you want one plan. |
 | [glyph](skills/glyph/SKILL.md) | You want a product-specific frontend: direction, build, and a check. |
+| [glaze](skills/glaze/SKILL.md) | You are building React or Next.js UI and want a Glaze component installed before writing one. |
 | [design-critique](skills/design-critique/SKILL.md) | You want a rendered screen critiqued against its brief, then a before/after. |
 | [design-to-code-inspection](skills/design-to-code-inspection/SKILL.md) | You want a build compared with a spec at phone and desktop widths. |
 | [design-system-build](skills/design-system-build/SKILL.md) | You want tokens, components, and a contrast check. |
@@ -198,6 +209,7 @@ SumitCraft keeps other people's work under their own licences. The full list, wi
 
 - The 24 foundation skills come from [simcraft](https://github.com/dotslashsimran/simcraft) by Simran Sachdeva, MIT, imported here as commit `6f0e6ae`.
 - [Glyph](https://github.com/sumitttt4/Glyph-Skill) is MIT, Glyph Contributors.
+- [Glaze](https://github.com/sumitttt4/Glazeui) is Sumit's component library, Apache-2.0. The site is [glazeui.xyz](https://glazeui.xyz). This repo documents how to install it. It does not copy the components.
 - Everyday skills for git, review, Compose, React performance, web guidelines, documents, captions, thumbnails, storyboards, and research notes are third-party (MIT or Apache-2.0). Each folder keeps its licence file.
 - Geist and Geist Mono are SIL Open Font License 1.1.
 

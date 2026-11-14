@@ -70,6 +70,7 @@ These use skills from this repo. The method is the same for any skill set.
 | "It got slower last week" | benchmark-honestly (a trustworthy oracle) → bisect-anything (find the commit) |
 | "I just joined this repo, fix the flaky CI" | codebase-map → flaky-test-killer |
 | "Make a branded explainer for a sponsor" | brand-kit → vox-explainer |
+| "Build this AI chat in React" | glyph (direction) → glaze (install the components) |
 
 ## Mistakes to avoid
 
