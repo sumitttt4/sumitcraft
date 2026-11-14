@@ -1,7 +1,7 @@
 {
   "name": "sumitcraft",
   "version": "0.1.0",
-  "description": "A local-first creative and engineering workshop for Claude Code: 24 foundation skills from simcraft (MIT, Simran Sachdeva), SumitCraft's design, learning and explanation additions, Glyph, and vendored everyday skills (git, review, docs, video editing, research). Skills load as sumitcraft:<name>.",
+  "description": "SumitCraft: 54 local skills for video, coding, design, learning, planning, and documents. Skills load as sumitcraft:<name>.",
   "author": { "name": "sumitttt4", "url": "https://github.com/sumitttt4" },
   "homepage": "https://github.com/sumitttt4/sumitcraft",
   "repository": "https://github.com/sumitttt4/sumitcraft",

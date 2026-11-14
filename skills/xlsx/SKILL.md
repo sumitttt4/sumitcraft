@@ -1,6 +1,6 @@
 ---
 name: xlsx
-description: "Create, read, or fix a spreadsheet (.xlsx, .xlsm, .csv, .tsv) when the deliverable is the spreadsheet itself: formulas, formatting, cleanup. Not for a Word document, a slide deck, or an analysis whose output is not a spreadsheet."
+description: "Create, read, or fix a spreadsheet (.xlsx, .xlsm, .csv, .tsv) when the deliverable is the spreadsheet itself: formulas, formatting, cleanup. Use when the user wants an .xlsx, .csv, or .tsv file. Not for a Word document, a slide deck, or an analysis whose output is not a spreadsheet."
 license: Complete terms in LICENSE.txt
 ---
 > SumitCraft import: the folder name and the description were set so this skill is discovered beside the existing workshop and points at one gap. The method below is the upstream skill. Licence: see the LICENSE file in this folder. Contract, prerequisites and validation status: [contract.md](contract.md).

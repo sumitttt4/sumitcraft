@@ -1,6 +1,6 @@
 ---
 name: pptx
-description: "Create, read, or edit PowerPoint files (.pptx, .potx): slides, notes, and templates. Use whenever a slide deck is the input or output. Not for a video, a PDF, or a Word document."
+description: "Create, read, or edit PowerPoint files (.pptx, .potx): slides, notes, and templates. Use when a slide deck is the input or the output. Not for a video, a PDF, or a Word document."
 license: Complete terms in LICENSE.txt
 ---
 > SumitCraft import: the folder name and the description were set so this skill is discovered beside the existing workshop and points at one gap. The method below is the upstream skill. Licence: see the LICENSE file in this folder. Contract, prerequisites and validation status: [contract.md](contract.md).

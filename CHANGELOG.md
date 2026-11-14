@@ -1,12 +1,11 @@
 # Changelog
 
-SumitCraft's changes on top of simcraft. Upstream work is not listed here as ours; see
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Commit `6f0e6ae` is the unmodified upstream import, so
-`git diff 6f0e6ae` shows every change below.
+What changed in SumitCraft. Sources and licences: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Commit `6f0e6ae` is the unmodified import of the foundation, so `git diff 6f0e6ae` shows every change below.
 
 ## 0.1.0 (2026-11-13)
 
-### Foundation (upstream simcraft 58224d1), kept
+### Foundation skills, kept
 - All 24 skills, under their upstream names, with their scripts, references and examples, minus assets of unclear
   provenance (perspective-illusion cut-out PNGs; dx-audit uv screenshots, snapshots and video).
 
@@ -58,6 +57,10 @@ Twenty-one third-party skills, one per gap the workshop did not already cover. E
 edited. Sources, licences, and the skills that were left out are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 None of the new skills has a recorded run; the validation matrix lists them as not run. The installer accepts
 `--category docs` and lists vendor skills under their category.
+
+### History and README
+- `main` records `ccr-cb904c58-qilxzu` and `cursor/vendor-gap-skills-6d25` as ancestors. The tree was kept: those branches held no files `main` lacked. Their only text differences were the baseline import id (`ba831ad` on that history, `6f0e6ae` on `main`).
+- README rewritten as a skimmable catalog of all 54 skills, with install commands taken from `tools/install.mjs`.
 
 ### Known gaps
 - No native Windows or macOS run yet. clean-audio and the transcription parts of rough-cut and vox-explainer are blocked

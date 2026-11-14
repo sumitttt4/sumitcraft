@@ -109,7 +109,7 @@ Visual or audible review: ${review(s.name)}. Native Windows: not run. Details an
 
 // ---------- catalog ----------
 const cats = ["video", "engineering", "learning", "design", "planning", "docs"];
-let cat = `${GEN}\n# Capability catalog\n\n${skills.length} skills: ${skills.filter((s) => s.origin === "upstream").length} foundation skills from simcraft (all kept under their upstream names), ${skills.filter((s) => s.origin === "sumitcraft").length} SumitCraft additions, Glyph (imported from the owner's Glyph-Skill repository), and ${skills.filter((s) => s.origin === "vendor").length} vendored third-party skills that fill gaps. Status is the strongest label a recorded run supports; see [VALIDATION_MATRIX.md](VALIDATION_MATRIX.md).\n`;
+let cat = `${GEN}\n# Capability catalog\n\n${skills.length} skills across video, engineering, learning, design, planning, and documents. Status is the strongest label a recorded run supports; see [VALIDATION_MATRIX.md](VALIDATION_MATRIX.md). Sources and licences: [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md).\n`;
 for (const c of cats) {
   cat += `\n## ${c[0].toUpperCase() + c.slice(1)}\n\n| Skill | Origin | What it does | Needs | Status |\n|---|---|---|---|---|\n`;
   for (const s of skills.filter((x) => x.category === c)) cat += `| [${s.name}](../skills/${s.name}/SKILL.md) | ${s.origin === "upstream" ? "foundation" : s.origin === "glyph" ? "**Glyph**" : s.origin === "vendor" ? "vendor" : "**addition**"} | ${s.purpose} | ${s.needs.required.join(", ") || "nothing"} | ${statusOf(s.name)} |\n`;

@@ -1,6 +1,6 @@
 ---
 name: meeting-notes-to-tasks
-description: "Turn unstructured meeting notes or a transcript into decisions and assigned action items with a real owner and a date. Use after a meeting. For a personal brain dump and one next action, use next-step."
+description: "Turn unstructured meeting notes or a transcript into decisions and assigned action items with a real owner and a date. Use when the user has meeting notes and wants to know who does what by when. For a personal brain dump and one next action, use next-step."
 category: everyday
 applies-to: [claude, gemini, cursor, copilot, any]
 version: 1.0.0

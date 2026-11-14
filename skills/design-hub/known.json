@@ -247,7 +247,7 @@
         "brand"
       ],
       "role": "measure",
-      "from": "SumitCraft (simcraft)",
+      "from": "SumitCraft",
       "summary": "extracts a brand from its site into a kit"
     },
     "image-gen": {
@@ -255,7 +255,7 @@
         "visual-assets"
       ],
       "role": "make",
-      "from": "SumitCraft (simcraft)",
+      "from": "SumitCraft",
       "summary": "provider images behind a spend gate"
     },
     "visual-reference-analysis": {

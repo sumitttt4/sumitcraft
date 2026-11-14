@@ -1,6 +1,6 @@
 ---
 name: long-form-storyboard
-description: "Turn a transcript or idea dump into a long-form video plan: spoken narration, sections, and a shot list with one cutaway brief per beat. The bundled script checks limits and can export the script, shot list, and captions. Use before recording a long video. For a short sayable script, use video-script. Final picture-and-sound assembly is a separate ffmpeg step."
+description: "Turn a transcript or idea dump into a long-form video plan: spoken narration, sections, and a shot list with one cutaway brief per beat. The bundled script checks limits and can export the script, shot list, and captions. Use when planning a long video before recording. For a short sayable script, use video-script. Final picture-and-sound assembly is a separate ffmpeg step."
 license: MIT
 metadata:
   author: genfeedai
